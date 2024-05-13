@@ -12,7 +12,9 @@
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
     "test:integration": "playwright test",
-    "test:unit": "vitest",
+    "test:watch": "vitest",
+    "test:unit": "vitest run",
+    "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -28,10 +30,13 @@
     "@storybook/test": "^8.0.10",
     "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
-    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@sveltejs/vite-plugin-svelte": "^3.1.0",
+    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/svelte": "^5.1.0",
     "@types/eslint": "^8.56.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "@vitest/ui": "^1.6.0",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
@@ -40,6 +45,7 @@
     "flowbite": "^2.3.0",
     "flowbite-svelte": "^0.46.1",
     "flowbite-svelte-icons": "^1.6.1",
+    "jsdom": "^24.0.0",
     "postcss": "^8.4.38",
     "prettier": "^3.1.1",
     "prettier-plugin-svelte": "^3.1.2",
@@ -50,7 +56,7 @@
     "tslib": "^2.4.1",
     "typescript": "^5.0.0",
     "vite": "^5.0.3",
-    "vitest": "^1.2.0"
+    "vitest": "^1.6.0"
   },
   "type": "module"
 }
