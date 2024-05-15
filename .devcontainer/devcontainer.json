@@ -15,7 +15,8 @@
 				"esbenp.prettier-vscode",
 				"ms-playwright.playwright",
 				"svelte.svelte-vscode",
-				"vitest.explorer"
+				"vitest.explorer",
+				"bradlc.vscode-tailwindcss"
 			]
 		}
 	}
