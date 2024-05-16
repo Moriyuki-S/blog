@@ -22,6 +22,6 @@ export default {
   },
   plugins: [require('flowbite/plugin')],
 
-  darkMode: ['selector', '[data-mode="dark"'],
+  darkMode: ['selector', '[data-mode="dark"]'],
 }
 
