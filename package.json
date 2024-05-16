@@ -24,6 +24,7 @@
     "@storybook/addon-essentials": "^8.0.10",
     "@storybook/addon-interactions": "^8.0.10",
     "@storybook/addon-links": "^8.0.10",
+    "@storybook/addon-styling-webpack": "^1.0.0",
     "@storybook/blocks": "^8.0.10",
     "@storybook/svelte": "^8.0.10",
     "@storybook/sveltekit": "^8.0.10",
