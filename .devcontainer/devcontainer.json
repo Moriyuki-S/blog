@@ -16,7 +16,9 @@
 				"ms-playwright.playwright",
 				"svelte.svelte-vscode",
 				"vitest.explorer",
-				"bradlc.vscode-tailwindcss"
+				"bradlc.vscode-tailwindcss",
+				"GitHub.vscode-github-actions",
+				"redhat.vscode-yaml"
 			]
 		}
 	}

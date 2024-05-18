@@ -1,0 +1,7 @@
+component:
+  - changed-files:
+    - any-glob-to-any-file: 'components/**/*'
+
+page:
+  - changed-files:
+    - any-glob-to-any-file: 'routes/**/*'
