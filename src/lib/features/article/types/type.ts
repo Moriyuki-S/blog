@@ -4,7 +4,6 @@ export type Article = {
     id: string;
     slug: string;
     title: string;
-    abstract: string;
     content: string;
     imageUrl: string;
     createdAt: string;
