@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/ja';
 dayjs.extend(relativeTime);
-dayjs().format();
-dayjs().locale('ja');
+dayjs.locale('ja');
 
 export const calculateTimeDifference = (date: Date) => {
     return dayjs(date).fromNow();
