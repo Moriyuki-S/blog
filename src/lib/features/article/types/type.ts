@@ -6,7 +6,7 @@ export type Article = {
     title: string;
     content: string;
     imageUrl: string;
-    createdAt: string;
-    updatedAt: string;
+    createdAt: Date;
+    updatedAt: Date;
     tags: Tag[];
 };
