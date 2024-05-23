@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { calculateTimeDifference } from '$lib/utils/time-format';
 	import { Card } from 'flowbite-svelte';
 	import type { Article } from '../../types/type';
 	export let article: Readonly<Article>; //読みこみのみ可能
@@ -11,9 +12,9 @@
 		{article.title}
 	</h5>
 	<time
-		datetime={wasUpdated ? article.updatedAt : article.createdAt}
-		class="w-1/3 min-w-8 block text-sm ml-auto"
+		datetime={wasUpdated ? String(article.updatedAt) : String(article.createdAt)}
+		class="w-fit min-w-8 block text-sm ml-auto"
 	>
-		{wasUpdated ? '更新: ' + article.updatedAt : '投稿: ' + article.createdAt}
+		{wasUpdated ? '更新 : ' + calculateTimeDifference(article.updatedAt) : '投稿 : ' + calculateTimeDifference(article.createdAt)}
 	</time>
 </Card>
