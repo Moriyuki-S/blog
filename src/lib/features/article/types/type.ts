@@ -8,5 +8,5 @@ export type Article = {
 	imageUrl: string;
 	createdAt: Date;
 	updatedAt: Date;
-	tags: Tag[];
+	tag: Tag; // 一つの記事に付けられるタグは一つまでにした（ややこしくなるのを防ぐため）
 };
