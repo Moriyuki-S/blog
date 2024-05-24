@@ -2,6 +2,7 @@
 	import { calculateTimeDifference } from '$lib/utils/time-format';
 	import { Card } from 'flowbite-svelte';
 	import type { Article } from '../../types/type';
+	import TagChip from '$lib/features/tag/components/TagChip/TagChip.svelte';
 	export let article: Readonly<Article>; //読みこみのみ可能
 
 	// 更新したかを判定
@@ -9,8 +10,10 @@
 </script>
 
 <Card href="/" img={article.imageUrl} class="cursor-pointer" size="sm">
-	<ul class="w-full h-5 mb-4 border">
-		<!--ここにタグのコンポーネントを入れたい-->
+	<ul class="w-full h-fit flex gap-x-2 mb-4">
+		{#each article.tags as tag}
+			<li><TagChip {tag} /></li>
+		{/each}
 	</ul>
 	<h5 id="title" class="mb-10 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 		{article.title}
