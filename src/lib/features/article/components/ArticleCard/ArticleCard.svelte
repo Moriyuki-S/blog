@@ -15,6 +15,7 @@
 	<time
 		datetime={wasUpdated ? String(article.updatedAt) : String(article.createdAt)}
 		class="w-fit min-w-8 block text-sm ml-auto"
+		data-testid="article-card-time"
 	>
 		{wasUpdated ? '更新 : ' + calculateTimeDifference(article.updatedAt) : '投稿 : ' + calculateTimeDifference(article.createdAt)}
 	</time>
