@@ -14,7 +14,12 @@ describe('記事のカードコンポーネントのテスト', () => {
 			slug: '/',
 			createdAt: new Date(),
 			updatedAt: new Date(),
-			tags: []
+			tag: {
+				id: '1',
+				name: 'サンプルタグ',
+				iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
+				color: '#ff0000',
+			}
 		};
 		render(ArticleCard, { article: SAMPLE_ARTICLE });
 		const title = screen.queryByText(SAMPLE_ARTICLE.title);
@@ -29,8 +34,13 @@ describe('記事のカードコンポーネントのテスト', () => {
 			content: 'これはテストの記事です。',
 			slug: '/',
 			createdAt: dayjs().subtract(1, 'day').toDate(),
-			updatedAt: dayjs().subtract(1, 'day').toDate(),
-			tags: []
+			updatedAt: dayjs().subtract(1, 'day').toDate(), 
+			tag: {
+				id: '1',
+				name: 'サンプルタグ',
+				iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
+				color: '#ff0000',
+			}
 		};
 
 		render(ArticleCard, { article: SAMPLE_ARTICLE });
@@ -47,7 +57,12 @@ describe('記事のカードコンポーネントのテスト', () => {
 			slug: '/',
 			createdAt: dayjs().subtract(2, 'day').toDate(),
 			updatedAt: dayjs().subtract(1, 'day').toDate(),
-			tags: []
+			tag: {
+				id: '1',
+				name: 'サンプルタグ',
+				iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
+				color: '#ff0000',
+			},
 		};
 		render(ArticleCard, { article: SAMPLE_ARTICLE });
 		const date = screen.getByTestId('article-card-time');
