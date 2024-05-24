@@ -12,7 +12,7 @@
 <Card href="/" img={article.imageUrl} class="cursor-pointer" size="sm">
 	<ul class="w-full h-fit flex gap-x-2 mb-4">
 		{#each article.tags as tag}
-			<li><TagChip tag={tag} /></li>
+			<li><TagChip {tag} /></li>
 		{/each}
 	</ul>
 	<h5 id="title" class="mb-10 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
