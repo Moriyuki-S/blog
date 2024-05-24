@@ -20,12 +20,14 @@
 		class="w-fit min-w-8 block text-sm ml-auto"
 		data-testid="article-card-time"
 	>
-		{wasUpdated ? '更新 : ' + calculateTimeDifference(article.updatedAt) : '投稿 : ' + calculateTimeDifference(article.createdAt)}
+		{wasUpdated
+			? '更新 : ' + calculateTimeDifference(article.updatedAt)
+			: '投稿 : ' + calculateTimeDifference(article.createdAt)}
 	</time>
 </Card>
 
 <style>
-	#title{
+	#title {
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 2;

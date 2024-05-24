@@ -1,5 +1,5 @@
 export type Tag = {
-    id: string;
-    name: string;
-    color: string // タグのイメージカラー
+	id: string;
+	name: string;
+	color: string; // タグのイメージカラー
 };

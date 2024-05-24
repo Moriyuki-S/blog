@@ -5,5 +5,5 @@ dayjs.extend(relativeTime);
 dayjs.locale('ja');
 
 export const calculateTimeDifference = (date: Date) => {
-    return dayjs(date).fromNow();
+	return dayjs(date).fromNow();
 };
