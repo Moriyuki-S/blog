@@ -4,7 +4,8 @@
 	import type { Article } from '../../types/type';
 	export let article: Readonly<Article>; //読みこみのみ可能
 
-	const wasUpdated = article.updatedAt !== article.createdAt;
+	// 更新したかを判定
+	const wasUpdated = article.updatedAt.toString() !== article.createdAt.toString();
 </script>
 
 <Card href="/" img={article.imageUrl} class="cursor-pointer" size="sm">
