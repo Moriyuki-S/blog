@@ -1,4 +1,4 @@
-import type { Tag } from '$lib/features/tags/types/type';
+import type { Tag } from '$lib/features/tag/types/type';
 
 export type Article = {
 	id: string;
