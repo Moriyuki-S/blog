@@ -10,7 +10,7 @@
 </script>
 
 <Card href="/" img={article.imageUrl} class="cursor-pointer" size="sm">
-	<ul class="w-full h-fit flex gap-x-2 mb-4 overflow-x-scroll">
+	<ul class="w-full h-fit flex gap-x-2 mb-4">
 		{#each article.tags as tag}
 			<li><TagChip tag={tag} /></li>
 		{/each}
