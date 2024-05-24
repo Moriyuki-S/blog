@@ -8,7 +8,7 @@
 </script>
 
 <Card href="/" img={article.imageUrl} class="cursor-pointer" size="sm">
-	<h5 class="min-h-24 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+	<h5 id="title" class="mb-10 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 		{article.title}
 	</h5>
 	<time
@@ -18,3 +18,12 @@
 		{wasUpdated ? '更新 : ' + calculateTimeDifference(article.updatedAt) : '投稿 : ' + calculateTimeDifference(article.createdAt)}
 	</time>
 </Card>
+
+<style>
+	#title{
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+	}
+</style>
