@@ -1,6 +1,6 @@
 <script lang="ts">
 	import TagChip from '$lib/features/tag/components/TagChip/TagChip.svelte';
-import { calculateTimeDifference, formatTimetoJapanese } from '$lib/utils/time-format';
+	import { formatTimetoJapanese } from '$lib/utils/time-format';
 	import type { Article } from '../../types/type';
 	import { Breadcrumb, BreadcrumbItem } from 'flowbite-svelte';
 

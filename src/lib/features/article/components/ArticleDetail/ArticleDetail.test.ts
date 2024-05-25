@@ -21,10 +21,10 @@ describe('記事詳細ページのUIテスト', () => {
 		}
 	};
 
-    const SAMPLE_UPDATED_ARTICLE: Article = {
-        ...SAMPLE_ARTICLE,
-        updatedAt: new Date('2021-01-02T00:00:00')
-    };
+	const SAMPLE_UPDATED_ARTICLE: Article = {
+		...SAMPLE_ARTICLE,
+		updatedAt: new Date('2021-01-02T00:00:00')
+	};
 
 	it('記事のタイトルが表示される', () => {
 		render(ArticleDetail, { article: SAMPLE_ARTICLE });
@@ -51,18 +51,16 @@ describe('記事詳細ページのUIテスト', () => {
 		expect(date).toBeInTheDocument();
 	});
 
-    it('記事が更新されていないときは、更新日時は表示されない', () => {
-        render(ArticleDetail, { article: SAMPLE_ARTICLE });
-        const updatedAt = screen.queryByText('更新 : ');
-        expect(updatedAt).not.toBeInTheDocument();
-    });
+	it('記事が更新されていないときは、更新日時は表示されない', () => {
+		render(ArticleDetail, { article: SAMPLE_ARTICLE });
+		const updatedAt = screen.queryByText('更新 : ');
+		expect(updatedAt).not.toBeInTheDocument();
+	});
 
-    it('記事が更新されているときは、更新日時が表示される', () => {
-        render(ArticleDetail, { article: SAMPLE_UPDATED_ARTICLE });
-        const formatUpdatedAt = formatTimetoJapanese(SAMPLE_UPDATED_ARTICLE.updatedAt);
-        const updatedAt = screen.queryByText(formatUpdatedAt);
-        expect(updatedAt).toBeInTheDocument();
-    });
-
-    
+	it('記事が更新されているときは、更新日時が表示される', () => {
+		render(ArticleDetail, { article: SAMPLE_UPDATED_ARTICLE });
+		const formatUpdatedAt = formatTimetoJapanese(SAMPLE_UPDATED_ARTICLE.updatedAt);
+		const updatedAt = screen.queryByText(formatUpdatedAt);
+		expect(updatedAt).toBeInTheDocument();
+	});
 });

@@ -10,4 +10,4 @@ export const calculateTimeDifference = (date: Date) => {
 
 export const formatTimetoJapanese = (date: Date) => {
 	return dayjs(date).format('YYYY年MM月DD日');
-}
+};
