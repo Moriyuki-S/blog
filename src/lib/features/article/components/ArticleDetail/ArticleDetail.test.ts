@@ -9,7 +9,7 @@ describe('記事詳細ページのUIテスト', () => {
 		id: '1',
 		title: 'テスト記事',
 		imageUrl: 'https://www.pokemon.co.jp/PostImages/d86fdbe4e3d1e9d680b5217f7d947425caae82aa.jpg',
-		content: 'テスト記事です',
+		body: 'テスト記事です',
 		slug: '/sample',
 		createdAt: new Date('2021-01-01T00:00:00'),
 		updatedAt: new Date('2021-01-01T00:00:00'),
@@ -40,7 +40,7 @@ describe('記事詳細ページのUIテスト', () => {
 
 	it('記事の内容が表示される', () => {
 		render(ArticleDetail, { article: SAMPLE_ARTICLE });
-		const content = screen.queryByText(SAMPLE_ARTICLE.content);
+		const content = screen.queryByText(SAMPLE_ARTICLE.body);
 		expect(content).toBeInTheDocument();
 	});
 
