@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { calculateTimeDifference } from './time-format';
+import { calculateTimeDifference, formatTimetoJapanese } from './time-format';
 import dayjs from 'dayjs';
 
-describe('時間のフォーマット処理が出来ているかのテスト', () => {
+describe('時間の差分計算が出来ているかのテスト', () => {
 	describe('現在時刻との差分を表示する', () => {
 		it('1分前と表示する', () => {
 			// 1分前を取得
@@ -31,5 +31,13 @@ describe('時間のフォーマット処理が出来ているかのテスト', (
 			const result = calculateTimeDifference(lastYear);
 			expect(result).toBe('1年前');
 		});
+	});
+});
+
+describe('時間の日本語フォーマットができているかのテスト', () => {
+	it('YYYY年MM月DD日のフォーマットに変更される', () => {
+		const date = new Date('2021-01-01T00:00:00');
+		const result = formatTimetoJapanese(date);
+		expect(result).toBe('2021年01月01日');
 	});
 });
