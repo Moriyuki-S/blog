@@ -63,6 +63,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"dayjs": "^1.11.11"
+		"dayjs": "^1.11.11",
+		"tocbot": "^4.28.2"
 	}
 }
