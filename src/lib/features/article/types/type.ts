@@ -10,3 +10,8 @@ export type Article = {
 	updatedAt: Date;
 	tag: Tag; // 一つの記事に付けられるタグは一つまでにした（ややこしくなるのを防ぐため）
 };
+
+export type ArticleTableOfContents = {
+	tagName: string;
+	text: string;
+};
