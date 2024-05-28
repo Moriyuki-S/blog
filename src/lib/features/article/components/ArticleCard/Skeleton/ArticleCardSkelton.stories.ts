@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/svelte";
-import ArticleCardSkelton from "./ArticleCardSkelton.svelte";
+import type { Meta, StoryObj } from '@storybook/svelte';
+import ArticleCardSkelton from './ArticleCardSkelton.svelte';
 
 const meta: Meta = {
-    component: ArticleCardSkelton
+	component: ArticleCardSkelton
 };
 
 export default meta;
