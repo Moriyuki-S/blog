@@ -2,10 +2,10 @@ import { ArticleAPIs } from '$lib/features/article/repositories/apis/fetch-artic
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ data }) => {
-    const bookmarkedArticles = await ArticleAPIs.fetchBookmarkedArticles();
+	const bookmarkedArticles = await ArticleAPIs.fetchBookmarkedArticles();
 
-    return {
-        ...data,
-        bookmarkedArticles
-    };
+	return {
+		...data,
+		bookmarkedArticles
+	};
 };
