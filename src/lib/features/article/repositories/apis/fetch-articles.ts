@@ -103,12 +103,14 @@ const fetchBookmarkedArticles: ArticleAPIsType['fetchBookmarkedArticles'] = asyn
         return [];
     }
 
+    /*
     const bookmarkedArticlesIdOnCSV = localStorage.getItem('bookmarkedArticles');
     if (!bookmarkedArticlesIdOnCSV) {
         return [];
     }
+    */
 
-    const bookmarkedArticlesId = bookmarkedArticlesIdOnCSV.split(',');
+    // const bookmarkedArticlesId = bookmarkedArticlesIdOnCSV.split(',');
 
     return sampleArticles;
 };
