@@ -9,8 +9,8 @@
 	export let data: PageData;
 </script>
 
-<div class="w-full px-5 md:flex md:justify-between md:gap-x-6">
-	<main class="w-full md:w-2/3 pt-5">
+<div class="w-full pt-5 px-5 md:flex md:justify-between md:gap-x-6">
+	<main class="w-full md:w-2/3">
 		<Tabs
 			tabStyle="pill"
 			contentClass="pt-5"
@@ -54,12 +54,14 @@
 						{/each}
 					{:then newArticles} 
 						{#each newArticles as article}
-							<ArticleCard {article} />
+							<li>
+								<ArticleCard {article} />
+							</li>
 						{/each}
 					{/await}
 				</ul>
 			</TabItem>
 		</Tabs>
 	</main>
-	<RightSidebar styleClass="w-1/3"></RightSidebar>
+	<RightSidebar styleClass="w-1/3 pt-6"></RightSidebar>
 </div>
