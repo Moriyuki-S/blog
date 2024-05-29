@@ -1,3 +1,4 @@
+import { browser } from "$app/environment";
 import type { Article } from "../../types/type";
 
 const sampleArticles = [
@@ -78,24 +79,55 @@ const sampleArticles = [
     }
 ];
 
-type FetchArticles = {
+type ArticleAPIsType = {
+    fetchArticles: (id: string) => Promise<Article[]>;
+    fetchBookmarkedArticles: () => Promise<Article[]>;
     fetchPopularArticles: (tag?: string) => Promise<Article[]>;
     fetchNewArticles: (tag?: string) => Promise<Article[]>;
 }
 
 /**
+ * 記事を取得する関数
+ * 
+ * ID, キーワード, タグで取得できるようにしたい
+ * 今はとりあえずIDのみ
+ */
+
+const fetchArticles: ArticleAPIsType['fetchArticles'] = async (id: string) => {
+    return sampleArticles;
+};
+
+const fetchBookmarkedArticles: ArticleAPIsType['fetchBookmarkedArticles'] = async () => {
+    if (!browser) {
+        console.error('ブックマークした記事はブラウザ側のみで取得できます');
+        return [];
+    }
+
+    const bookmarkedArticlesIdOnCSV = localStorage.getItem('bookmarkedArticles');
+    if (!bookmarkedArticlesIdOnCSV) {
+        return [];
+    }
+
+    const bookmarkedArticlesId = bookmarkedArticlesIdOnCSV.split(',');
+
+    return sampleArticles;
+};
+
+/**
  * 人気記事を取得する関数
  */
 
-const fetchPopularArticles: FetchArticles['fetchPopularArticles'] = async (tag?: string) => {
+const fetchPopularArticles: ArticleAPIsType['fetchPopularArticles'] = async (tag?: string) => {
     return sampleArticles;
 };
 
-const fetchNewArticles: FetchArticles['fetchNewArticles'] = async (tag?: string) => {
+const fetchNewArticles: ArticleAPIsType['fetchNewArticles'] = async (tag?: string) => {
     return sampleArticles;
 };
 
-export const fetchArticles: FetchArticles = {
+export const ArticleAPIs: ArticleAPIsType = {
+    fetchArticles,
+    fetchBookmarkedArticles,
     fetchPopularArticles,
     fetchNewArticles
 };
