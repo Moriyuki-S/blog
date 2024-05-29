@@ -93,7 +93,7 @@ type ArticleAPIsType = {
  * 今はとりあえずIDのみ
  */
 
-const fetchArticles: ArticleAPIsType['fetchArticles'] = async (id: string) => {
+const fetchArticles: ArticleAPIsType['fetchArticles'] = async () => {
 	return sampleArticles;
 };
 
@@ -119,11 +119,11 @@ const fetchBookmarkedArticles: ArticleAPIsType['fetchBookmarkedArticles'] = asyn
  * 人気記事を取得する関数
  */
 
-const fetchPopularArticles: ArticleAPIsType['fetchPopularArticles'] = async (tag?: string) => {
+const fetchPopularArticles: ArticleAPIsType['fetchPopularArticles'] = async () => {
 	return sampleArticles;
 };
 
-const fetchNewArticles: ArticleAPIsType['fetchNewArticles'] = async (tag?: string) => {
+const fetchNewArticles: ArticleAPIsType['fetchNewArticles'] = async () => {
 	return sampleArticles;
 };
 
