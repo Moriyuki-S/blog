@@ -8,7 +8,7 @@ export default defineConfig({
 		host: true
 	},
 	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}'],
+		include: ['src/**/*.{test,spec,server}.{js,ts}'],
 		environment: 'jsdom',
 		setupFiles: ['./vitest-setup.ts'],
 		passWithNoTests: true
