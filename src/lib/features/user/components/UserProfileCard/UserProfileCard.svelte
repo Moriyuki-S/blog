@@ -7,7 +7,7 @@
 
 <Card padding="md">
     <div class="flex flex-col items-center gap-y-5">
-        <Avatar src={user.iconUrl} alt='管理人のプロフィールアイコン' size="lg" />
+        <Avatar src={user.iconUrl} alt={`${user.name}のアイコン`} size="lg" />
         <hgroup>
             <h5 class="text-xl text-center mb-8">
                 {user.name}
