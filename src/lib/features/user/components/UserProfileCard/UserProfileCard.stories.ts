@@ -14,7 +14,7 @@ export const Default: Story = {
         user: {
             name: 'サンプルユーザー',
             biography: 'サンプルのユーザーです。',
-            iconUrl: 'https://kotonohaworks.com/free-icons/wp-content/uploads/kkrn_icon_user_2.png'
+            iconUrl: ''
         }
     }
 };
