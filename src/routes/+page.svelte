@@ -3,8 +3,8 @@
 	import { TabItem, Tabs } from 'flowbite-svelte';
 	import { BookmarkOutline, ClockOutline, FireOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
-	import ArticleCard from '$lib/features/article/components/ArticleCard/ArticleCard.svelte';
-	import ArticleCardSkelton from '$lib/features/article/components/ArticleCard/Skeleton/ArticleCardSkelton.svelte';
+	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
+	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
 
 	export let data: PageData;
 </script>
@@ -26,7 +26,7 @@
 					<ul class="grid grid-cols-2 gap-5">
 						{#each Array(8) as _}
 							<li class="w-auto">
-								<ArticleCardSkelton />
+								<ArticleVerticalCardSkeleton />
 							</li>
 						{/each}
 					</ul>
@@ -34,7 +34,7 @@
 					<ul class="grid grid-cols-2 gap-5">
 						{#each popularArticles as article}
 							<li class="w-auto">
-								<ArticleCard {article} />
+								<ArticleVerticalCard {article} />
 							</li>
 						{/each}
 					</ul>
@@ -49,13 +49,13 @@
 					{#await data.newArticles}
 						{#each Array(8) as _}
 							<li>
-								<ArticleCardSkelton />
+								<ArticleVerticalCardSkeleton />
 							</li>
 						{/each}
 					{:then newArticles}
 						{#each newArticles as article}
 							<li>
-								<ArticleCard {article} />
+								<ArticleVerticalCard {article} />
 							</li>
 						{/each}
 					{/await}
@@ -72,7 +72,7 @@
 					<ul class="grid grid-cols-2 gap-5">
 						{#each data.bookmarkedArticles as article}
 							<li>
-								<ArticleCard {article} />
+								<ArticleVerticalCard {article} />
 							</li>
 						{/each}
 					</ul>
