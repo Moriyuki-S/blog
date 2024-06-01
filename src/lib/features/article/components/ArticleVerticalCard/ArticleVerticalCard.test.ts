@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/svelte';
 import { describe, expect, it } from 'vitest';
-import ArticleCard from './ArticleCard.svelte';
+import ArticleVerticalCard from './ArticleVerticalCard.svelte';
 import type { Article } from '../../types/type';
 import dayjs from 'dayjs';
 
@@ -21,7 +21,7 @@ describe('記事のカードコンポーネントのテスト', () => {
 				color: '#ff0000'
 			}
 		};
-		render(ArticleCard, { article: SAMPLE_ARTICLE });
+		render(ArticleVerticalCard, { article: SAMPLE_ARTICLE });
 		const title = screen.queryByText(SAMPLE_ARTICLE.title);
 		expect(title).toBeInTheDocument();
 	});
@@ -43,7 +43,7 @@ describe('記事のカードコンポーネントのテスト', () => {
 			}
 		};
 
-		render(ArticleCard, { article: SAMPLE_ARTICLE });
+		render(ArticleVerticalCard, { article: SAMPLE_ARTICLE });
 		const date = screen.getByTestId('article-card-time');
 		expect(date).toHaveTextContent('投稿 : 1日前');
 	});
@@ -64,7 +64,7 @@ describe('記事のカードコンポーネントのテスト', () => {
 				color: '#ff0000'
 			}
 		};
-		render(ArticleCard, { article: SAMPLE_ARTICLE });
+		render(ArticleVerticalCard, { article: SAMPLE_ARTICLE });
 		const date = screen.getByTestId('article-card-time');
 		expect(date).toHaveTextContent('更新 : 1日前');
 	});
