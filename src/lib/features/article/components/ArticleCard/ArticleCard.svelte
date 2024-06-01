@@ -9,7 +9,7 @@
 	const wasUpdated = article.updatedAt.toString() !== article.createdAt.toString();
 </script>
 
-<Card href="/" img={article.imageUrl} class="cursor-pointer" size="sm">
+<Card href={`/articles/${article.slug}`} img={article.imageUrl} class="cursor-pointer" size="sm">
 	<div class="mb-4">
 		<TagChip tag={article.tag} />
 	</div>
