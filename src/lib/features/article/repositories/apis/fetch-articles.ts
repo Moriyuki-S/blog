@@ -80,11 +80,22 @@ const sampleArticles = [
 ];
 
 type ArticleAPIsType = {
+	fetchArticle: () => Promise<Article>;
 	fetchArticles: (id: string) => Promise<Article[]>;
 	fetchBookmarkedArticles: () => Promise<Article[]>;
 	fetchPopularArticles: (tag?: string) => Promise<Article[]>;
 	fetchNewArticles: (tag?: string) => Promise<Article[]>;
 };
+
+/**
+ * 記事単体を取得する関数
+ * 
+ * @param id 記事ID
+ * @param slug 記事のスラグ
+ */
+const fetchArticle = async () => {
+	return sampleArticles[0];
+}
 
 /**
  * 記事を取得する関数
@@ -128,6 +139,7 @@ const fetchNewArticles: ArticleAPIsType['fetchNewArticles'] = async () => {
 };
 
 export const ArticleAPIs: ArticleAPIsType = {
+	fetchArticle,
 	fetchArticles,
 	fetchBookmarkedArticles,
 	fetchPopularArticles,
