@@ -89,13 +89,13 @@ type ArticleAPIsType = {
 
 /**
  * 記事単体を取得する関数
- * 
+ *
  * @param id 記事ID
  * @param slug 記事のスラグ
  */
 const fetchArticle = async () => {
 	return sampleArticles[0];
-}
+};
 
 /**
  * 記事を取得する関数
