@@ -5,7 +5,7 @@
 	onMount(() => {
 		tocbot.init({
 			tocSelector: '.toc',
-			contentSelector: '.article',
+			contentSelector: '#article-body',
 			extraLinkClasses: 'block w-max h-10 hover:bg-slate-100 rounded-lg px-4 py-1',
 			activeLinkClass: 'text-sky-500',
 			headingSelector: 'h2, h3'

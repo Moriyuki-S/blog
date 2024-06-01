@@ -34,7 +34,7 @@
 	<div class="mt-5">
 		<img src={article.imageUrl} alt={`「${article.title}」のイメージ画像`} />
 	</div>
-	<div class="w-full mt-8">
+	<div id="article-body" class="w-full mt-8">
 		{@html article.body}
 	</div>
 </article>
