@@ -4,7 +4,7 @@
 	import { BookmarkOutline, ClockOutline, FireOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
-	import ArticleVerticalCardSkelton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkelton.svelte';
+	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
 
 	export let data: PageData;
 </script>
@@ -26,7 +26,7 @@
 					<ul class="grid grid-cols-2 gap-5">
 						{#each Array(8) as _}
 							<li class="w-auto">
-								<ArticleVerticalCardSkelton />
+								<ArticleVerticalCardSkeleton />
 							</li>
 						{/each}
 					</ul>
@@ -49,7 +49,7 @@
 					{#await data.newArticles}
 						{#each Array(8) as _}
 							<li>
-								<ArticleVerticalCardSkelton />
+								<ArticleVerticalCardSkeleton />
 							</li>
 						{/each}
 					{:then newArticles}
