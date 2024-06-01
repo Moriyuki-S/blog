@@ -7,7 +7,7 @@ const config: PlaywrightTestConfig = {
 		timeout: 360 * 1000
 	},
 	testDir: 'tests',
-	testMatch: /(.+\.)?(test|spec)\.[jt]s/,
+	testMatch: /(.+\.)?(test|spec)\.[jt]s/
 };
 
 export default config;
