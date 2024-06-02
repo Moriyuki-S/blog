@@ -13,8 +13,9 @@ export const Default: Story = {
 	args: {
 		tag: {
 			id: '1',
+			slug: 'programming',
 			name: 'プログラミング',
-			iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
+			iconUrl: 'https://placehold.jp/30x30.png',
 			color: '#FF0000'
 		}
 	}
