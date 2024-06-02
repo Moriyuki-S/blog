@@ -7,7 +7,13 @@
 <a href={`/articles/${article.slug}`} class="inline-block">
 	<article class="w-80 h-fit flex pr-2 border rounded-lg hover:border-sky-500">
 		<div class="w-36 h-20">
-			<img src={article.imageUrl} alt={`${article.title}の画像`} width="144" height="20" class="w-36 h-20 rounded-l-lg object-cover"/>
+			<img
+				src={article.imageUrl}
+				alt={`${article.title}の画像`}
+				width="144"
+				height="20"
+				class="w-36 h-20 rounded-l-lg object-cover"
+			/>
 		</div>
 		<h4
 			id="short-article"
