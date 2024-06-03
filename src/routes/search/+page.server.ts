@@ -16,7 +16,7 @@ export const actions: Actions = {
 
 		// クエリーがからの場合はエラーを返す
 		if (!query) {
-			return fail(400, { empty: true });
+			return fail(400, {type: 'INVALID_QUERY', message: 'キーワードを入力してください' });
 		}
 
 		redirect(303, `/search/results?q=${query}`);
