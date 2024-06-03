@@ -7,16 +7,12 @@ export class SearchPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.searchInput = page.getByRole('search');
+        this.searchInput = page.getByRole('searchbox');
         this.submitButton = page.getByRole('button', { name: '検索する'});
     }
 
     async goto() {
         await this.page.goto('/search');
-    }
-
-    async waitForPageLoad() {
-        await this.searchInput.waitFor();
     }
 
     async searchByKeyword(query: string) {
