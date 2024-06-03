@@ -12,7 +12,7 @@
 </script>
 
 <main class="pt-10">
-	<form action="?/search" method="POST" class="w-2/3 mx-auto pl-10 flex gap-x-5" use:enhance>
+	<form action="?/search" method="POST" role="search" class="w-2/3 mx-auto pl-10 flex gap-x-5" use:enhance>
 		<div class="w-2/3 relative">
 			<input
 				type="search"
@@ -22,7 +22,7 @@
 				placeholder="検索したいキーワードを入力してください"
 			/>
 			{#if isInputError}
-				<strong id="error-message" class="text-md text-red-500 absolute lef-0 -bottom-8">{form.message}</strong>
+				<strong role="alert" id="error-message" class="text-md text-red-500 absolute lef-0 -bottom-8">{form.message}</strong>
 			{/if}
 			<span class="absolute top-1/2 left-5 -translate-y-1/2"><SearchOutline /></span>
 		</div>
