@@ -20,9 +20,9 @@ const fetchTag: TagAPIsType['fetchTag'] = async (slug: string) => {
 
 const fetchTags: TagAPIsType['fetchTags'] = async () => {
 	return [SAMPLE_TAG];
-}
+};
 
 export const TagAPIs: TagAPIsType = {
 	fetchTag,
-	fetchTags,
+	fetchTags
 };
