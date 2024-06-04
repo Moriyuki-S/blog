@@ -22,10 +22,6 @@ export class SearchPage {
         await this.submitButton.click();
     }
 
-    getErrorMessageText() {
-        return this.errorMessage.innerText();
-    }
-
     isErrorMessageVisible() {
         return this.errorMessage.isVisible();
     }
