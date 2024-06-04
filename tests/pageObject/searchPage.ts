@@ -22,7 +22,7 @@ export class SearchPage {
         await this.submitButton.click();
     }
 
-    isErrorMessageVisible() {
+    async isErrorMessageVisible() {
         return this.errorMessage.isVisible();
     }
 
