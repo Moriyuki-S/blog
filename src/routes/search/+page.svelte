@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, TabItem, Tabs, Tooltip } from 'flowbite-svelte';
+	import { Button, TabItem, Tabs } from 'flowbite-svelte';
 	import { SearchOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
@@ -11,7 +11,12 @@
 </script>
 
 <main class="pt-10">
-	<form action="/search" method="GET" role="search" class="w-full flex gap-x-5 justify-center max-w-[64rem] lg:mx-auto">
+	<form
+		action="/search"
+		method="GET"
+		role="search"
+		class="w-full flex gap-x-5 justify-center max-w-[64rem] lg:mx-auto"
+	>
 		<div class="w-2/3 relative">
 			<input
 				type="search"
@@ -26,13 +31,12 @@
 		<Button id="submit-button" type="submit" disabled={inputEmpty}>検索する</Button>
 	</form>
 	<section class="px-3 pt-5 md:pt-10">
-		<Tabs
-		>
+		<Tabs>
 			<TabItem open>
 				<div slot="title" class="w-24">
 					<span>タグ一覧</span>
 				</div>
-				<ul class="flex ">
+				<ul id="tag-list" class="flex">
 					{#each data.tags as tag}
 						<li>
 							<p>{tag.name}</p>
@@ -41,24 +45,24 @@
 				</ul>
 			</TabItem>
 			{#if data.articles}
-			<TabItem>
-				<div slot="title" class="w-24">
-					<span>検索結果</span>
-				</div>
-				<ul class="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
-					{#await data.articles}
-						<li>
-							<ArticleVerticalCardSkeleton />
-						</li>
-					{:then articles} 
-						{#each articles as article}
+				<TabItem>
+					<div slot="title" class="w-24">
+						<span>検索結果</span>
+					</div>
+					<ul id="article-list" class="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+						{#await data.articles}
 							<li>
-								<ArticleVerticalCard {article} />
+								<ArticleVerticalCardSkeleton />
 							</li>
-						{/each}
-					{/await}
-				</ul>
-			</TabItem>
+						{:then articles}
+							{#each articles as article}
+								<li>
+									<ArticleVerticalCard {article} />
+								</li>
+							{/each}
+						{/await}
+					</ul>
+				</TabItem>
 			{/if}
 		</Tabs>
 	</section>
