@@ -1,24 +1,20 @@
-import { fail, redirect } from '@sveltejs/kit';
-import type { Actions, PageServerLoad } from './$types';
+import type { PageServerLoad } from './$types';
 import { TagAPIs } from '$lib/features/tag/repositories/api/fetch';
+import { ArticleAPIs } from '$lib/features/article/repositories/apis/fetch-articles';
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ url }) => {
+	const query = url.searchParams;
+	const searchQuery = query.get('q');
 	const tags = await TagAPIs.fetchTags();
+	if (searchQuery) {
+		const articles = ArticleAPIs.fetchArticles(searchQuery);
+		return {
+			articles,
+			tags
+		};
+	}
+
 	return {
 		tags
 	};
-};
-
-export const actions: Actions = {
-	search: async ({ request }) => {
-		const data = await request.formData();
-		const query = data.get('query');
-
-		// クエリーがからの場合はエラーを返す
-		if (!query) {
-			return fail(400, {type: 'INVALID_QUERY', message: 'キーワードを入力してください' });
-		}
-
-		redirect(303, `/search/results?q=${query}`);
-	}
 };
