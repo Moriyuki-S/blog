@@ -4,15 +4,15 @@ export class SearchPage {
     readonly page: Page;
     readonly searchInput: Locator;
     readonly submitButton: Locator;
-    readonly tagList: Locator;
-    readonly articleList: Locator | null;
+    readonly tagsList: Locator;
+    readonly articlesList: Locator | null;
 
     constructor(page: Page) {
         this.page = page;
         this.searchInput = page.getByRole('searchbox');
         this.submitButton = page.getByRole('button', { name: '検索する'});
-        this.tagList = page.locator('#tag-list');
-        this.articleList = page.locator('#article-list');
+        this.tagsList = page.locator('#tag-list');
+        this.articlesList = page.locator('#article-list');
     }
 
     async goto() {
@@ -25,12 +25,12 @@ export class SearchPage {
     }
 
     async clickTag(tagName: string) {
-        const tagLinkItem = this.tagList.getByText(tagName);
+        const tagLinkItem = this.tagsList.getByText(tagName);
         await tagLinkItem.click();
     }
 
     async clickArticle(articleTitle: string) {
-        const articleLinkItem = this.articleList?.getByText(articleTitle);
+        const articleLinkItem = this.articlesList?.getByText(articleTitle);
         await articleLinkItem?.click();
     }
 }
