@@ -12,16 +12,15 @@ test.describe('記事検索機能のテスト', () => {
 
 		// クエリパラメータが付与され、検索した記事が表示される
 		expect(page).toHaveURL('/search?q=プログラミング');
-		
 	});
 
 	test('タグをクリックするとそのタグの付いた記事一覧のページに遷移する', async ({ page }) => {
 		const tag: Tag = {
-			'id': '1',
-			'slug': 'sample-tag',
-			'name': 'Sample Tag',
-			'iconUrl': '',
-			'color': '#000000',
+			id: '1',
+			slug: 'sample-tag',
+			name: 'Sample Tag',
+			iconUrl: '',
+			color: '#000000'
 		};
 
 		// タグをクリックしてそのタグの付いた記事一覧のページに遷移する
@@ -36,13 +35,12 @@ test.describe('記事検索機能のテスト', () => {
 
 		// 遷移後
 		// const taggedArticlesPage = new TaggedArticlesPage(page, tag);
-		
+
 		// タグ名が表示されている
 		// expect(taggedArticlesPage.tagText).toHaveText(tag.name);
-	   
+
 		// タグの付いた記事が表示されている
 		// expect(taggedArticlesPage.articlesList).toBeVisible();
-
 	});
 
 	test('キーワードが空文字だと検索できない', async ({ page }, testInfo) => {
