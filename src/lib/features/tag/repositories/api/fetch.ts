@@ -2,6 +2,7 @@ import type { Tag } from '../../types/type';
 
 type TagAPIsType = {
 	fetchTag: (slug: string) => Promise<Tag>;
+	fetchTags: () => Promise<Tag[]>;
 };
 
 const SAMPLE_TAG: Tag = {
@@ -12,11 +13,16 @@ const SAMPLE_TAG: Tag = {
 	color: 'red'
 };
 
-const fetchTag: TagAPIsType['fetchTag'] = (slug: string) => {
+const fetchTag: TagAPIsType['fetchTag'] = async (slug: string) => {
 	console.debug('fetchTag', slug);
-	return Promise.resolve(SAMPLE_TAG);
+	return SAMPLE_TAG;
+};
+
+const fetchTags: TagAPIsType['fetchTags'] = async () => {
+	return [SAMPLE_TAG];
 };
 
 export const TagAPIs: TagAPIsType = {
-	fetchTag
+	fetchTag,
+	fetchTags
 };
