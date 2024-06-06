@@ -15,7 +15,7 @@ export const Default: Story = {
             id: "1",
             slug: "sample-tag",
             name: "Sample Tag",
-            iconUrl: "",
+            iconUrl: "https://placehold.jp/30x30.png",
             color: "#000000"
         }
     }
