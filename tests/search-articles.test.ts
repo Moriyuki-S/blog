@@ -11,7 +11,7 @@ test.describe('記事検索機能のテスト', () => {
 		await searchPage.searchByKeyword('プログラミング');
 
 		// クエリパラメータが付与され、検索した記事が表示される
-		expect(page).toHaveURL('/search?q=プログラミング');
+		await expect(page).toHaveURL('/search?q=プログラミング');
 	});
 
 	test('タグをクリックするとそのタグの付いた記事一覧のページに遷移する', async ({ page }) => {
