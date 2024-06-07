@@ -14,7 +14,6 @@ const SAMPLE_TAG: Tag = {
 };
 
 const fetchTag: TagAPIsType['fetchTag'] = async (slug: string) => {
-	console.debug('fetchTag', slug);
 	return SAMPLE_TAG;
 };
 
