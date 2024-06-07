@@ -28,7 +28,6 @@ test.describe('記事検索機能のテスト', () => {
 		await searchPage.goto();
 		await searchPage.clickTag(tag.name);
 
-
 		// /tags/:tagId に遷移している
 		await expect(page).toHaveURL(`/tags/${tag.slug}`);
 
@@ -45,7 +44,6 @@ test.describe('記事検索機能のテスト', () => {
 		await taggedArticlesPage.clickArticle('Test Article 1');
 
 		await expect(page).toHaveURL('/articles/test-article-1');
-
 	});
 
 	test('キーワードが空文字だと検索できない', async ({ page }, testInfo) => {
