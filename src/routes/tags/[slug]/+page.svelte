@@ -16,7 +16,7 @@
 		>
 		<Tooltip triggeredBy="#refresh-tag-button" placement="right">変更する</Tooltip>
 	</h1>
-	<ul class="grid grid-cols-3 gap-5 mt-10">
+	<ul class="grid grid-cols-3 gap-5 mt-10" data-testid="tagged-articles">
 		{#await data.articles}
 			{#each Array(8) as _}
 				<ArticleVerticalCardSkeleton />

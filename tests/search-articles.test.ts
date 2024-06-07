@@ -1,7 +1,7 @@
 import test, { expect } from '@playwright/test';
 import { SearchPage } from './pageObject/searchPage';
 import type { Tag } from '$lib/features/tag/types/type';
-// import { TaggedArticlesPage } from './pageObject/taggedArticlesPage';
+import { TaggedArticlesPage } from './pageObject/taggedArticlesPage';
 
 test.describe('記事検索機能のテスト', () => {
 	test('キーワードで記事の検索ができる', async ({ page }) => {
@@ -28,19 +28,22 @@ test.describe('記事検索機能のテスト', () => {
 		await searchPage.goto();
 		await searchPage.clickTag(tag.name);
 
-		// タグのコンポーネントは未作成
-
 		// /tags/:tagId に遷移している
-		// expect(page).toHaveURL(`/tags/${tag.id}`);
+		await expect(page).toHaveURL(`/tags/${tag.slug}`);
 
 		// 遷移後
-		// const taggedArticlesPage = new TaggedArticlesPage(page, tag);
+		const taggedArticlesPage = new TaggedArticlesPage(page, tag);
 
 		// タグ名が表示されている
-		// expect(taggedArticlesPage.tagText).toHaveText(tag.name);
+		await expect(taggedArticlesPage.tagText).toHaveText(`タグ : ${tag.name}`);
 
 		// タグの付いた記事が表示されている
-		// expect(taggedArticlesPage.articlesList).toBeVisible();
+		await expect(taggedArticlesPage.articlesList).toBeVisible();
+
+		// 記事をクリックすると記事詳細ページに遷移する
+		await taggedArticlesPage.clickArticle('Test Article 1');
+
+		await expect(page).toHaveURL('/articles/test-article-1');
 	});
 
 	test('キーワードが空文字だと検索できない', async ({ page }, testInfo) => {

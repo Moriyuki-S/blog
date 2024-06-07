@@ -4,10 +4,12 @@
 	import type { PageData } from './$types';
 	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
+	import TagCard from '$lib/features/tag/components/TagCard/TagCard.svelte';
 
 	let query: string = '';
 	export let data: PageData;
 	$: inputEmpty = query === '';
+	$: areArticlesPresent = Boolean(data.articles);
 </script>
 
 <main class="pt-10">
@@ -30,22 +32,22 @@
 		</div>
 		<Button id="submit-button" type="submit" disabled={inputEmpty}>検索する</Button>
 	</form>
-	<section class="px-3 pt-5 md:pt-10">
+	<section class="w-full max-w-[60rem] mx-auto px-3 pt-5 md:pt-10">
 		<Tabs>
-			<TabItem open>
+			<TabItem open={!areArticlesPresent}>
 				<div slot="title" class="w-24">
 					<span>タグ一覧</span>
 				</div>
-				<ul id="tag-list" class="flex">
+				<ul id="tag-list" class="flex flex-col md:flex-row gap-5">
 					{#each data.tags as tag}
 						<li>
-							<p>{tag.name}</p>
+							<TagCard {tag} />
 						</li>
 					{/each}
 				</ul>
 			</TabItem>
 			{#if data.articles}
-				<TabItem>
+				<TabItem open>
 					<div slot="title" class="w-24">
 						<span>検索結果</span>
 					</div>

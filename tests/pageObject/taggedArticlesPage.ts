@@ -11,7 +11,7 @@ export class TaggedArticlesPage {
 		this.page = page;
 		this.tag = tag;
 		this.tagText = page.getByRole('heading', { name: tag.name });
-		this.articlesList = page.getByRole('listbox');
+		this.articlesList = page.getByTestId('tagged-articles');
 	}
 
 	async goto() {

@@ -25,7 +25,7 @@ export class SearchPage {
 	}
 
 	async clickTag(tagName: string) {
-		const tagLinkItem = this.tagsList.getByText(tagName);
+		const tagLinkItem = this.tagsList.getByRole('link', { name: tagName });
 		await tagLinkItem.click();
 	}
 
