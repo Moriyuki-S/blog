@@ -1,7 +1,9 @@
 import type { Tag } from '$lib/features/tag/types/type';
 
+export type ArticleId = string;
+
 export type Article = {
-	id: string;
+	id: ArticleId;
 	slug: string;
 	title: string;
 	body: string;
