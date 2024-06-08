@@ -1,7 +1,7 @@
 import type { ArticleId } from '../../types/type';
 import { NotFoundError } from '$lib/features/error/models/NotFoundError';
 
-const BOOK_MARKED_ARTICLES_KEY = 'bookmarkedArticlesId';
+export const BOOK_MARKED_ARTICLES_KEY = 'bookmarkedArticlesId';
 
 type IBookmarkRepository = {
 	getBookmarkedArticlesId: () => ArticleId[];
