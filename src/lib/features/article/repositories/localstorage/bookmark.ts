@@ -1,0 +1,40 @@
+import type { ArticleId } from '../../types/type';
+import { NotFoundError } from '$lib/features/error/models/NotFoundError';
+
+const BOOK_MARKED_ARTICLES_KEY = 'bookmarkedArticlesId';
+
+type IBookmarkRepository = {
+	getBookmarkedArticlesId: () => ArticleId[];
+	setBookmarkedArticleId: (newBookmarkedArticleId: ArticleId) => void;
+    deleteBookmarkedArticleId: (deletedBookmarkedArticleId: ArticleId) => void;
+};
+
+const getBookmarkedArticlesId: IBookmarkRepository['getBookmarkedArticlesId'] = (): ArticleId[] => {
+    // ローカルストレージに保存されたIDを配列形式に変更して変数に格納
+	const bookmarkedArticlesId = localStorage.getItem(BOOK_MARKED_ARTICLES_KEY)?.split(',') ?? [];
+	return bookmarkedArticlesId;
+};
+
+const setBookmarkedArticleId: IBookmarkRepository['setBookmarkedArticleId'] = (newBookmarkedArticleId: ArticleId) => {
+	const lastBookmarkedArticlesId = localStorage.getItem(BOOK_MARKED_ARTICLES_KEY) ?? '';
+    // ,で区切って新しいIDを追加
+	const newBookmarkedArticlesId = `${lastBookmarkedArticlesId},${newBookmarkedArticleId}`;
+	localStorage.setItem(BOOK_MARKED_ARTICLES_KEY, newBookmarkedArticlesId);
+};
+
+const deleteBookmarkedArticleId: IBookmarkRepository['deleteBookmarkedArticleId'] = (deletedBookmarkedArticleId: ArticleId) => {
+    const lastBookmarkedArticlesId = localStorage.getItem(BOOK_MARKED_ARTICLES_KEY)?.split(',');
+    if (!lastBookmarkedArticlesId) {
+        throw new NotFoundError('articles', 'NOT_FOUND_ARTICLES', 'ブックマークした記事が見つかりませんでした');
+    }
+
+    const newBookmarkedArticlesId = lastBookmarkedArticlesId.filter(id => id !== deletedBookmarkedArticleId);
+
+    localStorage.setItem(BOOK_MARKED_ARTICLES_KEY, newBookmarkedArticlesId.join(','));
+}
+
+export const BookmarkRepository: IBookmarkRepository = {
+	getBookmarkedArticlesId,
+	setBookmarkedArticleId,
+    deleteBookmarkedArticleId,
+};
