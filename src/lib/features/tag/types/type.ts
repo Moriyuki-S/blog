@@ -1,5 +1,7 @@
+export type TagId = string;
+
 export type Tag = {
-	id: string;
+	id: TagId;
 	name: string;
 	slug: string;
 	iconUrl: string;
