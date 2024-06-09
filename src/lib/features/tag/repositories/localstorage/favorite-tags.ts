@@ -10,7 +10,8 @@ type IFavroteTagsRepository = {
 };
 
 const getFavoriteTagsId: IFavroteTagsRepository['getFavoriteTagsId'] = () => {
-    const favoriteTagsId = localStorage.getItem(FAVORITE_TAGS_KEY)?.split(',') ?? [];
+    // 登録済みのIDが1つだけでも配列形式で取得する
+    const favoriteTagsId = (localStorage.getItem(FAVORITE_TAGS_KEY) || '').split(',').filter(Boolean) ?? [];
     return favoriteTagsId;
 };
 
