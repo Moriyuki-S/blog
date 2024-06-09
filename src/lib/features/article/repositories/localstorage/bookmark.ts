@@ -11,15 +11,18 @@ type IBookmarkRepository = {
 
 const getBookmarkedArticlesId: IBookmarkRepository['getBookmarkedArticlesId'] = (): ArticleId[] => {
     // ローカルストレージに保存されたIDを配列形式に変更して変数に格納
-	const bookmarkedArticlesId = localStorage.getItem(BOOK_MARKED_ARTICLES_KEY)?.split(',') ?? [];
+	const bookmarkedArticlesId = (localStorage.getItem(BOOK_MARKED_ARTICLES_KEY) || '').split(',').filter(Boolean) ?? [];
 	return bookmarkedArticlesId;
 };
 
 const setBookmarkedArticleId: IBookmarkRepository['setBookmarkedArticleId'] = (newBookmarkedArticleId: ArticleId) => {
-	const lastBookmarkedArticlesId = localStorage.getItem(BOOK_MARKED_ARTICLES_KEY) ?? '';
-    // ,で区切って新しいIDを追加
-	const newBookmarkedArticlesId = `${lastBookmarkedArticlesId},${newBookmarkedArticleId}`;
-	localStorage.setItem(BOOK_MARKED_ARTICLES_KEY, newBookmarkedArticlesId);
+	const lastBookmarkedArticlesId = (localStorage.getItem(BOOK_MARKED_ARTICLES_KEY) || '').split(',').filter(Boolean) ?? [];
+    // 新しいIDを追加
+	lastBookmarkedArticlesId.push(newBookmarkedArticleId);
+    const joinedBookmarkedArticlesId = lastBookmarkedArticlesId.join(',');
+
+    // ローカルストレージに保存
+    localStorage.setItem(BOOK_MARKED_ARTICLES_KEY, joinedBookmarkedArticlesId);
 };
 
 const deleteBookmarkedArticleId: IBookmarkRepository['deleteBookmarkedArticleId'] = (deletedBookmarkedArticleId: ArticleId) => {
@@ -29,6 +32,10 @@ const deleteBookmarkedArticleId: IBookmarkRepository['deleteBookmarkedArticleId'
     }
 
     const newBookmarkedArticlesId = lastBookmarkedArticlesId.filter(id => id !== deletedBookmarkedArticleId);
+
+    if (newBookmarkedArticlesId.length === 0) {
+        localStorage.removeItem(BOOK_MARKED_ARTICLES_KEY);
+    }
 
     localStorage.setItem(BOOK_MARKED_ARTICLES_KEY, newBookmarkedArticlesId.join(','));
 }
