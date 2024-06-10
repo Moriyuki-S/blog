@@ -55,4 +55,17 @@ describe('ブックマーク処理のUnitテスト', () => {
         expect(bookmarkedArticlesId).toEqual(['1', '2']);
 
     });
+
+    it('既に登録地味の記事をブックマークした場合はそのまま登録状態を維持する', () => {
+        // ブックマークに複数登録
+        BookmarkRepository.setBookmarkedArticleId('1');
+        BookmarkRepository.setBookmarkedArticleId('2');
+
+        // 既に登録されているIDを再度登録
+        BookmarkRepository.setBookmarkedArticleId('1');
+
+        // ブックマークがそのまま登録されているか確認
+        const bookmarkedArticlesId = localStorage.getItem(BOOK_MARKED_ARTICLES_KEY);
+        expect(bookmarkedArticlesId).toBe('1,2');
+    });
 });

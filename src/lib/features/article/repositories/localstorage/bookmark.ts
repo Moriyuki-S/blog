@@ -17,6 +17,12 @@ const getBookmarkedArticlesId: IBookmarkRepository['getBookmarkedArticlesId'] = 
 
 const setBookmarkedArticleId: IBookmarkRepository['setBookmarkedArticleId'] = (newBookmarkedArticleId: ArticleId) => {
 	const lastBookmarkedArticlesId = (localStorage.getItem(BOOK_MARKED_ARTICLES_KEY) || '').split(',').filter(Boolean) ?? [];
+    
+    // 既に登録されているIDの場合は何もしない
+    if (lastBookmarkedArticlesId.includes(newBookmarkedArticleId)) {
+        return;
+    }
+    
     // 新しいIDを追加
 	lastBookmarkedArticlesId.push(newBookmarkedArticleId);
     const joinedBookmarkedArticlesId = lastBookmarkedArticlesId.join(',');
