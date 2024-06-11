@@ -37,6 +37,7 @@
 			<button
 				on:click|preventDefault={() => removeBookmarkedArticle(article.id)}
 				id={`bookmarked-button-${article.id}`}
+				data-testid="bookmarked-button"
 				class="w-12 flex justify-center items-center rounded-full aspect-square hover:bg-gray-200"
 			>
 				<BookmarkSolid color="#FFD700" size="lg"/>
@@ -48,6 +49,7 @@
 			<button
 				on:click|preventDefault={() => bookmarkArticle(article.id)}
 				id={`bookmark-button-${article.id}`}
+				data-testid="bookmark-button"
 				class="w-12 flex justify-center items-center rounded-full aspect-square hover:bg-[#fdec93]"
 			>
 				<BookmarkOutline size="lg" />
