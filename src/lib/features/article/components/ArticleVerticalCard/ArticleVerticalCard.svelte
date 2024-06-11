@@ -36,23 +36,23 @@
 		{#if isBookmarked}
 			<button
 				on:click|preventDefault={() => removeBookmarkedArticle(article.id)}
-				id="bookmarked-icon"
+				id={`bookmarked-button-${article.id}`}
 				class="w-12 flex justify-center items-center rounded-full aspect-square hover:bg-gray-200"
 			>
-				<BookmarkSolid color="#FFD700" size="lg" />
+				<BookmarkSolid color="#FFD700" size="lg"/>
 			</button>
-			<Tooltip placement="bottom" triggeredBy="#bookmarked-icon">
+			<Tooltip placement="bottom" triggeredBy={`#bookmarked-button-${article.id}`}>
 				<span>ブックマークをはずす</span>
 			</Tooltip>
 		{:else}
 			<button
 				on:click|preventDefault={() => bookmarkArticle(article.id)}
-				id="bookmark-icon"
-				class="w-12 flex justify-center items-center rounded-full aspect-square hover:bg-yellow-100"
+				id={`bookmark-button-${article.id}`}
+				class="w-12 flex justify-center items-center rounded-full aspect-square hover:bg-[#fdec93]"
 			>
 				<BookmarkOutline size="lg" />
 			</button>
-			<Tooltip placement="bottom" triggeredBy="#bookmark-icon">
+			<Tooltip placement="bottom" triggeredBy={`#bookmark-button-${article.id}`}>
 				<span>ブックマークする</span>
 			</Tooltip>
 		{/if}
