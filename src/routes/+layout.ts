@@ -7,6 +7,6 @@ export const load: PageLoad = async () => {
 	if (browser) {
 		// ブックマークした記事をストアに格納
 		const currentBookmarkedArticlesId = BookmarkRepository.getBookmarkedArticlesId();
-		BookmarkedArticlesIdStore.set(currentBookmarkedArticlesId);
+		BookmarkedArticlesIdStore.Store.set(currentBookmarkedArticlesId);
 	}
 };
