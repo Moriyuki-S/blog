@@ -9,6 +9,19 @@ describe('ブックマークのストア処理のテスト', () => {
         expect(bookmarked).toEqual(['1']);
     });
 
+    it('ブックマーク済みかを判定できる', () => {
+        let isBookmarked = BookmarkedArticlesIdStore.isBookmarked('1');
+        // ブックマークしてないのでfalse
+        expect(isBookmarked).toBe(false);
+
+        BookmarkedArticlesIdStore.bookmark('1');
+
+        isBookmarked = BookmarkedArticlesIdStore.isBookmarked('1');
+
+        // ブックマークしてるのでtrue
+        expect(isBookmarked).toBe(true);
+    });
+
     it('ブックマークを解除できる', () => {
         BookmarkedArticlesIdStore.bookmark('1');
         BookmarkedArticlesIdStore.removeBookmark('1');
