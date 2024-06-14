@@ -4,9 +4,8 @@
 	import type { Article, ArticleId } from '../../types/type';
 	import TagChip from '$lib/features/tag/components/TagChip/TagChip.svelte';
 	import { BookmarkOutline, BookmarkSolid } from 'flowbite-svelte-icons';
-	import { BookmarkRepository } from '../../repositories/localstorage/bookmark';
-	import { get } from 'svelte/store';
 	import { BookmarkedArticlesIdStore } from '../../stores/bookmarked-articlesID';
+	import { BookmarkArticles } from '../../application/usecases/bookmark-articles';
 	
 	export let article: Readonly<Article>; //読みこみのみ可能
 
@@ -14,17 +13,17 @@
 	$: wasUpdated = article.updatedAt.toString() !== article.createdAt.toString();
 
 	// ブックマークされているかを判定
-	let isBookmarked: boolean = get(BookmarkedArticlesIdStore).includes(article.id);
+	let isBookmarked: boolean = BookmarkedArticlesIdStore.isBookmarked(article.id);
 
 	// ブックマーク処理
 	const bookmarkArticle = (articleId: ArticleId) => {
-		BookmarkRepository.setBookmarkedArticleId(articleId);
+		BookmarkArticles.bookmarkArticle(articleId);
 		isBookmarked = true;
 	};
 
 	// ブックマーク解除処理
 	const removeBookmarkedArticle = (articleId: ArticleId) => {
-		BookmarkRepository.deleteBookmarkedArticleId(articleId);
+		BookmarkArticles.removeBookmarkedArticle(articleId);
 		isBookmarked = false;
 	};
 
