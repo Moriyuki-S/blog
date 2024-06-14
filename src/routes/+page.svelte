@@ -22,30 +22,28 @@
 					人気記事
 				</div>
 
-				{#await data.popularArticles}
-					<ul class="grid grid-cols-2 gap-5">
+				<ul data-testid="popular-articles-list" class="grid grid-cols-2 gap-5">
+					{#await data.popularArticles}
 						{#each Array(8) as _}
 							<li class="w-auto">
 								<ArticleVerticalCardSkeleton />
 							</li>
 						{/each}
-					</ul>
-				{:then popularArticles}
-					<ul class="grid grid-cols-2 gap-5">
+					{:then popularArticles}
 						{#each popularArticles as article}
 							<li class="w-auto">
 								<ArticleVerticalCard {article} />
 							</li>
 						{/each}
-					</ul>
-				{/await}
+					{/await}
+				</ul>
 			</TabItem>
 			<TabItem>
 				<div slot="title" class="flex items-center gap-x-2 md:text-xl">
 					<ClockOutline size="md" />
 					新着記事
 				</div>
-				<ul class="grid grid-cols-2 gap-5">
+				<ul data-testid="latest-articles-list" class="grid grid-cols-2 gap-5">
 					{#await data.newArticles}
 						{#each Array(8) as _}
 							<li>
