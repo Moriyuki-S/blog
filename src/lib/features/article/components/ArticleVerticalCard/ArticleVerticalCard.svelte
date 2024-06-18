@@ -29,14 +29,14 @@
 
 </script>
 
-<Card href={`/articles/${article.slug}`} img={article.imageUrl} class="cursor-pointer" size="sm">
+<Card data-article-id={article.id} href={`/articles/${article.slug}`} img={article.imageUrl} class="cursor-pointer" size="sm">
 	<div class="mb-4 w-full flex justify-between items-center">
 		<TagChip tag={article.tag} />
 		{#if isBookmarked}
 			<button
 				on:click|preventDefault={() => removeBookmarkedArticle(article.id)}
 				id={`bookmarked-button-${article.id}`}
-				data-testid="bookmarked-button"
+				data-testid={`bookmarked-button-${article.id}`}
 				class="w-12 flex justify-center items-center rounded-full aspect-square hover:bg-gray-200"
 			>
 				<BookmarkSolid color="#FFD700" size="lg"/>
@@ -48,7 +48,7 @@
 			<button
 				on:click|preventDefault={() => bookmarkArticle(article.id)}
 				id={`bookmark-button-${article.id}`}
-				data-testid="bookmark-button"
+				data-testid={`bookmark-button-${article.id}`}
 				class="w-12 flex justify-center items-center rounded-full aspect-square hover:bg-[#fdec93]"
 			>
 				<BookmarkOutline size="lg" />
@@ -64,7 +64,7 @@
 	<time
 		datetime={wasUpdated ? String(article.updatedAt) : String(article.createdAt)}
 		class="w-fit min-w-8 block text-sm ml-auto"
-		data-testid="article-card-time"
+		data-testid={`article-card-time-${article.id}`}
 	>
 		{wasUpdated
 			? '更新 : ' + calculateTimeDifference(article.updatedAt)
