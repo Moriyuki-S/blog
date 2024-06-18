@@ -31,7 +31,7 @@
 						{/each}
 					{:then popularArticles}
 						{#each popularArticles as article}
-							<li class="w-auto">
+							<li data-article-id={article.id} class="w-auto">
 								<ArticleVerticalCard {article} />
 							</li>
 						{/each}
@@ -52,7 +52,7 @@
 						{/each}
 					{:then newArticles}
 						{#each newArticles as article}
-							<li>
+							<li data-article-id={article.id}>
 								<ArticleVerticalCard {article} />
 							</li>
 						{/each}
@@ -69,7 +69,7 @@
 				{:else}
 					<ul class="grid grid-cols-2 gap-5">
 						{#each data.bookmarkedArticles as article}
-							<li>
+							<li data-article-id={article.id}>
 								<ArticleVerticalCard {article} />
 							</li>
 						{/each}
