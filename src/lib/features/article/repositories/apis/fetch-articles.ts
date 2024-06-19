@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import type { Article } from '../../types/type';
 
-const sampleArticles = [
+const sampleArticles: Article[] = [
 	{
 		id: '1',
 		slug: 'test-article-1',
@@ -12,6 +12,7 @@ const sampleArticles = [
 		updatedAt: new Date('2022-01-01T00:00:00.000Z'),
 		tag: {
 			id: '1',
+			slug: 'programming',
 			name: 'プログラミング',
 			iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
 			color: '#FF0000'
@@ -28,6 +29,7 @@ const sampleArticles = [
 		tag: {
 			id: '1',
 			name: 'プログラミング',
+			slug: 'programming',
 			iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
 			color: '#FF0000'
 		}
@@ -43,6 +45,7 @@ const sampleArticles = [
 		tag: {
 			id: '1',
 			name: 'プログラミング',
+			slug: 'programming',
 			iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
 			color: '#FF0000'
 		}
@@ -58,6 +61,7 @@ const sampleArticles = [
 		tag: {
 			id: '1',
 			name: 'プログラミング',
+			slug: 'programming',
 			iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
 			color: '#FF0000'
 		}
@@ -73,6 +77,7 @@ const sampleArticles = [
 		tag: {
 			id: '1',
 			name: 'プログラミング',
+			slug: 'programming',
 			iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
 			color: '#FF0000'
 		}
