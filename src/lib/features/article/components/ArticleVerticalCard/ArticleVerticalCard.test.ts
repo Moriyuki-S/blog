@@ -7,6 +7,8 @@ import {
 	BOOK_MARKED_ARTICLES_KEY,
 	BookmarkRepository
 } from '../../repositories/localstorage/bookmark';
+import { BookmarkArticles } from '../../application/usecases/bookmark-articles';
+import { BookmarkedArticlesIdStore } from '../../stores/bookmarked-articlesID';
 
 describe('記事のカードコンポーネントのUIテスト', () => {
 	it('記事のタイトルが表示される', () => {
@@ -50,7 +52,7 @@ describe('記事のカードコンポーネントのUIテスト', () => {
 		};
 
 		render(ArticleVerticalCard, { article: SAMPLE_ARTICLE });
-		const date = screen.getByTestId('article-card-time');
+		const date = screen.getByTestId(`article-card-time-${SAMPLE_ARTICLE.id}`);
 		expect(date).toHaveTextContent('投稿 : 1日前');
 	});
 
@@ -72,7 +74,7 @@ describe('記事のカードコンポーネントのUIテスト', () => {
 			}
 		};
 		render(ArticleVerticalCard, { article: SAMPLE_ARTICLE });
-		const date = screen.getByTestId('article-card-time');
+		const date = screen.getByTestId(`article-card-time-${SAMPLE_ARTICLE.id}`);
 		expect(date).toHaveTextContent('更新 : 1日前');
 	});
 });
@@ -98,6 +100,8 @@ describe('ブックマーク関連のテスト', () => {
 	beforeEach(() => {
 		// ローカルストレージをリセット
 		localStorage.removeItem(BOOK_MARKED_ARTICLES_KEY);
+		// ブックマークの状態をリセット
+		BookmarkedArticlesIdStore.Store.set([]);
 	});
 
 	it('ブックマークに未登録の場合、ブックマークのボタンが表示される', () => {
@@ -107,8 +111,8 @@ describe('ブックマーク関連のテスト', () => {
 		// ブックマークに登録されていないことを確認
 		expect(bookmarkedArticlesId).not.toContain(SAMPLE_ARTICLE.id);
 
-		const bookmarkButton = screen.getByTestId('bookmark-button');
-		const aleadyBookmarkedButton = screen.queryByTestId('bookmarked-button');
+		const bookmarkButton = screen.getByTestId(`bookmark-button-${SAMPLE_ARTICLE.id}`);
+		const aleadyBookmarkedButton = screen.queryByTestId(`bookmarked-button-${SAMPLE_ARTICLE.id}`);
 
 		// ブックマーク未登録の時にブックマークボタンが表示されていることを確認
 		expect(bookmarkButton).toBeInTheDocument();
@@ -118,16 +122,13 @@ describe('ブックマーク関連のテスト', () => {
 	});
 
 	it('ブックマークに登録済みの時はブックマーク済みのボタンが表示される', async () => {
-		await waitFor(() => {
-			BookmarkRepository.setBookmarkedArticleId(SAMPLE_ARTICLE.id);
-			expect(BookmarkRepository.getBookmarkedArticlesId()).toContain(SAMPLE_ARTICLE.id);
-		});
+		BookmarkArticles.bookmarkArticle(SAMPLE_ARTICLE.id);
+		expect(BookmarkRepository.getBookmarkedArticlesId()).toContain(SAMPLE_ARTICLE.id);
 
 		render(ArticleVerticalCard, { article: SAMPLE_ARTICLE });
 
-		const bookmarkButton = screen.queryByTestId('bookmark-button');
-		const alreadyBookmarkedButton = screen.getByTestId('bookmarked-button');
-
+		const bookmarkButton = screen.queryByTestId(`bookmark-button-${SAMPLE_ARTICLE.id}`);
+		const alreadyBookmarkedButton = screen.getByTestId(`bookmarked-button-${SAMPLE_ARTICLE.id}`);
 		// ブックマークボタンが非表示であることを確認
 		expect(bookmarkButton).not.toBeInTheDocument();
 
@@ -142,7 +143,7 @@ describe('ブックマーク関連のテスト', () => {
 		// ブックマークに登録されていないことを確認
 		expect(bookmarkedArticlesId).not.toContain(SAMPLE_ARTICLE.id);
 
-		const bookmarkButton = screen.getByTestId('bookmark-button');
+		const bookmarkButton = screen.getByTestId(`bookmark-button-${SAMPLE_ARTICLE.id}`);
 
 		bookmarkButton.click();
 
@@ -153,8 +154,12 @@ describe('ブックマーク関連のテスト', () => {
 
 		// ブックマークボタンが非表示になり、ブックマーク済みボタンが表示されていることを確認
 		await waitFor(() => {
-			const bookmarkButtonAfterBookmarked = screen.queryByTestId('bookmark-button');
-			const bookmarkedButtonAfterBookmarked = screen.getByTestId('bookmarked-button');
+			const bookmarkButtonAfterBookmarked = screen.queryByTestId(
+				`bookmark-button-${SAMPLE_ARTICLE.id}`
+			);
+			const bookmarkedButtonAfterBookmarked = screen.getByTestId(
+				`bookmarked-button-${SAMPLE_ARTICLE.id}`
+			);
 			expect(bookmarkButtonAfterBookmarked).not.toBeInTheDocument();
 			expect(bookmarkedButtonAfterBookmarked).toBeInTheDocument();
 		});
