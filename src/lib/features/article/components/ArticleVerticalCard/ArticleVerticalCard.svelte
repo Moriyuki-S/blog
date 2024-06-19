@@ -6,7 +6,7 @@
 	import { BookmarkOutline, BookmarkSolid } from 'flowbite-svelte-icons';
 	import { BookmarkedArticlesIdStore } from '../../stores/bookmarked-articlesID';
 	import { BookmarkArticles } from '../../application/usecases/bookmark-articles';
-	
+
 	export let article: Readonly<Article>; //読みこみのみ可能
 
 	// 更新したかを判定
@@ -26,10 +26,15 @@
 		BookmarkArticles.removeBookmarkedArticle(articleId);
 		isBookmarked = false;
 	};
-
 </script>
 
-<Card data-article-id={article.id} href={`/articles/${article.slug}`} img={article.imageUrl} class="cursor-pointer" size="sm">
+<Card
+	data-article-id={article.id}
+	href={`/articles/${article.slug}`}
+	img={article.imageUrl}
+	class="cursor-pointer"
+	size="sm"
+>
 	<div class="mb-4 w-full flex justify-between items-center">
 		<TagChip tag={article.tag} />
 		{#if isBookmarked}
@@ -39,7 +44,7 @@
 				data-testid={`bookmarked-button-${article.id}`}
 				class="w-12 flex justify-center items-center rounded-full aspect-square hover:bg-gray-200"
 			>
-				<BookmarkSolid color="#FFD700" size="lg"/>
+				<BookmarkSolid color="#FFD700" size="lg" />
 			</button>
 			<Tooltip placement="bottom" triggeredBy={`#bookmarked-button-${article.id}`}>
 				<span>ブックマークをはずす</span>
