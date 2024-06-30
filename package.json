@@ -65,6 +65,7 @@
 	"type": "module",
 	"dependencies": {
 		"dayjs": "^1.11.11",
-		"tocbot": "^4.28.2"
+		"tocbot": "^4.28.2",
+		"uuid": "^10.0.0"
 	}
 }
