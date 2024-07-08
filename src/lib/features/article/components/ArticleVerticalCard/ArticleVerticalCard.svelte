@@ -6,7 +6,7 @@
 	import { BookmarkOutline, BookmarkSolid } from 'flowbite-svelte-icons';
 	import { BookmarkedArticlesIdStore } from '../../stores/bookmarked-articlesID';
 	import { BookmarkArticles } from '../../application/usecases/bookmark-articles';
-	import { SnackbarStore, SnackbarUtils } from '$lib/global-stores/snackbar-store';
+	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
 
 	export let article: Readonly<Article>; //読みこみのみ可能
 

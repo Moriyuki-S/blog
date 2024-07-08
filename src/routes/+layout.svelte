@@ -5,16 +5,12 @@
 	import { SnackbarStore } from '$lib/global-stores/snackbar-store';
 
 	$: snackbar = $SnackbarStore;
-	
-
 </script>
 
 <Header />
 <slot />
 {#if snackbar}
-    <div>
-		<Snackbar message={snackbar.message}/>
+	<div>
+		<Snackbar message={snackbar.message} />
 	</div>
-{/if} 
-
-
+{/if}

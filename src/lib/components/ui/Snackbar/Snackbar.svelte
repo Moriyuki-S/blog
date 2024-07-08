@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { SnackbarStore } from '$lib/global-stores/snackbar-store';
 	import { CloseOutline } from 'flowbite-svelte-icons';
 	import { fade } from 'svelte/transition';
 
