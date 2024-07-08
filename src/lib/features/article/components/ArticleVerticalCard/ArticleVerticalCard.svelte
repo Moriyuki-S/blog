@@ -6,6 +6,7 @@
 	import { BookmarkOutline, BookmarkSolid } from 'flowbite-svelte-icons';
 	import { BookmarkedArticlesIdStore } from '../../stores/bookmarked-articlesID';
 	import { BookmarkArticles } from '../../application/usecases/bookmark-articles';
+	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
 
 	export let article: Readonly<Article>; //読みこみのみ可能
 
@@ -19,12 +20,14 @@
 	const bookmarkArticle = (articleId: ArticleId) => {
 		BookmarkArticles.bookmarkArticle(articleId);
 		isBookmarked = true;
+		SnackbarUtils.update('ブックマークしました');
 	};
 
 	// ブックマーク解除処理
 	const removeBookmarkedArticle = (articleId: ArticleId) => {
 		BookmarkArticles.removeBookmarkedArticle(articleId);
 		isBookmarked = false;
+		SnackbarUtils.update('ブックマークを解除しました');
 	};
 </script>
 
