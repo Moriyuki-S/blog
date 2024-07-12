@@ -37,16 +37,16 @@
 	<RightSidebar styleClass="md:w-72 md:h-[28rem] md:sticky">
 		<div class="w-full h-full p-5">
 			<h2 class="text-2xl">目次</h2>
-            <div class="w-full h-full ">
-                {#if isTocLoading}
-                <div class="w-full h-full flex justify-center mt-20">
-                    <Spinner color="blue" />
-                </div>
-                {/if}
-                <nav id="bio-toc" class="pt-5">
-                    <!--目次が入る-->
-                </nav>
-            </div>
+			<div class="w-full h-full">
+				{#if isTocLoading}
+					<div class="w-full h-full flex justify-center mt-20">
+						<Spinner color="blue" />
+					</div>
+				{/if}
+				<nav id="bio-toc" class="pt-5">
+					<!--目次が入る-->
+				</nav>
+			</div>
 		</div>
 	</RightSidebar>
 </div>
