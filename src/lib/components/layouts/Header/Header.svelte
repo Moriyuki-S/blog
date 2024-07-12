@@ -14,8 +14,8 @@
 	>
 		<ul class="flex *:border-r-2 *:w-28 *:text-center *:h-full first:border-l-2">
 			<li>
-				<a href="/" class="inline-block w-full h-full hover:bg-sky-200"
-					><span class="leading-10 text-sky-900">カテゴリー1</span></a
+				<a href="/profile" class="inline-block w-full h-full hover:bg-sky-200"
+					><span class="leading-10 text-sky-900">プロフィール</span></a
 				>
 			</li>
 			<li>
