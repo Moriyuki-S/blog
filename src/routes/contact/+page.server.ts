@@ -3,7 +3,7 @@ import type { Actions } from './$types';
 
 export const actions = {
 	default: async ({ request }) => {
-		try {
+		
 			const formData = await request.formData();
 			const email = formData.get('email');
 			const name = formData.get('name');
@@ -13,9 +13,6 @@ export const actions = {
 			console.log(`name: ${name}`);
 			console.log(`contents: ${contents}`);
 
-			redirect(301, '/');
-		} catch (error) {
-			console.log(error);
-		}
+			redirect(301, '/contact/thanks');
 	}
 } satisfies Actions;
