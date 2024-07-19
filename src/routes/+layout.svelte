@@ -8,7 +8,9 @@
 </script>
 
 <Header />
-<slot />
+<div class="pt-20">
+	<slot />
+</div>
 {#if snackbar}
 	<div>
 		<Snackbar message={snackbar.message} />
