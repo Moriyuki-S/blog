@@ -19,8 +19,8 @@
 				>
 			</li>
 			<li>
-				<a href="/" class="inline-block w-full h-full hover:bg-sky-200"
-					><span class="leading-10 text-sky-900">カテゴリー2</span></a
+				<a href="/contact" class="inline-block w-full h-full hover:bg-sky-200"
+					><span class="leading-10 text-sky-900">お問い合わせ</span></a
 				>
 			</li>
 			<li>
