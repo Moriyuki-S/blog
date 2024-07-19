@@ -2,13 +2,12 @@
 	import { goto } from '$app/navigation';
 	import { Button } from 'flowbite-svelte';
 
-    // 遷移後に戻るボタンで戻れないようにする
-    const navigateHome = () => {
-        goto('/', {
-            replaceState: true
-        });
-    };
-
+	// 遷移後に戻るボタンで戻れないようにする
+	const navigateHome = () => {
+		goto('/', {
+			replaceState: true
+		});
+	};
 </script>
 
 <main class="w-full">
@@ -18,9 +17,9 @@
 			<p class="mb-1 text-lg">お問い合わせありがとうございました。</p>
 			<p class="text-lg">送信確認メールをお送りいたしましたので、ご確認ください。</p>
 		</hgroup>
-        <div>
-            <img src="" alt="お問い合わせありがとうございます" width="250" height="250" >
-        </div>
+		<div>
+			<img src="" alt="お問い合わせありがとうございます" width="250" height="250" />
+		</div>
 		<Button on:click={navigateHome}>ホームへ戻る</Button>
 	</div>
 </main>

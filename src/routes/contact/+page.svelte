@@ -8,7 +8,6 @@
 		if (sending) return;
 		sending = true;
 	};
-	
 </script>
 
 <main class="pt-5 md:pt-10">
