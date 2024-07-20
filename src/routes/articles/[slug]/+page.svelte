@@ -32,7 +32,7 @@
 			</TabItem>
 			<TabItem>
 				<div slot="title" class="flex">
-					<BookOutline class="me-2"/>
+					<BookOutline class="me-2" />
 					<span>関連記事</span>
 				</div>
 				<ArticleContents />
