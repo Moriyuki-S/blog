@@ -3,7 +3,7 @@
 	import ArticleDetail from '$lib/features/article/components/ArticleDetail/ArticleDetail.svelte';
 	import { TabItem, Tabs } from 'flowbite-svelte';
 	import type { PageData } from './$types';
-	import { BookOutline, IndentOutline } from 'flowbite-svelte-icons';
+	import { BookOutline, IndentOutline, ListOutline } from 'flowbite-svelte-icons';
 	import ArticleContents from '$lib/features/article/components/ArticleContents/ArticleContents.svelte';
 
 	export let data: PageData;
@@ -23,7 +23,7 @@
 		<Tabs>
 			<TabItem open>
 				<div slot="title" class="flex">
-					<IndentOutline />
+					<ListOutline class="me-2" />
 					<span>目次</span>
 				</div>
 				<div>
@@ -32,7 +32,7 @@
 			</TabItem>
 			<TabItem>
 				<div slot="title" class="flex">
-					<BookOutline />
+					<BookOutline class="me-2"/>
 					<span>関連記事</span>
 				</div>
 				<ArticleContents />

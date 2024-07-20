@@ -10,7 +10,7 @@
 
 <main class="pt-16 px-4">
 	<h1 class="text-3xl text-center">
-		タグ : {data.tag.name}
+		# {data.tag.name}
 		<button id="refresh-tag-button" class="w-fit h-fit p-2 rounded-full hover:bg-slate-200"
 			><RefreshOutline /></button
 		>
