@@ -19,7 +19,7 @@
 	<main class="md:w-2/3">
 		<ArticleDetail {article} />
 	</main>
-	<RightSidebar styleClass="md:min-w-1/3 md:w-1/3 md:sticky md:top-5">
+	<RightSidebar styleClass="md:min-w-1/3 md:w-1/3 md:sticky md:top-28">
 		<Tabs>
 			<TabItem open>
 				<div slot="title" class="flex">

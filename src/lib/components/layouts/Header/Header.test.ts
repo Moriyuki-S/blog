@@ -19,7 +19,7 @@ describe('ヘッダーのビジュアルテスト', () => {
 });
 
 describe('ヘッダーのアクセシビリティテスト', () => {
-	it('ナビゲーションに指定のaria-labeledby属性がつけられている', () => {
+	it('ナビゲーションに「desktop-navigation」というaria-labeledby属性がつけられている', () => {
 		render(Header);
 		const label = 'desktop-navigation';
 		const nav = screen.getByRole('navigation');
