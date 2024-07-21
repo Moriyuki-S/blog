@@ -1,6 +1,7 @@
 <script lang="ts">
 	import RightSidebar from '$lib/components/layouts/RightSidebar/RightSidebar.svelte';
 	import { Avatar, Spinner } from 'flowbite-svelte';
+	import { ListOutline } from 'flowbite-svelte-icons';
 	import { onMount } from 'svelte';
 	import tocbot from 'tocbot';
 
@@ -10,8 +11,8 @@
 		tocbot.init({
 			tocSelector: '#bio-toc',
 			contentSelector: '#bio-body',
-			extraLinkClasses: 'block w-full h-10 hover:bg-slate-100 rounded-lg px-4 py-1 leading-8',
-			activeLinkClass: 'text-sky-500',
+			extraLinkClasses: 'block w-full h-10 hover:bg-gray-200 rounded-lg px-4 py-1 leading-8',
+			activeLinkClass: 'text-primary-500',
 			headingSelector: 'h2, h3'
 		});
 
@@ -35,8 +36,11 @@
 		</div>
 	</main>
 	<RightSidebar styleClass="md:w-72 md:h-[28rem] md:sticky">
-		<div class="w-full h-full p-5">
-			<h2 class="text-2xl">目次</h2>
+		<div class="w-full h-full p-5 bg-gray-50 rounded-lg">
+			<h2 class="flex items-center text-2xl font-bold border-b pb-1">
+				<ListOutline class="me-2" />
+				目次
+			</h2>
 			<div class="w-full h-full">
 				{#if isTocLoading}
 					<div class="w-full h-full flex justify-center mt-20">

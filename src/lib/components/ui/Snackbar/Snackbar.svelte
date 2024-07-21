@@ -16,10 +16,10 @@
 	<p class="text-white py-2">{message}</p>
 	<button
 		on:click|preventDefault={closeSnackbar}
-		class="group hover:bg-red-200 transition-all rounded-sm"
+		class="group hover:bg-gray-200 transition-all rounded-sm"
 	>
 		<div class="p-2">
-			<CloseOutline color="white" class="group-hover:text-red-500 transition-all" />
+			<CloseOutline color="white" class="group-hover:text-black transition-colors" />
 		</div>
 	</button>
 </div>
