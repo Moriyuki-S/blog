@@ -10,6 +10,7 @@
 	import { Button, Modal, Spinner, Tooltip } from 'flowbite-svelte';
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
+	import { invalidate } from '$app/navigation';
 
 	export let data: PageData;
 
@@ -28,8 +29,9 @@
 		isOpenedDeleteModal = false;
 	};
 
-	const resetBookmarkArticles = () => {
+	const resetBookmarkArticles = async () => {
 		BookmarkArticles.resetBookmarkedArticles();
+        await invalidate('articles:bookmark');
         SnackbarUtils.update("ブックマークした記事を解除しました");
 	};
 </script>
