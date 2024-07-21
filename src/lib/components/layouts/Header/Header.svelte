@@ -8,7 +8,12 @@
 		NavLi,
 		NavUl
 	} from 'flowbite-svelte';
-	import { MessageDotsOutline, SearchOutline, UserOutline } from 'flowbite-svelte-icons';
+	import {
+		BookmarkOutline,
+		MessageDotsOutline,
+		SearchOutline,
+		UserOutline
+	} from 'flowbite-svelte-icons';
 </script>
 
 <header class="hidden md:block w-full border-b fixed top-0 left-0">
@@ -22,6 +27,10 @@
 				<NavLi href="/profile" class="inline-flex gap-x-1 items-center">
 					<UserOutline />
 					プロフィール
+				</NavLi>
+				<NavLi href="/articles/bookmark" class="inline-flex gap-x-1 items-center">
+					<BookmarkOutline />
+					ブックマーク
 				</NavLi>
 			</NavUl>
 			<ul class="flex gap-x-4">

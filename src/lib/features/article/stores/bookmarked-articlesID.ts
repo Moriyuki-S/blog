@@ -6,6 +6,7 @@ type BookmarkedArticlesIdStoreType = {
 	isBookmarked: (articleId: ArticleId) => boolean;
 	bookmark: (articleId: ArticleId) => void;
 	removeBookmark: (articleId: ArticleId) => void;
+	resetBookmark: () => void;
 };
 
 const Store: BookmarkedArticlesIdStoreType['Store'] = writable<ArticleId[]>([]);
@@ -48,9 +49,18 @@ const removeBookmark: BookmarkedArticlesIdStoreType['removeBookmark'] = (article
 	Store.update((prev) => prev.filter((id) => id !== articleId));
 };
 
+/**
+ * ブックマークをリセットする
+ */
+
+const resetBookmark: BookmarkedArticlesIdStoreType['resetBookmark'] = () => {
+	Store.set([]);
+};
+
 export const BookmarkedArticlesIdStore: BookmarkedArticlesIdStoreType = {
 	Store,
 	isBookmarked,
 	bookmark,
-	removeBookmark
+	removeBookmark,
+	resetBookmark
 };

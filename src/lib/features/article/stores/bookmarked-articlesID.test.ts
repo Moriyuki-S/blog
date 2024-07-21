@@ -33,4 +33,13 @@ describe('ブックマークのストア処理のテスト', () => {
 
 		expect(bookmarked).toEqual([]);
 	});
+
+	it('ブックマークをすべて解除できる', () => {
+		BookmarkedArticlesIdStore.bookmark('1');
+		BookmarkedArticlesIdStore.bookmark('2');
+		BookmarkedArticlesIdStore.resetBookmark();
+		const bookmarked = get(BookmarkedArticlesIdStore.Store);
+
+		expect(bookmarked).toEqual([]);
+	});
 });
