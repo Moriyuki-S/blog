@@ -23,10 +23,10 @@ const removeBookmarkedArticle: BookmarkArticles['removeBookmarkedArticle'] = (
 const resetBookmarkedArticles: BookmarkArticles['resetBookmarkedArticles'] = () => {
 	BookmarkRepository.reset();
 	BookmarkedArticlesIdStore.resetBookmark();
-}
+};
 
 export const BookmarkArticles: BookmarkArticles = {
 	bookmarkArticle,
 	removeBookmarkedArticle,
-	resetBookmarkedArticles,
+	resetBookmarkedArticles
 };

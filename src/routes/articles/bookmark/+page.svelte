@@ -31,8 +31,8 @@
 
 	const resetBookmarkArticles = async () => {
 		BookmarkArticles.resetBookmarkedArticles();
-        await invalidate('articles:bookmark');
-        SnackbarUtils.update("ブックマークした記事を解除しました");
+		await invalidate('articles:bookmark');
+		SnackbarUtils.update('ブックマークした記事を解除しました');
 	};
 </script>
 
@@ -75,9 +75,7 @@
 		<h3 class="text-xl mt-4 font-bold">ブックマークした記事をすべて解除しますか？</h3>
 		<p class="mt-4 mb-5">一度解除すると、元に戻すことができません。</p>
 		<Button color="alternative" on:click={closeDeleteModal}>キャンセル</Button>
-		<Button color="red" class="ml-5" on:click={resetBookmarkArticles}>
-			解除する
-		</Button>
+		<Button color="red" class="ml-5" on:click={resetBookmarkArticles}>解除する</Button>
 	</div>
 </Modal>
 

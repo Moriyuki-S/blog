@@ -62,5 +62,5 @@ export const BookmarkedArticlesIdStore: BookmarkedArticlesIdStoreType = {
 	isBookmarked,
 	bookmark,
 	removeBookmark,
-	resetBookmark,
+	resetBookmark
 };

@@ -61,11 +61,11 @@ const deleteBookmarkedArticleId: IBookmarkRepository['deleteBookmarkedArticleId'
 
 const reset: IBookmarkRepository['reset'] = () => {
 	localStorage.removeItem(BOOK_MARKED_ARTICLES_KEY);
-}
+};
 
 export const BookmarkRepository: IBookmarkRepository = {
 	getBookmarkedArticlesId,
 	setBookmarkedArticleId,
 	deleteBookmarkedArticleId,
-	reset,
+	reset
 };

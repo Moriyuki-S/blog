@@ -8,7 +8,12 @@
 		NavLi,
 		NavUl
 	} from 'flowbite-svelte';
-	import { BookmarkOutline, MessageDotsOutline, SearchOutline, UserOutline } from 'flowbite-svelte-icons';
+	import {
+		BookmarkOutline,
+		MessageDotsOutline,
+		SearchOutline,
+		UserOutline
+	} from 'flowbite-svelte-icons';
 </script>
 
 <header class="hidden md:block w-full border-b fixed top-0 left-0">
