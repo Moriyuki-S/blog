@@ -7,6 +7,7 @@ type IBookmarkRepository = {
 	getBookmarkedArticlesId: () => ArticleId[];
 	setBookmarkedArticleId: (newBookmarkedArticleId: ArticleId) => void;
 	deleteBookmarkedArticleId: (deletedBookmarkedArticleId: ArticleId) => void;
+	reset: () => void;
 };
 
 const getBookmarkedArticlesId: IBookmarkRepository['getBookmarkedArticlesId'] = (): ArticleId[] => {
@@ -58,8 +59,13 @@ const deleteBookmarkedArticleId: IBookmarkRepository['deleteBookmarkedArticleId'
 	localStorage.setItem(BOOK_MARKED_ARTICLES_KEY, newBookmarkedArticlesId.join(','));
 };
 
+const reset: IBookmarkRepository['reset'] = () => {
+	localStorage.removeItem(BOOK_MARKED_ARTICLES_KEY);
+}
+
 export const BookmarkRepository: IBookmarkRepository = {
 	getBookmarkedArticlesId,
 	setBookmarkedArticleId,
-	deleteBookmarkedArticleId
+	deleteBookmarkedArticleId,
+	reset,
 };

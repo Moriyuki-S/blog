@@ -5,6 +5,7 @@ import { BookmarkedArticlesIdStore } from '../../stores/bookmarked-articlesID';
 type BookmarkArticles = {
 	bookmarkArticle: (articleId: ArticleId) => void;
 	removeBookmarkedArticle: (articleId: ArticleId) => void;
+	resetBookmarkedArticles: () => void;
 };
 
 const bookmarkArticle: BookmarkArticles['bookmarkArticle'] = (articleId: ArticleId) => {
@@ -19,7 +20,13 @@ const removeBookmarkedArticle: BookmarkArticles['removeBookmarkedArticle'] = (
 	BookmarkedArticlesIdStore.removeBookmark(articleId);
 };
 
+const resetBookmarkedArticles: BookmarkArticles['resetBookmarkedArticles'] = () => {
+	BookmarkRepository.reset();
+	BookmarkedArticlesIdStore.resetBookmark();
+}
+
 export const BookmarkArticles: BookmarkArticles = {
 	bookmarkArticle,
-	removeBookmarkedArticle
+	removeBookmarkedArticle,
+	resetBookmarkedArticles,
 };

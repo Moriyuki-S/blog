@@ -33,6 +33,21 @@ describe('ブックマーク処理のUnitテスト', () => {
 		expect(currentBookmarkedArticlesId).toEqual([]);
 	});
 
+	it('ブックマークをすべて一括で解除できる', () => {
+		BookmarkRepository.setBookmarkedArticleId('1');
+		BookmarkRepository.setBookmarkedArticleId('2');
+		let currentBookmarkedArticlesId = BookmarkRepository.getBookmarkedArticlesId();
+
+		expect(currentBookmarkedArticlesId).toEqual(['1', '2']);
+
+		// 一括解除
+		BookmarkRepository.reset();
+
+		currentBookmarkedArticlesId = BookmarkRepository.getBookmarkedArticlesId();
+
+		expect(currentBookmarkedArticlesId).toEqual([]);
+	});
+
 	it('ブックマークに複数登録できる', () => {
 		// ブックマークに複数登録
 		BookmarkRepository.setBookmarkedArticleId('1');
