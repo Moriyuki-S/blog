@@ -35,7 +35,7 @@ test.describe('記事検索機能のテスト', () => {
 		const taggedArticlesPage = new TaggedArticlesPage(page, tag);
 
 		// タグ名が表示されている
-		await expect(taggedArticlesPage.tagText).toHaveText(`タグ : ${tag.name}`);
+		await expect(taggedArticlesPage.tagText).toHaveText(`# ${tag.name}`);
 
 		// タグの付いた記事が表示されている
 		await expect(taggedArticlesPage.articlesList).toBeVisible();
