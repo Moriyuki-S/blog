@@ -12,9 +12,9 @@
 	$: {
 		sorting = true;
 		if (sortCriteria === 'latest') {
-			sortedArticles = articles.sort((a, b) => SortUtils.sortByDate(a, b, 'latest'));
+			sortedArticles = SortUtils.sortByDate(articles, 'latest');
 		} else if (sortCriteria === 'oldest') {
-			sortedArticles = articles.sort((a, b) => SortUtils.sortByDate(a, b, 'oldest'));
+			sortedArticles = SortUtils.sortByDate(articles, 'oldest');
 		} else {
 			// 人気順はいったん後まわし
 			sortedArticles = articles;
