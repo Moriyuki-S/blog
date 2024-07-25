@@ -9,7 +9,15 @@
 	} from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
-	import { Button, Dropdown, DropdownItem, Modal, Skeleton, Spinner, Tooltip } from 'flowbite-svelte';
+	import {
+		Button,
+		Dropdown,
+		DropdownItem,
+		Modal,
+		Skeleton,
+		Spinner,
+		Tooltip
+	} from 'flowbite-svelte';
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
 	import { invalidate } from '$app/navigation';
@@ -116,7 +124,7 @@
 			<li>
 				{#await data.tags}
 					<SecondoryColorButton disabled>
-						<Spinner size=4 class="me-2" />
+						<Spinner size="4" class="me-2" />
 						タグを読み込み中
 					</SecondoryColorButton>
 				{:then tags}

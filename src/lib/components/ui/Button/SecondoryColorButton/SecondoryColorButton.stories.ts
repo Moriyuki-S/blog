@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/svelte";
-import SecondoryColorButton from "./SecondoryColorButton.svelte";
+import type { Meta, StoryObj } from '@storybook/svelte';
+import SecondoryColorButton from './SecondoryColorButton.svelte';
 
 const meta: Meta = {
-    component: SecondoryColorButton
+	component: SecondoryColorButton
 };
 
 export default meta;
