@@ -2,7 +2,10 @@
 	import {
 		BookmarkOutline,
 		ExclamationCircleOutline,
-		InfoCircleOutline
+		InfoCircleOutline,
+
+		OrderedListOutline
+
 	} from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
