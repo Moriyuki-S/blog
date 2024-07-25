@@ -1,31 +1,40 @@
 <script lang="ts">
-	import type { Article } from '../../types/type';
+	import type { Article, Criteria } from '../../types/type';
 	import ArticleVerticalCard from '../ArticleVerticalCard/ArticleVerticalCard.svelte';
 	import SortUtils from '../../utils/sort';
+	import type { Tag } from '$lib/features/tag/types/type';
+	import { flip } from 'svelte/animate';
 
 	export let articles: Article[];
-	export let sortCriteria: 'latest' | 'popular' | 'oldest' | null;
+	export let sortCriteria: Criteria | null;
+	export let sortTag: Tag | null = null;
+	export let ulStyleClass: string = '';
+	export let liStyleClass: string = '';
 
 	let sortedArticles: Article[] = articles;
-	let sorting: boolean = false;
 
 	$: {
-		sorting = true;
-		if (sortCriteria === 'latest') {
+		if (sortCriteria?.value === 'latest') {
 			sortedArticles = SortUtils.sortByDate(articles, 'latest');
-		} else if (sortCriteria === 'oldest') {
+		} else if (sortCriteria?.value === 'oldest') {
 			sortedArticles = SortUtils.sortByDate(articles, 'oldest');
 		} else {
 			// 人気順はいったん後まわし
 			sortedArticles = articles;
 		}
-		sorting = false;
+
+	}
+
+	$: {
+		if (sortTag) {
+			sortedArticles = SortUtils.sortArticlesByTag(articles, sortTag);
+		}
 	}
 </script>
 
-<ul class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-	{#each sortedArticles as article}
-		<li class="w-fit">
+<ul class={`grid grid-cols-1 gap-5 sm:grid-cols-3 ${ulStyleClass}`}>
+	{#each sortedArticles as article (article.id)}
+		<li animate:flip class={`w-fit ${liStyleClass}`} data-articleID={article.id}>
 			<ArticleVerticalCard {article} />
 		</li>
 	{/each}
