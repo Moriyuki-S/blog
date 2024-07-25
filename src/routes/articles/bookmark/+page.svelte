@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {
 		BookmarkOutline,
+		ChevronDownOutline,
 		ExclamationCircleOutline,
 		InfoCircleOutline,
 		OrderedListOutline,
@@ -16,6 +17,7 @@
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 	import TagFilterButton from '$lib/features/tag/components/TagFilterButton/TagFilterButton.svelte';
 	import type { Tag } from '$lib/features/tag/types/type';
+	import SecondoryColorButton from '$lib/components/ui/Button/SecondoryColorButton/SecondoryColorButton.svelte';
 
 	export let data: PageData;
 
@@ -109,14 +111,15 @@
 			</li>
 			<li>
 				{#await data.tags}
-					<Button class="bg-secondory-600 hover:bg-secondory-700 dark:bg-secondory-600 dark:hover:bg-secondory-700 focus-within:ring-secondory-500">
-						<Spinner size="4" class="me-2" />
+					<SecondoryColorButton disabled>
+						<Spinner size=4 class="me-2" />
 						タグを読み込み中
-					</Button>
+					</SecondoryColorButton>
 				{:then tags}
 					<TagFilterButton {tags} selectTag={handleSelectTag}>
 						<TagOutline class="me-2" />
 						{currentFilterTag ? currentFilterTag.name : 'すべてのタグ'}
+						<ChevronDownOutline class="ms-2" />
 					</TagFilterButton>
 				{:catch error}
 					<Button color="red" disabled>

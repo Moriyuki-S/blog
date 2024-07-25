@@ -2,6 +2,7 @@
 	import { Button, Dropdown, DropdownItem, Search, Spinner, Tooltip } from 'flowbite-svelte';
 	import { v4 as uuid } from 'uuid';
 	import type { Tag } from '../../types/type';
+	import SecondoryColorButton from '$lib/components/ui/Button/SecondoryColorButton/SecondoryColorButton.svelte';
 
 	export let tags: Tag[];
 	export let selectTag: (tag: Tag) => void;
@@ -11,9 +12,9 @@
 	let tagSearchKeyword: string = '';
 </script>
 
-<Button id={`filter-button-${buttonId}`} class="bg-secondory-600 hover:bg-secondory-700 dark:bg-secondory-600 dark:hover:bg-secondory-700 focus-within:ring-secondory-500">
-	<slot title="button-text" />
-</Button>
+<SecondoryColorButton id={`filter-button-${buttonId}`} >
+    <slot title="button-text" />
+</SecondoryColorButton>
 <Dropdown bind:open={openDrawer} class="overflow-y-auto px-3 pb-3">
 	<div slot="header" class="p-3">
 		<Search bind:value={tagSearchKeyword} />
