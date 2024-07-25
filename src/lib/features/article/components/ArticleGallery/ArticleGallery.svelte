@@ -22,7 +22,6 @@
 			// 人気順はいったん後まわし
 			sortedArticles = articles;
 		}
-
 	}
 
 	$: {

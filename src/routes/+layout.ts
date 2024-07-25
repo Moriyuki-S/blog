@@ -12,5 +12,5 @@ export const load: PageLoad = async ({ data }) => {
 
 	return {
 		tags: data.tags
-	}
+	};
 };

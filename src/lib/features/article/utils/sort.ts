@@ -20,16 +20,16 @@ const sortByDate = (articles: Article[], criteria: 'latest' | 'oldest'): Article
 };
 
 const sortArticlesByTag = (articles: Article[], tag: Tag): Article[] => {
-	const sortedArticles = articles.filter(article => {
+	const sortedArticles = articles.filter((article) => {
 		return article.tag.id === tag.id;
 	});
 
 	return sortedArticles;
-}
+};
 
 const SortUtils = {
 	sortByDate,
-	sortArticlesByTag,
+	sortArticlesByTag
 };
 
 export default SortUtils;
