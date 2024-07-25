@@ -3,16 +3,19 @@
 		BookmarkOutline,
 		ExclamationCircleOutline,
 		InfoCircleOutline,
-		OrderedListOutline
+		OrderedListOutline,
+		TagOutline
 	} from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
-	import { Button, Dropdown, DropdownItem, Modal, Spinner, Tooltip } from 'flowbite-svelte';
+	import { Button, Dropdown, DropdownItem, Modal, Skeleton, Spinner, Tooltip } from 'flowbite-svelte';
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
 	import { invalidate } from '$app/navigation';
 	import type { Criteria } from '$lib/features/article/types/type';
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
+	import TagFilterButton from '$lib/features/tag/components/TagFilterButton/TagFilterButton.svelte';
+	import type { Tag } from '$lib/features/tag/types/type';
 
 	export let data: PageData;
 
@@ -36,10 +39,15 @@
 	];
 
 	let currentCriteria: Criteria = criterias[0];
+	let currentFilterTag: Tag | null;
 
 	const handleSelectCriteria = (criteria: Criteria) => {
 		currentCriteria = criteria;
 		selectDropdownOpen = false;
+	};
+
+	const handleSelectTag = (tag: Tag) => {
+		currentFilterTag = tag;
 	};
 
 	const openInfoModal = () => {
@@ -100,7 +108,22 @@
 				<Tooltip triggeredBy="#bookmark-sort-button">並べ替える</Tooltip>
 			</li>
 			<li>
-				<Button>タグで絞りこむ</Button>
+				{#await data.tags}
+					<Button class="bg-secondory-600 hover:bg-secondory-700 dark:bg-secondory-600 dark:hover:bg-secondory-700 focus-within:ring-secondory-500">
+						<Spinner size="4" class="me-2" />
+						タグを読み込み中
+					</Button>
+				{:then tags}
+					<TagFilterButton {tags} selectTag={handleSelectTag}>
+						<TagOutline class="me-2" />
+						{currentFilterTag ? currentFilterTag.name : 'すべてのタグ'}
+					</TagFilterButton>
+				{:catch error}
+					<Button color="red" disabled>
+						<ExclamationCircleOutline size="xs" color="red" class="me-2" />
+						タグの読み込みに失敗しました
+					</Button>
+				{/await}
 			</li>
 		</menu>
 		<Button color="red" on:click={openDeleteModal}>すべて解除する</Button>
