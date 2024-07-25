@@ -11,8 +11,7 @@
 <div class="pt-20">
 	<slot />
 </div>
+
 {#if snackbar}
-	<div>
-		<Snackbar message={snackbar.message} />
-	</div>
+	<Snackbar message={snackbar.message} type={snackbar.type} />
 {/if}

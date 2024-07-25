@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 type Snackbar = {
 	id: string;
 	message: string;
+	type: 'success' | 'error' | 'info' | 'warning';
 	timeout: number;
 };
 
@@ -18,9 +19,10 @@ SnackbarStore.subscribe((value) => {
 });
 
 export const SnackbarUtils = {
-	update: (message: string, timeout: number = 3000) => {
+	update: (message: string, timeout: number = 3000, type: 'success' | 'error' | 'info' | 'warning' = 'success') => {
 		const newSnackber: Snackbar = {
 			id: uuidv4(),
+			type,
 			message,
 			timeout
 		};
