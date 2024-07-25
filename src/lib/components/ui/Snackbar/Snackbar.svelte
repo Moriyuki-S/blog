@@ -38,7 +38,7 @@ import { CheckCircleSolid, CloseCircleSolid, ExclamationCircleSolid } from 'flow
 
 </script>
 
-<Toast {color} class="fixed bottom-5 right-5">
+<Toast {color}>
 	<svelte:component slot="icon" this={icon} class="w-5 h-5" />
 	{message}
 </Toast>
