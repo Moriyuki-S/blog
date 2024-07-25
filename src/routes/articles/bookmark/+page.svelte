@@ -7,7 +7,7 @@
 	import type { PageData } from './$types';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
 	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
-	import { Button, Modal, Spinner, Tooltip } from 'flowbite-svelte';
+	import { Button, Modal, Tooltip } from 'flowbite-svelte';
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
 	import { invalidate } from '$app/navigation';

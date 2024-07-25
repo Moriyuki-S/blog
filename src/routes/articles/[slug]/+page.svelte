@@ -3,7 +3,7 @@
 	import ArticleDetail from '$lib/features/article/components/ArticleDetail/ArticleDetail.svelte';
 	import { TabItem, Tabs } from 'flowbite-svelte';
 	import type { PageData } from './$types';
-	import { BookOutline, IndentOutline, ListOutline } from 'flowbite-svelte-icons';
+	import { BookOutline, ListOutline } from 'flowbite-svelte-icons';
 	import ArticleContents from '$lib/features/article/components/ArticleContents/ArticleContents.svelte';
 
 	export let data: PageData;

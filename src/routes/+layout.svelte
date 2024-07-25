@@ -1,18 +1,15 @@
 <script lang="ts">
 	import Header from '$lib/components/layouts/Header/Header.svelte';
 	import '../app.css';
-	import Snackbar from '$lib/components/ui/Snackbar/Snackbar.svelte';
 	import { SnackbarStore } from '$lib/global-stores/snackbar-store';
+	import SnackbarList from '$lib/components/ui/Snackbar/SnackbarList/SnackbarList.svelte';
 
-	$: snackbar = $SnackbarStore;
+	$: snackbars = $SnackbarStore;
 </script>
 
 <Header />
 <div class="pt-20">
 	<slot />
 </div>
-{#if snackbar}
-	<div>
-		<Snackbar message={snackbar.message} />
-	</div>
-{/if}
+
+<SnackbarList {snackbars} />
