@@ -18,6 +18,18 @@ export const SnackbarUtils = {
 			message,
 			timeout
 		};
-		SnackbarStore.update(snackbar => [...snackbar, newSnackber]);
+		SnackbarStore.update(snackbar =>  {
+			// 3つ目以降のスナックバーが追加される場合、最も古いものを削除する
+			if (snackbar.length >= 2) {
+				snackbar.shift();
+			}
+
+			return [...snackbar, newSnackber];
+		});
+
+		// 時間が立ったら削除する
+		setTimeout(() => {
+			SnackbarStore.update(snackbars => snackbars.filter(snackbar => snackbar.id !== newSnackber.id));
+		}, timeout);
 	}
 };
