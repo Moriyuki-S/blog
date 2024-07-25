@@ -3,9 +3,7 @@
 		BookmarkOutline,
 		ExclamationCircleOutline,
 		InfoCircleOutline,
-
 		OrderedListOutline
-
 	} from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
@@ -60,15 +58,15 @@
 		<Button color="red" on:click={openDeleteModal}>すべて解除する</Button>
 	</div>
 	<ul class="grid grid-cols-3 gap-5 mt-10" data-testid="tagged-articles">
-		{#await data.articles}
+	{#await data.articles}
 			{#each Array(8) as _}
 				<ArticleVerticalCardSkeleton />
 			{/each}
-		{:then articles}
+	{:then articles}
 			{#each articles as article}
-				<ArticleVerticalCard {article} />
+			<ArticleVerticalCard {article} />
 			{/each}
-		{/await}
+	{/await}
 	</ul>
 </main>
 
