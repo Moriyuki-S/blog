@@ -1,3 +1,4 @@
+import type { Tag } from '$lib/features/tag/types/type';
 import type { Article } from '../types/type';
 
 // 記事の作成順（更新順ではない）でソート
@@ -18,8 +19,17 @@ const sortByDate = (articles: Article[], criteria: 'latest' | 'oldest'): Article
 	return sortedArticles;
 };
 
+const sortArticlesByTag = (articles: Article[], tag: Tag): Article[] => {
+	const sortedArticles = articles.filter(article => {
+		return article.tag.id === tag.id;
+	});
+
+	return sortedArticles;
+}
+
 const SortUtils = {
-	sortByDate
+	sortByDate,
+	sortArticlesByTag,
 };
 
 export default SortUtils;
