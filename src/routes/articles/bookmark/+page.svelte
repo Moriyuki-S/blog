@@ -52,6 +52,10 @@
 		currentFilterTag = tag;
 	};
 
+	const resetSelectTag = () => {
+		currentFilterTag = null;
+	};
+
 	const openInfoModal = () => {
 		isOpenedInfoModal = true;
 	};
@@ -116,7 +120,7 @@
 						タグを読み込み中
 					</SecondoryColorButton>
 				{:then tags}
-					<TagFilterButton {tags} selectTag={handleSelectTag}>
+					<TagFilterButton {tags} resetTag={resetSelectTag} selectTag={handleSelectTag}>
 						<TagOutline class="me-2" />
 						{currentFilterTag ? currentFilterTag.name : 'すべてのタグ'}
 						<ChevronDownOutline class="ms-2" />
