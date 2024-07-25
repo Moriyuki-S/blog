@@ -1,12 +1,27 @@
 <script lang="ts">
 	import { Toast } from 'flowbite-svelte';
-import { CheckCircleSolid, CloseCircleSolid, ExclamationCircleSolid } from 'flowbite-svelte-icons';
-	import { fade } from 'svelte/transition';
+	import {
+		CheckCircleSolid,
+		CloseCircleSolid,
+		ExclamationCircleSolid
+	} from 'flowbite-svelte-icons';
+	import { fade, fly } from 'svelte/transition';
 
 	export let message: string;
 	export let type: 'success' | 'error' | 'warning' | 'info' = 'success';
 
-	type SnackBarColor =  "none" | "gray" | "red" | "yellow" | "green" | "indigo" | "purple" | "blue" | "primary" | "orange" | undefined;
+	type SnackBarColor =
+		| 'none'
+		| 'gray'
+		| 'red'
+		| 'yellow'
+		| 'green'
+		| 'indigo'
+		| 'purple'
+		| 'blue'
+		| 'primary'
+		| 'orange'
+		| undefined;
 
 	let color: SnackBarColor;
 
@@ -35,12 +50,11 @@ import { CheckCircleSolid, CloseCircleSolid, ExclamationCircleSolid } from 'flow
 				return ExclamationCircleSolid;
 		}
 	})();
-
 </script>
 
-<Toast {color}>
-	<svelte:component slot="icon" this={icon} class="w-5 h-5" />
-	{message}
-</Toast>
-
-
+<div in:fade out:fly={{ x: 200, duration: 400 }}>
+	<Toast {color}>
+		<svelte:component this={icon} slot="icon" class="w-5 h-5" />
+		{message}
+	</Toast>
+</div>

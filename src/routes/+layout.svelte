@@ -12,6 +12,4 @@
 	<slot />
 </div>
 
-{#if snackbars.length > 0}
-	<SnackbarList {snackbars} />
-{/if}
+<SnackbarList {snackbars} />
