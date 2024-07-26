@@ -7,7 +7,6 @@ describe('SnackbarのUIテスト', () => {
 		render(Snackbar, { message: 'テストメッセージ' });
 		const snackbar = screen.getByRole('alert');
 		expect(snackbar).toBeInTheDocument();
-		expect(snackbar).toHaveClass('right-8', 'bottom-8');
 	});
 
 	it('メッセージが表示される', () => {

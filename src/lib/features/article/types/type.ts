@@ -17,3 +17,8 @@ export type ArticleTableOfContents = {
 	tagName: string;
 	text: string;
 };
+
+export type Criteria = {
+	label: string;
+	value: 'latest' | 'oldest' | 'popular';
+};

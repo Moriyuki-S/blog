@@ -1,21 +1,68 @@
 <script lang="ts">
 	import {
 		BookmarkOutline,
+		ChevronDownOutline,
 		ExclamationCircleOutline,
-		InfoCircleOutline
+		InfoCircleOutline,
+		OrderedListOutline,
+		TagOutline
 	} from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
-	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
-	import { Button, Modal, Tooltip } from 'flowbite-svelte';
+	import {
+		Button,
+		Dropdown,
+		DropdownItem,
+		Modal,
+		Skeleton,
+		Spinner,
+		Tooltip
+	} from 'flowbite-svelte';
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
 	import { invalidate } from '$app/navigation';
+	import type { Criteria } from '$lib/features/article/types/type';
+	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
+	import TagFilterButton from '$lib/features/tag/components/TagFilterButton/TagFilterButton.svelte';
+	import type { Tag } from '$lib/features/tag/types/type';
+	import SecondoryColorButton from '$lib/components/ui/Button/SecondoryColorButton/SecondoryColorButton.svelte';
 
 	export let data: PageData;
 
 	let isOpenedDeleteModal: boolean = false;
 	let isOpenedInfoModal: boolean = false;
+	let selectDropdownOpen: boolean = false;
+
+	const criterias: Criteria[] = [
+		{
+			label: '新着順',
+			value: 'latest'
+		},
+		{
+			label: '古い順',
+			value: 'oldest'
+		},
+		{
+			label: '人気順',
+			value: 'popular'
+		}
+	];
+
+	let currentCriteria: Criteria = criterias[0];
+	let currentFilterTag: Tag | null;
+
+	const handleSelectCriteria = (criteria: Criteria) => {
+		currentCriteria = criteria;
+		selectDropdownOpen = false;
+	};
+
+	const handleSelectTag = (tag: Tag) => {
+		currentFilterTag = tag;
+	};
+
+	const resetSelectTag = () => {
+		currentFilterTag = null;
+	};
 
 	const openInfoModal = () => {
 		isOpenedInfoModal = true;
@@ -53,20 +100,58 @@
 			ブックマーク機能について
 		</Tooltip>
 	</div>
-	<div class="w-fit ml-auto mt-10">
+	<div class="w-full flex justify-between mt-10">
+		<menu class="flex gap-x-5">
+			<li>
+				<Button color="alternative" id="bookmark-sort-button">
+					<OrderedListOutline class="me-2" />
+					{currentCriteria.label}
+				</Button>
+				<Dropdown bind:open={selectDropdownOpen}>
+					{#each criterias as criteira}
+						<DropdownItem
+							class={currentCriteria.value === criteira.value
+								? 'text-primary-500 dark:text-primary-300 hover:text-primary-700'
+								: 'text-black'}
+							on:click={() => handleSelectCriteria(criteira)}
+						>
+							{criteira.label}
+						</DropdownItem>
+					{/each}
+				</Dropdown>
+				<Tooltip triggeredBy="#bookmark-sort-button">並べ替える</Tooltip>
+			</li>
+			<li>
+				{#await data.tags}
+					<SecondoryColorButton disabled>
+						<Spinner size="4" class="me-2" />
+						タグを読み込み中
+					</SecondoryColorButton>
+				{:then tags}
+					<TagFilterButton {tags} resetTag={resetSelectTag} selectTag={handleSelectTag}>
+						<TagOutline class="me-2" />
+						{currentFilterTag ? currentFilterTag.name : 'すべてのタグ'}
+						<ChevronDownOutline class="ms-2" />
+					</TagFilterButton>
+				{:catch error}
+					<Button color="red" disabled>
+						<ExclamationCircleOutline size="xs" color="red" class="me-2" />
+						タグの読み込みに失敗しました
+					</Button>
+				{/await}
+			</li>
+		</menu>
 		<Button color="red" on:click={openDeleteModal}>すべて解除する</Button>
 	</div>
-	<ul class="grid grid-cols-3 gap-5 mt-10" data-testid="tagged-articles">
-		{#await data.articles}
+	{#await data.articles}
+		<ul class="grid grid-cols-3 gap-5 mt-10" data-testid="tagged-articles">
 			{#each Array(8) as _}
 				<ArticleVerticalCardSkeleton />
 			{/each}
-		{:then articles}
-			{#each articles as article}
-				<ArticleVerticalCard {article} />
-			{/each}
-		{/await}
-	</ul>
+		</ul>
+	{:then articles}
+		<ArticleGallery ulStyleClass="mt-10 gap-5" {articles} sortCriteria={currentCriteria} />
+	{/await}
 </main>
 
 <Modal bind:open={isOpenedDeleteModal} autoclose>
