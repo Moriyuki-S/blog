@@ -16,7 +16,8 @@
 		"test:unit": "vitest run",
 		"test:ui": "vitest --ui",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+		"contentful-typescript-codegen": "contentful-typescript-codegen --output @types/generated/contentful.d.ts"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^1.5.0",
