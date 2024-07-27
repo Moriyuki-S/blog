@@ -65,6 +65,8 @@
 	"type": "module",
 	"dependencies": {
 		"contentful": "^10.12.15",
+		"contentful-management": "^11.30.2",
+		"contentful-typescript-codegen": "^3.4.0",
 		"dayjs": "^1.11.11",
 		"tocbot": "^4.28.2",
 		"uuid": "^10.0.0"
