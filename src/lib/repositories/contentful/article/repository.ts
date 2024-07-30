@@ -1,6 +1,7 @@
 import type { IArticlesRepository } from "$lib/features/article/repositories/apis/fetch-articles";
 import type { Article } from "$lib/features/article/types/type";
 import client from "../client";
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 export class ContentfulArticlesRepository implements IArticlesRepository {
 
@@ -25,7 +26,9 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
         const article = {
             id: entry.sys.id,
             slug: entry.fields.slug,
-            body: entry.fields.body,
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            body: entry.fields.body ? documentToHtmlString(entry.fields.body) : '',
             title: entry.fields.title,
             imageUrl: entry.fields.thumbnail,
             createdAt: new Date(entry.sys.createdAt),
