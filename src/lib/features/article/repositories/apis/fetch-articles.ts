@@ -3,7 +3,7 @@ import type { Article } from '../../types/type';
 
 export interface IArticlesRepository {
 	getArticleBySlug: (slug: string) => Promise<Article>;
-};
+}
 
 const sampleArticles: Article[] = [
 	{
