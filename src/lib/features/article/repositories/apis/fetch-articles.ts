@@ -1,5 +1,9 @@
 import { browser } from '$app/environment';
-import type { Article } from '../../types/type';
+import type { Article, ArticleId } from '../../types/type';
+
+export interface IArticlesRepository {
+	getArticle: (id: ArticleId) => Promise<Article>;
+};
 
 const sampleArticles: Article[] = [
 	{
