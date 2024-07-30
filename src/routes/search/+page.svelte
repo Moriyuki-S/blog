@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, TabItem, Tabs } from 'flowbite-svelte';
+	import { Button, Search, TabItem, Tabs } from 'flowbite-svelte';
 	import { SearchOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
@@ -7,9 +7,20 @@
 	import TagCard from '$lib/features/tag/components/TagCard/TagCard.svelte';
 
 	let query: string = '';
+	let tagSearchQuery: string = '';
 	export let data: PageData;
+
+	const allTags = data.tags;
+	let filteredTags = allTags;
 	$: inputEmpty = query === '';
 	$: areArticlesPresent = Boolean(data.articles);
+	$: {
+		if (tagSearchQuery) {
+			filteredTags = allTags.filter(tag => tag.name.toLowerCase().includes(tagSearchQuery.toLowerCase()));
+		} else if (tagSearchQuery === '') {
+			filteredTags = allTags;
+		}
+	}
 </script>
 
 <main class="pt-10">
@@ -38,13 +49,18 @@
 				<div slot="title" class="w-24">
 					<span>タグ一覧</span>
 				</div>
-				<ul id="tag-list" class="flex flex-col md:flex-row gap-5">
-					{#each data.tags as tag}
-						<li>
-							<TagCard {tag} />
-						</li>
-					{/each}
-				</ul>
+				<div>
+					<div class="mb-10">
+						<Search bind:value={tagSearchQuery} placeholder="キーワードでタグを絞り込む" />
+					</div>
+					<ul id="tag-list" class="flex flex-col md:flex-row gap-5">
+						{#each filteredTags as tag}
+							<li>
+								<TagCard {tag} />
+							</li>
+						{/each}
+					</ul>
+				</div>
 			</TabItem>
 			{#if data.articles}
 				<TabItem open>
