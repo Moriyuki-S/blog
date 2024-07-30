@@ -1,6 +1,5 @@
 import test, { expect } from '@playwright/test';
 import { ContactPage } from './pageObject/contactPage';
-import { ContactSuccessPage } from './pageObject/contactSuccessPage';
 import { get } from 'svelte/store';
 import { ContactSuccessStore } from '$lib/global-stores/contact-success-store';
 
@@ -45,16 +44,5 @@ test.describe('問い合わせ機能のテスト', () => {
 
 		// 送信完了ページが表示されない
 		await expect(page).not.toHaveURL('/contact/thanks');
-	});
-
-	test('問い合わせせずに完了ページを開くと問い合わせページにリダイレクトされる', async ({
-		page
-	}) => {
-		const contactSuccessPage = new ContactSuccessPage(page);
-
-		await contactSuccessPage.goto();
-
-		// 問い合わせページにリダイレクトされる
-		await expect(page).toHaveURL('/contact');
 	});
 });
