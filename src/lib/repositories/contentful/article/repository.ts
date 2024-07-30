@@ -1,5 +1,5 @@
 import type { IArticlesRepository } from "$lib/features/article/repositories/apis/fetch-articles";
-import type { Article, ArticleId } from "$lib/features/article/types/type";
+import type { Article } from "$lib/features/article/types/type";
 import client from "../client";
 
 export class ContentfulArticlesRepository implements IArticlesRepository {
@@ -10,8 +10,18 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
         this._client = client;
     }
 
-    async getArticle(id: ArticleId): Promise<Article> {
-        const entry = await this._client.getEntry(id);
+    async getArticleBySlug(slug: string): Promise<Article> {
+        const entries = await this._client.getEntries({
+            content_type: 'article',
+            'fields.slug': slug
+        });
+
+        if (entries.items.length === 0) {
+            throw new Error('記事が見つかりませんでした');
+        }
+
+        const entry = entries.items[0];
+
         const article = {
             id: entry.sys.id,
             slug: entry.fields.slug,
