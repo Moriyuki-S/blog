@@ -6,7 +6,7 @@
 
 <a
 	href={`/tags/${tag.slug}`}
-	class="inline-block w-fit transition-transform border hover:border-primary-700 hover:-translate-y-1 rounded-lg p-5"
+	class="inline-block w-fit transition-transform border hover:border-secondory-700 hover:-translate-y-1 rounded-lg p-5"
 >
 	<div class="flex flex-col items-center justify-center gap-y-5">
 		<div>
