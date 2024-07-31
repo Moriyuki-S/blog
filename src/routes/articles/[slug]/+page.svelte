@@ -20,7 +20,7 @@
 		<ArticleDetail {article} />
 	</main>
 	<RightSidebar styleClass="md:min-w-1/3 md:w-1/3 md:sticky md:top-28">
-		<Tabs>
+		<Tabs tabStyle="underline">
 			<TabItem open>
 				<div slot="title" class="flex">
 					<ListOutline class="me-2" />
