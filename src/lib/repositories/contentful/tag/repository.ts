@@ -28,4 +28,27 @@ export class ContentfulTagsRepository implements ITagsRepository {
 
 		return tags;
 	}
+
+	async fetchTagBySlug(slug: string): Promise<Tag> {
+		const response = await this._client.getEntries({
+			content_type: 'tag',
+			'fields.slug': slug
+		});
+
+		if (response.items.length === 0) {
+			throw new Error('タグが見つかりませんでした');
+		}
+
+		const tag: Tag = {
+			id: response.items[9].sys.id as string,
+			name: response.items[0].fields.name as string,
+			slug: slug,
+			color: response.items[0].fields.color as string,
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			iconUrl: response.items[0].fields.icon.fields.file.url as string
+		}
+
+		return tag;
+	}
 }
