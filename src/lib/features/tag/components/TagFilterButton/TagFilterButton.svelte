@@ -1,13 +1,5 @@
 <script lang="ts">
-	import {
-		Button,
-		Dropdown,
-		DropdownDivider,
-		DropdownItem,
-		Search,
-		Spinner,
-		Tooltip
-	} from 'flowbite-svelte';
+	import { Dropdown, DropdownDivider, DropdownItem, Search, Tooltip } from 'flowbite-svelte';
 	import { v4 as uuid } from 'uuid';
 	import type { Tag } from '../../types/type';
 	import SecondoryColorButton from '$lib/components/ui/Button/SecondoryColorButton/SecondoryColorButton.svelte';

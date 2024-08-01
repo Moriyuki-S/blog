@@ -1,7 +1,7 @@
 <script lang="ts">
 	import RightSidebar from '$lib/components/layouts/RightSidebar/RightSidebar.svelte';
 	import { TabItem, Tabs } from 'flowbite-svelte';
-	import { BookmarkOutline, ClockOutline, FireOutline } from 'flowbite-svelte-icons';
+	import { ClockOutline, FireOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
@@ -58,23 +58,6 @@
 						{/each}
 					{/await}
 				</ul>
-			</TabItem>
-			<TabItem>
-				<div slot="title" class="flex items-center gap-x-2 md:text-xl">
-					<BookmarkOutline size="md" />
-					ブックマーク
-				</div>
-				{#if data.bookmarkedArticles.length === 0}
-					<p>ブックマークした記事はありません</p>
-				{:else}
-					<ul class="grid grid-cols-2 gap-5">
-						{#each data.bookmarkedArticles as article}
-							<li data-article-id={article.id}>
-								<ArticleVerticalCard {article} />
-							</li>
-						{/each}
-					</ul>
-				{/if}
 			</TabItem>
 		</Tabs>
 	</main>

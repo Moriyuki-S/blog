@@ -16,7 +16,7 @@
 	} from 'flowbite-svelte-icons';
 </script>
 
-<header class="hidden md:block w-full border-b fixed top-0 left-0">
+<header class="hidden md:block w-full border-b fixed top-0 left-0 z-10">
 	<Navbar aria-labelledby="desktop-navigation">
 		<NavBrand href="/">
 			<h1>ブログ</h1>

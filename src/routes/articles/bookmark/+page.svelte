@@ -9,15 +9,7 @@
 	} from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
-	import {
-		Button,
-		Dropdown,
-		DropdownItem,
-		Modal,
-		Skeleton,
-		Spinner,
-		Tooltip
-	} from 'flowbite-svelte';
+	import { Button, Dropdown, DropdownItem, Modal, Spinner, Tooltip } from 'flowbite-svelte';
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
 	import { invalidate } from '$app/navigation';
@@ -133,7 +125,7 @@
 						{currentFilterTag ? currentFilterTag.name : 'すべてのタグ'}
 						<ChevronDownOutline class="ms-2" />
 					</TagFilterButton>
-				{:catch error}
+				{:catch}
 					<Button color="red" disabled>
 						<ExclamationCircleOutline size="xs" color="red" class="me-2" />
 						タグの読み込みに失敗しました

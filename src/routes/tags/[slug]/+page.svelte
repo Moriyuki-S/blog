@@ -9,14 +9,20 @@
 </script>
 
 <main class="pt-16 px-4">
-	<h1 class="text-3xl text-center">
-		<span class="text-secondory-500 me-2">#</span>
-		{data.tag.name}
-		<button id="refresh-tag-button" class="w-fit h-fit p-2 rounded-full hover:bg-slate-200">
+	<div class="flex justify-center items-center gap-x-5">
+		<h1 class="text-3xl text-center">
+			<span class="text-secondory-500 me-2">#</span>
+			{data.tag.name}
+		</h1>
+		<a
+			id="refresh-tag-button"
+			href="/search"
+			class=" w-fit h-fit p-2 rounded-full hover:bg-slate-200"
+		>
 			<RefreshOutline />
-		</button>
+		</a>
 		<Tooltip triggeredBy="#refresh-tag-button" placement="right">変更する</Tooltip>
-	</h1>
+	</div>
 	<ul class="grid grid-cols-3 gap-5 mt-10" data-testid="tagged-articles">
 		{#await data.articles}
 			{#each Array(8) as _}

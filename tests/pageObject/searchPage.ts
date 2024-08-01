@@ -9,7 +9,7 @@ export class SearchPage {
 
 	constructor(page: Page) {
 		this.page = page;
-		this.searchInput = page.getByRole('searchbox');
+		this.searchInput = page.getByTestId('search-articles-input');
 		this.submitButton = page.getByRole('button', { name: '検索する' });
 		this.tagsList = page.locator('#tag-list');
 		this.articlesList = page.locator('#article-list');

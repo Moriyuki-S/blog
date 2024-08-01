@@ -1,15 +1,28 @@
 <script lang="ts">
-	import { Button, TabItem, Tabs } from 'flowbite-svelte';
-	import { SearchOutline } from 'flowbite-svelte-icons';
+	import { Button, Search, TabItem, Tabs } from 'flowbite-svelte';
+	import { SearchOutline, TagOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
 	import TagCard from '$lib/features/tag/components/TagCard/TagCard.svelte';
 
 	let query: string = '';
+	let tagSearchQuery: string = '';
 	export let data: PageData;
+
+	const allTags = data.tags;
+	let filteredTags = allTags;
+	const areArticlesPresent: boolean = Boolean(data.articles);
 	$: inputEmpty = query === '';
-	$: areArticlesPresent = Boolean(data.articles);
+	$: {
+		if (tagSearchQuery) {
+			filteredTags = allTags.filter((tag) =>
+				tag.name.toLowerCase().includes(tagSearchQuery.toLowerCase())
+			);
+		} else if (tagSearchQuery === '') {
+			filteredTags = allTags;
+		}
+	}
 </script>
 
 <main class="pt-10">
@@ -27,28 +40,43 @@
 				bind:value={query}
 				class="w-full h-10 md:h-14 pl-14 rounded-lg focus:border-sky-300"
 				placeholder="検索したいキーワードを入力してください"
+				data-testid="search-articles-input"
 			/>
 			<span class="absolute top-1/2 left-5 -translate-y-1/2"><SearchOutline /></span>
 		</div>
 		<Button id="submit-button" type="submit" disabled={inputEmpty}>検索する</Button>
 	</form>
 	<section class="w-full max-w-[60rem] mx-auto px-3 pt-5 md:pt-10">
-		<Tabs>
-			<TabItem open={!areArticlesPresent}>
-				<div slot="title" class="w-24">
+		<Tabs tabStyle="underline">
+			<TabItem
+				open={!areArticlesPresent}
+				activeClasses="inline-block text-sm font-medium text-center disabled:cursor-not-allowed p-4 text-secondory-600 border-b-2 border-secondory-600 dark:text-secondory-500 dark:border-secondory-500 active"
+			>
+				<div slot="title" class="w-24 flex gap-2">
+					<TagOutline />
 					<span>タグ一覧</span>
 				</div>
-				<ul id="tag-list" class="flex flex-col md:flex-row gap-5">
-					{#each data.tags as tag}
-						<li>
-							<TagCard {tag} />
-						</li>
-					{/each}
-				</ul>
+				<div>
+					<div class="mb-10">
+						<Search
+							bind:value={tagSearchQuery}
+							class="focus:border-secondory-500 focus:ring-secondory-500 dark:border-secondory-500 dark:ring-secondory-500 dark:focus:ring-secondory-500"
+							placeholder="キーワードでタグを絞り込む"
+						/>
+					</div>
+					<ul id="tag-list" class="flex flex-col md:flex-row gap-5">
+						{#each filteredTags as tag}
+							<li>
+								<TagCard {tag} />
+							</li>
+						{/each}
+					</ul>
+				</div>
 			</TabItem>
 			{#if data.articles}
 				<TabItem open>
-					<div slot="title" class="w-24">
+					<div slot="title" class="w-24 flex gap-2">
+						<SearchOutline />
 						<span>検索結果</span>
 					</div>
 					<ul id="article-list" class="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
