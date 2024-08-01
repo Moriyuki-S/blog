@@ -14,7 +14,11 @@
 			<span class="text-secondory-500 me-2">#</span>
 			{data.tag.name}
 		</h1>
-		<a id="refresh-tag-button" href="/search" class=" w-fit h-fit p-2 rounded-full hover:bg-slate-200">
+		<a
+			id="refresh-tag-button"
+			href="/search"
+			class=" w-fit h-fit p-2 rounded-full hover:bg-slate-200"
+		>
 			<RefreshOutline />
 		</a>
 		<Tooltip triggeredBy="#refresh-tag-button" placement="right">変更する</Tooltip>

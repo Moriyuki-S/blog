@@ -14,7 +14,6 @@
 		Dropdown,
 		DropdownItem,
 		Modal,
-		Skeleton,
 		Spinner,
 		Tooltip
 	} from 'flowbite-svelte';
@@ -133,7 +132,7 @@
 						{currentFilterTag ? currentFilterTag.name : 'すべてのタグ'}
 						<ChevronDownOutline class="ms-2" />
 					</TagFilterButton>
-				{:catch error}
+				{:catch}
 					<Button color="red" disabled>
 						<ExclamationCircleOutline size="xs" color="red" class="me-2" />
 						タグの読み込みに失敗しました

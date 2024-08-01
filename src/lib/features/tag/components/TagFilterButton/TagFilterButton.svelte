@@ -1,11 +1,9 @@
 <script lang="ts">
 	import {
-		Button,
 		Dropdown,
 		DropdownDivider,
 		DropdownItem,
 		Search,
-		Spinner,
 		Tooltip
 	} from 'flowbite-svelte';
 	import { v4 as uuid } from 'uuid';

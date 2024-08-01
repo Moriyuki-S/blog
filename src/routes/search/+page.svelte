@@ -16,7 +16,9 @@
 	$: inputEmpty = query === '';
 	$: {
 		if (tagSearchQuery) {
-			filteredTags = allTags.filter(tag => tag.name.toLowerCase().includes(tagSearchQuery.toLowerCase()));
+			filteredTags = allTags.filter((tag) =>
+				tag.name.toLowerCase().includes(tagSearchQuery.toLowerCase())
+			);
 		} else if (tagSearchQuery === '') {
 			filteredTags = allTags;
 		}
@@ -45,8 +47,10 @@
 	</form>
 	<section class="w-full max-w-[60rem] mx-auto px-3 pt-5 md:pt-10">
 		<Tabs tabStyle="underline">
-			<TabItem open={!areArticlesPresent}
-			activeClasses="inline-block text-sm font-medium text-center disabled:cursor-not-allowed p-4 text-secondory-600 border-b-2 border-secondory-600 dark:text-secondory-500 dark:border-secondory-500 active">
+			<TabItem
+				open={!areArticlesPresent}
+				activeClasses="inline-block text-sm font-medium text-center disabled:cursor-not-allowed p-4 text-secondory-600 border-b-2 border-secondory-600 dark:text-secondory-500 dark:border-secondory-500 active"
+			>
 				<div slot="title" class="w-24 flex gap-2">
 					<TagOutline />
 					<span>タグ一覧</span>
@@ -54,9 +58,10 @@
 				<div>
 					<div class="mb-10">
 						<Search
-						bind:value={tagSearchQuery}
-						class="focus:border-secondory-500 focus:ring-secondory-500 dark:border-secondory-500 dark:ring-secondory-500 dark:focus:ring-secondory-500"
-						placeholder="キーワードでタグを絞り込む" />
+							bind:value={tagSearchQuery}
+							class="focus:border-secondory-500 focus:ring-secondory-500 dark:border-secondory-500 dark:ring-secondory-500 dark:focus:ring-secondory-500"
+							placeholder="キーワードでタグを絞り込む"
+						/>
 					</div>
 					<ul id="tag-list" class="flex flex-col md:flex-row gap-5">
 						{#each filteredTags as tag}

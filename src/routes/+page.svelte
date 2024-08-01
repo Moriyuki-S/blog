@@ -1,7 +1,7 @@
 <script lang="ts">
 	import RightSidebar from '$lib/components/layouts/RightSidebar/RightSidebar.svelte';
 	import { TabItem, Tabs } from 'flowbite-svelte';
-	import { BookmarkOutline, ClockOutline, FireOutline } from 'flowbite-svelte-icons';
+	import { ClockOutline, FireOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
