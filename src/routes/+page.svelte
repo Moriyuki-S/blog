@@ -59,23 +59,6 @@
 					{/await}
 				</ul>
 			</TabItem>
-			<TabItem>
-				<div slot="title" class="flex items-center gap-x-2 md:text-xl">
-					<BookmarkOutline size="md" />
-					ブックマーク
-				</div>
-				{#if data.bookmarkedArticles.length === 0}
-					<p>ブックマークした記事はありません</p>
-				{:else}
-					<ul class="grid grid-cols-2 gap-5">
-						{#each data.bookmarkedArticles as article}
-							<li data-article-id={article.id}>
-								<ArticleVerticalCard {article} />
-							</li>
-						{/each}
-					</ul>
-				{/if}
-			</TabItem>
 		</Tabs>
 	</main>
 	<RightSidebar styleClass="w-1/3 pt-6"></RightSidebar>
