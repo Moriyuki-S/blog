@@ -47,7 +47,7 @@ export class ContentfulTagsRepository implements ITagsRepository {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			iconUrl: response.items[0].fields.icon.fields.file.url as string
-		}
+		};
 
 		return tag;
 	}

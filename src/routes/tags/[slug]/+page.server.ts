@@ -8,13 +8,12 @@ export const load: PageServerLoad = async ({ params }) => {
 	const { slug } = params;
 	const contentfulTagsRepository = new ContentfulTagsRepository();
 	const fetchTagsUseCase = new FetchTagsUseCase(contentfulTagsRepository);
-	
+
 	const tag = await fetchTagsUseCase.getTagBySlug(slug);
-	
+
 	const contentfulArticlesRepository = new ContentfulArticlesRepository();
 	const fetchArticlesUseCase = new FetchArticlesUseCase(contentfulArticlesRepository);
 	const articles = fetchArticlesUseCase.getArticlesByTag(tag);
-
 
 	return {
 		tag,
