@@ -35,4 +35,23 @@ export class FetchArticlesUseCase {
             throw new Error('記事の取得に失敗しました');
         }
     }
+
+    async getLatestArticles(): Promise<Article[]> {
+        try {
+            const articles = await this.articlesRepository.getLatestArticles();
+            return articles;
+        } catch (error) {
+            throw new Error('記事の取得に失敗しました');
+        }
+    }
+
+    // 仮の実装 一旦新しい記事を返す
+    async getPopularArticles(): Promise<Article[]> {
+        try {
+            const articles = await this.articlesRepository.getPopularArticles();
+            return articles;
+        } catch (error) {
+            throw new Error('記事の取得に失敗しました');
+        }
+    }
 }

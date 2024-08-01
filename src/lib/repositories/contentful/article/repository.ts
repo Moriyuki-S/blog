@@ -156,4 +156,87 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 
 		return articles;
 	}
+
+	async getLatestArticles(): Promise<Article[]> {
+		const entries = await this._client.getEntries({
+			content_type: 'article',
+			order: ['-sys.createdAt']
+		});
+
+		const articles = entries.items.map((item) => {
+			return {
+				id: item.sys.id,
+				slug: item.fields.slug as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
+				title: item.fields.title as string,
+				imageUrl: item.fields.thumbnail as string,
+				createdAt: new Date(item.sys.createdAt),
+				updatedAt: new Date(item.sys.updatedAt),
+				// 型エラーを一旦無視
+				tag: {
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					id: item.fields.tag.sys.id as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					name: item.fields.tag.fields.name as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					slug: item.fields.tag.fields.slug,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					iconUrl: item.fields.tag.fields.icon.fields.file.url as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					color: item.fields.tag.fields.color as string
+				}
+			} satisfies Article;
+		});
+
+		return articles;
+	}
+
+	async getPopularArticles(): Promise<Article[]> {
+		// 仮の実装
+		const entries = await this._client.getEntries({
+			content_type: 'article',
+			order: ['-sys.createdAt']
+		});
+
+		const articles = entries.items.map((item) => {
+			return {
+				id: item.sys.id,
+				slug: item.fields.slug as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
+				title: item.fields.title as string,
+				imageUrl: item.fields.thumbnail as string,
+				createdAt: new Date(item.sys.createdAt),
+				updatedAt: new Date(item.sys.updatedAt),
+				// 型エラーを一旦無視
+				tag: {
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					id: item.fields.tag.sys.id as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					name: item.fields.tag.fields.name as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					slug: item.fields.tag.fields.slug,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					iconUrl: item.fields.tag.fields.icon.fields.file.url as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					color: item.fields.tag.fields.color as string
+				}
+			} satisfies Article;
+		});
+
+		return articles;
+	}
 }
