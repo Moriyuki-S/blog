@@ -40,6 +40,7 @@
 				bind:value={query}
 				class="w-full h-10 md:h-14 pl-14 rounded-lg focus:border-sky-300"
 				placeholder="検索したいキーワードを入力してください"
+				data-testid="search-articles-input"
 			/>
 			<span class="absolute top-1/2 left-5 -translate-y-1/2"><SearchOutline /></span>
 		</div>
