@@ -30,7 +30,9 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 			// @ts-ignore
 			body: entry.fields.body ? documentToHtmlString(entry.fields.body) : '',
 			title: entry.fields.title,
-			imageUrl: entry.fields.thumbnail,
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			imageUrl: entry.fields.thumbnail.fields.file.url,
 			createdAt: new Date(entry.sys.createdAt),
 			updatedAt: new Date(entry.sys.updatedAt),
 			// 型エラーを一旦無視
@@ -130,7 +132,9 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				// @ts-ignore
 				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
 				title: item.fields.title as string,
-				imageUrl: item.fields.thumbnail as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				imageUrl: item.fields.thumbnail.fields.file.url as string,
 				createdAt: new Date(item.sys.createdAt),
 				updatedAt: new Date(item.sys.updatedAt),
 				// 型エラーを一旦無視
@@ -171,7 +175,9 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				// @ts-ignore
 				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
 				title: item.fields.title as string,
-				imageUrl: item.fields.thumbnail as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				imageUrl: item.fields.thumbnail.fields.file.url as string,
 				createdAt: new Date(item.sys.createdAt),
 				updatedAt: new Date(item.sys.updatedAt),
 				// 型エラーを一旦無視
@@ -213,7 +219,9 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				// @ts-ignore
 				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
 				title: item.fields.title as string,
-				imageUrl: item.fields.thumbnail as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				imageUrl: item.fields.thumbnail.fields.file.url as string,
 				createdAt: new Date(item.sys.createdAt),
 				updatedAt: new Date(item.sys.updatedAt),
 				// 型エラーを一旦無視

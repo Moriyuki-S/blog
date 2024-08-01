@@ -8,11 +8,9 @@ export const load: PageServerLoad = async ({ params }) => {
 	const contentfulArticlesRepository = new ContentfulArticlesRepository();
 	const fetchArticlesUseCase = new FetchArticlesUseCase(contentfulArticlesRepository);
 
-	const article = fetchArticlesUseCase.getArticleBySlug(slug);
+	const article = await fetchArticlesUseCase.getArticleBySlug(slug);
 
-	const relatedArticles = fetchArticlesUseCase.getArticlesByTag((await article).tag, (await article));
 	return {
-		article,
-		relatedArticles
+		article
 	}
 };
