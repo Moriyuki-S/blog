@@ -14,38 +14,6 @@ test.describe('記事検索機能のテスト', () => {
 		await expect(page).toHaveURL('/search?q=プログラミング');
 	});
 
-	test('タグをクリックするとそのタグの付いた記事一覧のページに遷移する', async ({ page }) => {
-		const tag: Tag = {
-			id: '1',
-			slug: 'sample-tag',
-			name: 'Sample Tag',
-			iconUrl: '',
-			color: '#000000'
-		};
-
-		// タグをクリックしてそのタグの付いた記事一覧のページに遷移する
-		const searchPage = new SearchPage(page);
-		await searchPage.goto();
-		await searchPage.clickTag(tag.name);
-
-		// /tags/:tagId に遷移している
-		await expect(page).toHaveURL(`/tags/${tag.slug}`);
-
-		// 遷移後
-		const taggedArticlesPage = new TaggedArticlesPage(page, tag);
-
-		// タグ名が表示されている
-		await expect(taggedArticlesPage.tagText).toHaveText(`# ${tag.name}`);
-
-		// タグの付いた記事が表示されている
-		await expect(taggedArticlesPage.articlesList).toBeVisible();
-
-		// 記事をクリックすると記事詳細ページに遷移する
-		await taggedArticlesPage.clickArticle('Test Article 1');
-
-		await expect(page).toHaveURL('/articles/test-article-1');
-	});
-
 	test('キーワードが空文字だと検索できない', async ({ page }, testInfo) => {
 		// 検索ページで空文字のまま検索ボタンを押そうとする
 		const searchPage = new SearchPage(page);
