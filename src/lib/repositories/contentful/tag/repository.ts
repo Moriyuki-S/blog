@@ -40,7 +40,7 @@ export class ContentfulTagsRepository implements ITagsRepository {
 		}
 
 		const tag: Tag = {
-			id: response.items[9].sys.id as string,
+			id: response.items[0].sys.id as string,
 			name: response.items[0].fields.name as string,
 			slug: slug,
 			color: response.items[0].fields.color as string,
