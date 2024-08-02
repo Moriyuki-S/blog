@@ -1,9 +1,9 @@
 import { BookmarkRepository } from '$lib/features/article/repositories/localstorage/bookmark';
-import type { PageLoad } from './$types';
+import type { LayoutLoad } from './$types';
 import { BookmarkedArticlesIdStore } from '$lib/features/article/stores/bookmarked-articlesID';
 import { browser } from '$app/environment';
 
-export const load: PageLoad = async ({ data }) => {
+export const load: LayoutLoad = async ({ data }) => {
 	if (browser) {
 		// ブックマークした記事をストアに格納
 		const currentBookmarkedArticlesId = BookmarkRepository.getBookmarkedArticlesId();
@@ -11,6 +11,6 @@ export const load: PageLoad = async ({ data }) => {
 	}
 
 	return {
-		tags: data.tags
+		...data
 	};
 };

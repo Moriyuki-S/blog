@@ -1,13 +1,23 @@
+import { browser } from '$app/environment';
+import { BookmarkRepository } from '$lib/features/article/repositories/localstorage/bookmark';
 import type { PageLoad } from './$types';
-import { ArticleAPIs } from '$lib/features/article/repositories/apis/fetch-articles';
 
-export const load: PageLoad = async ({ depends }) => {
-	const bookmarkedArticles = await ArticleAPIs.fetchBookmarkedArticles();
+export const ssr = false;
 
-	// 再実行のトリガーを用意
-	depends('articles:bookmark');
+export const load: PageLoad = async ({ fetch }) => {
+	if (browser) {
+		const bookmarkedArticlesId = BookmarkRepository.getBookmarkedArticlesId();
+		const query = new URLSearchParams();
 
-	return {
-		articles: bookmarkedArticles
-	};
+		bookmarkedArticlesId.forEach((id) => {
+			query.append('id', id);
+		});
+
+		const response = await fetch(`/api/articles?${query}`);
+		const articles = await response.json();
+
+		return {
+			articles: articles
+		};
+	}
 };

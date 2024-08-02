@@ -1,5 +1,5 @@
 import type { IArticlesRepository } from '$lib/features/article/repositories/apis/fetch-articles';
-import type { Article } from '$lib/features/article/types/type';
+import type { Article, ArticleId } from '$lib/features/article/types/type';
 import type { Tag } from '$lib/features/tag/types/type';
 import client from '../client';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
@@ -30,7 +30,9 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 			// @ts-ignore
 			body: entry.fields.body ? documentToHtmlString(entry.fields.body) : '',
 			title: entry.fields.title,
-			imageUrl: entry.fields.thumbnail,
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			imageUrl: entry.fields.thumbnail.fields.file.url,
 			createdAt: new Date(entry.sys.createdAt),
 			updatedAt: new Date(entry.sys.updatedAt),
 			// 型エラーを一旦無視
@@ -43,7 +45,13 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				name: entry.fields.tag.fields.name as string,
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				slug: entry.fields.tag.fields.slug
+				slug: entry.fields.tag.fields.slug,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				iconUrl: entry.fields.tag.fields.icon.fields.file.url,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				color: entry.fields.tag.fields.color
 			}
 		} as Article;
 
@@ -75,6 +83,8 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 						id: tag.id,
 						name: tag.name,
 						slug: tag.slug,
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						// @ts-ignore
 						iconUrl: tag.iconUrl,
 						color: tag.color
 					}
@@ -130,7 +140,139 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				// @ts-ignore
 				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
 				title: item.fields.title as string,
-				imageUrl: item.fields.thumbnail as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				imageUrl: item.fields.thumbnail.fields.file.url as string,
+				createdAt: new Date(item.sys.createdAt),
+				updatedAt: new Date(item.sys.updatedAt),
+				// 型エラーを一旦無視
+				tag: {
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					id: item.fields.tag.sys.id as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					name: item.fields.tag.fields.name as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					slug: item.fields.tag.fields.slug,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					iconUrl: item.fields.tag.fields.icon.fields.file.url as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					color: item.fields.tag.fields.color as string
+				}
+			} satisfies Article;
+		});
+
+		return articles;
+	}
+
+	async getArticlesByIds(ids: ArticleId[]): Promise<Article[]> {
+		const entries = await this._client.getEntries({
+			content_type: 'article',
+			'sys.id[in]': ids
+		});
+
+		const articles = entries.items.map((item) => {
+			return {
+				id: item.sys.id,
+				slug: item.fields.slug as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
+				title: item.fields.title as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				imageUrl: item.fields.thumbnail.fields.file.url as string,
+				createdAt: new Date(item.sys.createdAt),
+				updatedAt: new Date(item.sys.updatedAt),
+				// 型エラーを一旦無視
+				tag: {
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					id: item.fields.tag.sys.id as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					name: item.fields.tag.fields.name as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					slug: item.fields.tag.fields.slug,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					iconUrl: item.fields.tag.fields.icon.fields.file.url as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					color: item.fields.tag.fields.color as string
+				}
+			} satisfies Article;
+		});
+
+		return articles;
+	}
+
+	async getLatestArticles(): Promise<Article[]> {
+		const entries = await this._client.getEntries({
+			content_type: 'article',
+			order: ['-sys.createdAt']
+		});
+
+		const articles = entries.items.map((item) => {
+			return {
+				id: item.sys.id,
+				slug: item.fields.slug as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
+				title: item.fields.title as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				imageUrl: item.fields.thumbnail.fields.file.url as string,
+				createdAt: new Date(item.sys.createdAt),
+				updatedAt: new Date(item.sys.updatedAt),
+				// 型エラーを一旦無視
+				tag: {
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					id: item.fields.tag.sys.id as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					name: item.fields.tag.fields.name as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					slug: item.fields.tag.fields.slug,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					iconUrl: item.fields.tag.fields.icon.fields.file.url as string,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					color: item.fields.tag.fields.color as string
+				}
+			} satisfies Article;
+		});
+
+		return articles;
+	}
+
+	async getPopularArticles(): Promise<Article[]> {
+		// 仮の実装
+		const entries = await this._client.getEntries({
+			content_type: 'article',
+			order: ['-sys.createdAt']
+		});
+
+		const articles = entries.items.map((item) => {
+			return {
+				id: item.sys.id,
+				slug: item.fields.slug as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
+				title: item.fields.title as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				imageUrl: item.fields.thumbnail.fields.file.url as string,
 				createdAt: new Date(item.sys.createdAt),
 				updatedAt: new Date(item.sys.updatedAt),
 				// 型エラーを一旦無視
