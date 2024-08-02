@@ -2,9 +2,11 @@ import { browser } from '$app/environment';
 import { BookmarkRepository } from '$lib/features/article/repositories/localstorage/bookmark';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ fetch }) => {
-	if (!browser) return;
+export const ssr = false;
 
+export const load: PageLoad = async ({ fetch }) => {
+
+	if (browser) {
 	const bookmarkedArticlesId = BookmarkRepository.getBookmarkedArticlesId();
 	const query = new URLSearchParams();
 
@@ -16,6 +18,7 @@ export const load: PageLoad = async ({ fetch }) => {
 	const articles = await response.json();
 
 	return {
-		articles
+		articles: articles
 	};
+}
 };
