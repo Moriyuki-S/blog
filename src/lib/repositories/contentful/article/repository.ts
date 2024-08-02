@@ -83,8 +83,8 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 						id: tag.id,
 						name: tag.name,
 						slug: tag.slug,
-					    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				        // @ts-ignore
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+						// @ts-ignore
 						iconUrl: tag.iconUrl,
 						color: tag.color
 					}

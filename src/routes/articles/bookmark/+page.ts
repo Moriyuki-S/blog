@@ -5,20 +5,19 @@ import type { PageLoad } from './$types';
 export const ssr = false;
 
 export const load: PageLoad = async ({ fetch }) => {
-
 	if (browser) {
-	const bookmarkedArticlesId = BookmarkRepository.getBookmarkedArticlesId();
-	const query = new URLSearchParams();
+		const bookmarkedArticlesId = BookmarkRepository.getBookmarkedArticlesId();
+		const query = new URLSearchParams();
 
-	bookmarkedArticlesId.forEach((id) => {
-		query.append('id', id);
-	});
+		bookmarkedArticlesId.forEach((id) => {
+			query.append('id', id);
+		});
 
-	const response = await fetch(`/api/articles?${query}`);
-	const articles = await response.json();
+		const response = await fetch(`/api/articles?${query}`);
+		const articles = await response.json();
 
-	return {
-		articles: articles
-	};
-}
+		return {
+			articles: articles
+		};
+	}
 };
