@@ -45,7 +45,13 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				name: entry.fields.tag.fields.name as string,
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				slug: entry.fields.tag.fields.slug
+				slug: entry.fields.tag.fields.slug,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				iconUrl: entry.fields.tag.fields.icon.fields.file.url,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				color: entry.fields.tag.fields.color
 			}
 		} as Article;
 
@@ -77,6 +83,8 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 						id: tag.id,
 						name: tag.name,
 						slug: tag.slug,
+					    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				        // @ts-ignore
 						iconUrl: tag.iconUrl,
 						color: tag.color
 					}

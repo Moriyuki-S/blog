@@ -20,7 +20,7 @@ export class FetchArticlesUseCase {
 
 	async getArticlesByTag(tag: Tag, excludedArticle?: Article): Promise<Article[]> {
 		try {
-			const articles = await this.getArticlesByTag(tag, excludedArticle);
+			const articles = await this.articlesRepository.getArticlesByTag(tag, excludedArticle);
 			return articles;
 		} catch (error) {
 			throw new Error('記事の取得に失敗しました');
