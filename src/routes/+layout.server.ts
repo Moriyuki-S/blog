@@ -1,8 +1,8 @@
 import { FetchTagsUseCase } from '$lib/features/tag/application/usecases/fetch-tags';
 import { ContentfulTagsRepository } from '$lib/repositories/contentful/tag/repository';
-import type { PageServerLoad } from './$types';
+import type { LayoutServerLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
+export const load: LayoutServerLoad = async () => {
 	const contentfulTagsRepository = new ContentfulTagsRepository();
 	const fetchTagsUseCase = new FetchTagsUseCase(contentfulTagsRepository);
 	const tags = fetchTagsUseCase.getTags();
