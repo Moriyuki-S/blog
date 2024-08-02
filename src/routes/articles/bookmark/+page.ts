@@ -1,21 +1,21 @@
-import { browser } from "$app/environment";
-import { BookmarkRepository } from "$lib/features/article/repositories/localstorage/bookmark";
-import type { PageLoad } from "./$types";
+import { browser } from '$app/environment';
+import { BookmarkRepository } from '$lib/features/article/repositories/localstorage/bookmark';
+import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch }) => {
-    if (!browser) return;
-    
-    const bookmarkedArticlesId = BookmarkRepository.getBookmarkedArticlesId();
-    const query = new URLSearchParams();
+	if (!browser) return;
 
-    bookmarkedArticlesId.forEach(id => {
-        query.append('id', id);
-    });
+	const bookmarkedArticlesId = BookmarkRepository.getBookmarkedArticlesId();
+	const query = new URLSearchParams();
 
-    const response = await fetch(`/api/articles?${query}`);
-    const articles = await response.json();
+	bookmarkedArticlesId.forEach((id) => {
+		query.append('id', id);
+	});
 
-    return {
-        articles
-    }
+	const response = await fetch(`/api/articles?${query}`);
+	const articles = await response.json();
+
+	return {
+		articles
+	};
 };
