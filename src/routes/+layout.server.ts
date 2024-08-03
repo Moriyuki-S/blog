@@ -5,7 +5,7 @@ import type { LayoutServerLoad } from './$types';
 export const load: LayoutServerLoad = async () => {
 	const contentfulTagsRepository = new ContentfulTagsRepository();
 	const fetchTagsUseCase = new FetchTagsUseCase(contentfulTagsRepository);
-	const tags = fetchTagsUseCase.getTags();
+	const tags = await fetchTagsUseCase.getTags();
 
 	return {
 		tags
