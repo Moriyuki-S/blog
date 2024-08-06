@@ -5,7 +5,6 @@
 	import type { PageData } from './$types';
 	import { BookOutline, ListOutline } from 'flowbite-svelte-icons';
 	import ArticleContents from '$lib/features/article/components/ArticleContents/ArticleContents.svelte';
-	import { Toc } from 'svelte-toc';
 
 	export let data: PageData;
 	$: article = data.article;
@@ -43,7 +42,7 @@
 </div>
 
 <style>
-:where(h1, h2, h3, h4) {
-	scroll-margin-top: 2000px;
-}
+	:where(h1, h2, h3, h4) {
+		scroll-margin-top: 2000px;
+	}
 </style>
