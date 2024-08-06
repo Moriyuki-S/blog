@@ -20,7 +20,7 @@
 	<div class="mt-8">
 		<TagChip tag={article.tag} />
 	</div>
-	<h2 class="text-3xl mt-5 pb-2 border-b-2 border-b-sky-500 font-bold">{article.title}</h2>
+	<h1 class="text-3xl mt-5 pb-2 border-b-2 border-b-sky-500 font-bold">{article.title}</h1>
 	<ul class="w-fit ml-auto mt-4 flex gap-x-4">
 		<li>
 			投稿 : <time datetime="">{formatedCreatedAt}</time>

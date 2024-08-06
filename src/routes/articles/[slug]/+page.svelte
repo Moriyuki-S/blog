@@ -5,6 +5,7 @@
 	import type { PageData } from './$types';
 	import { BookOutline, ListOutline } from 'flowbite-svelte-icons';
 	import ArticleContents from '$lib/features/article/components/ArticleContents/ArticleContents.svelte';
+	import { Toc } from 'svelte-toc';
 
 	export let data: PageData;
 	$: article = data.article;
@@ -27,7 +28,9 @@
 					<span>目次</span>
 				</div>
 				<div>
-					<ArticleContents />
+					<Toc 
+					title=''
+					/>
 				</div>
 			</TabItem>
 			<TabItem>
