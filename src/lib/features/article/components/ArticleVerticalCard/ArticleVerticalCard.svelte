@@ -34,10 +34,14 @@
 <Card
 	data-article-id={article.id}
 	href={`/articles/${article.slug}`}
-	img={article.imageUrl}
-	class="cursor-pointer"
+	class="cursor-pointer h-[30rem]"
 	size="sm"
+	padding="none"
 >
+<div>
+	<img src={article.imageUrl} alt={article.title} width="400" height="240" class="h-64 rounded-t-lg">
+</div>
+<div class="p-5 h-72">
 	<div class="mb-4 w-full flex justify-between items-center">
 		<TagChip tag={article.tag} />
 		{#if isBookmarked}
@@ -66,18 +70,19 @@
 			</Tooltip>
 		{/if}
 	</div>
-	<h5 id="title" class="mb-10 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+	<h5 id="title" class="mb-10 text-2xl h-16 font-bold tracking-tight text-gray-900 dark:text-white">
 		{article.title}
 	</h5>
 	<time
 		datetime={wasUpdated ? String(article.updatedAt) : String(article.createdAt)}
-		class="w-fit min-w-8 block text-sm ml-auto"
+		class="w-fit min-w-8 block text-sm ml-auto text-gray-500"
 		data-testid={`article-card-time-${article.id}`}
 	>
 		{wasUpdated
 			? '更新 : ' + calculateTimeDifference(article.updatedAt)
 			: '投稿 : ' + calculateTimeDifference(article.createdAt)}
 	</time>
+</div>
 </Card>
 
 <style>
