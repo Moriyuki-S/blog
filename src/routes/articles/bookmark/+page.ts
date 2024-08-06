@@ -15,8 +15,8 @@ export const load: PageLoad = async ({ fetch }) => {
 		});
 
 		const response = await fetch(`/api/articles?${query}`);
-		const articles = await response.json() as Article[];
-		
+		const articles = (await response.json()) as Article[];
+
 		// createdAt, updatedAtをDate型に変換
 		articles.forEach((article) => {
 			article.createdAt = new Date(article.createdAt);
