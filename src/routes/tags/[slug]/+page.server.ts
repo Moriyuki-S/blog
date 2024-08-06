@@ -8,7 +8,7 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 
 	const { tags } = await parent();
 
-	const currentTag = tags.find(tag => tag.slug === slug);
+	const currentTag = tags.find((tag) => tag.slug === slug);
 
 	if (!currentTag) {
 		error(404);
@@ -20,6 +20,6 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 
 	return {
 		articles,
-		currentTag,
+		currentTag
 	};
 };
