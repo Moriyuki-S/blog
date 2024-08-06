@@ -28,9 +28,7 @@
 					<span>目次</span>
 				</div>
 				<div>
-					<Toc 
-					title=''
-					/>
+					<ArticleContents />
 				</div>
 			</TabItem>
 			<TabItem>
@@ -43,3 +41,9 @@
 		</Tabs>
 	</RightSidebar>
 </div>
+
+<style>
+:where(h1, h2, h3, h4) {
+	scroll-margin-top: 2000px;
+}
+</style>
