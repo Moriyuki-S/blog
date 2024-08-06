@@ -1,23 +1,8 @@
 <script lang="ts">
 	import RightSidebar from '$lib/components/layouts/RightSidebar/RightSidebar.svelte';
-	import { Avatar, Spinner } from 'flowbite-svelte';
+	import ArticleContents from '$lib/features/article/components/ArticleContents/ArticleContents.svelte';
+	import { Avatar } from 'flowbite-svelte';
 	import { ListOutline } from 'flowbite-svelte-icons';
-	import { onMount } from 'svelte';
-	import tocbot from 'tocbot';
-
-	let isTocLoading: boolean = true;
-
-	onMount(() => {
-		tocbot.init({
-			tocSelector: '#bio-toc',
-			contentSelector: '#bio-body',
-			extraLinkClasses: 'block w-full h-10 hover:bg-gray-200 rounded-lg px-4 py-1 leading-8',
-			activeLinkClass: 'text-primary-500',
-			headingSelector: 'h2, h3'
-		});
-
-		isTocLoading = false;
-	});
 </script>
 
 <div class="w-full py-10 px-4 flex flex-col items-center md:flex-row">
@@ -42,14 +27,7 @@
 				目次
 			</h2>
 			<div class="w-full h-full">
-				{#if isTocLoading}
-					<div class="w-full h-full flex justify-center mt-20">
-						<Spinner color="blue" />
-					</div>
-				{/if}
-				<nav id="bio-toc" class="pt-5">
-					<!--目次が入る-->
-				</nav>
+				<ArticleContents />
 			</div>
 		</div>
 	</RightSidebar>
