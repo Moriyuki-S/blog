@@ -8,6 +8,20 @@ export const convertRichTextToHtml = (richText: Document): string => {
             [BLOCKS.EMBEDDED_ASSET]: (node) => {
                 const { title, file } = node.data.target.fields;
                 return `<img src="${file.url}" width="400" alt="${title}" />`;
+            },
+            [BLOCKS.HEADING_2]: (node) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			    // @ts-ignore
+                const text = node.content[0].value;
+                const id = text.toLowerCase().replace(/ /g, "-");
+                return `<h2 id="${id}">${text}</h2>`;
+            },
+            [BLOCKS.HEADING_3]: (node) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			    // @ts-ignore
+                const text = node.content[0].value;
+                const id = text.toLowerCase().replace(/ /g, "-");
+                return `<h3 id="${id}">${text}</h3>`;
             }
         }
     });
