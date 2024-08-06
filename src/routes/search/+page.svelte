@@ -10,7 +10,7 @@
 	let tagSearchQuery: string = '';
 	export let data: PageData;
 
-	const allTags = data.tags;
+	const allTags = [...data.tags];
 	let filteredTags = allTags;
 	const areArticlesPresent: boolean = Boolean(data.articles);
 	$: inputEmpty = query === '';

@@ -12,7 +12,7 @@
 	<div class="flex justify-center items-center gap-x-5">
 		<h1 class="text-3xl text-center">
 			<span class="text-secondory-500 me-2">#</span>
-			{data.tag.name}
+			{data.currentTag.name}
 		</h1>
 		<a
 			id="refresh-tag-button"
