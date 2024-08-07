@@ -94,7 +94,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 
 		const entries = await this._client.getEntries({
 			content_type: 'article',
-			'fields.tags.sys.id[in]': tag.id,
+			'fields.tags.sys.id[in]': tag.id
 		});
 
 		const articles = entries.items.map((item) => {
