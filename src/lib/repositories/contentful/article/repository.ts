@@ -1,6 +1,7 @@
 import type { IArticlesRepository } from '$lib/features/article/repositories/apis/fetch-articles';
 import type { Article, ArticleId } from '$lib/features/article/types/type';
 import type { Tag } from '$lib/features/tag/types/type';
+import type { Entry, EntrySkeletonType } from 'contentful';
 import client from '../client';
 import { convertRichTextToHtml } from '../utils/convert-to-html';
 
@@ -9,6 +10,28 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 
 	constructor() {
 		this._client = client;
+	}
+
+	static getTagsFromEntry(entry: Entry<EntrySkeletonType, undefined, string>): Tag[] {
+		if (!entry.fields.tags) {
+			return [];
+		}
+
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
+		const tags = entry.fields.tags.map((tag) => {
+			return {
+				id: tag.sys.id,
+				name: tag.fields.name,
+				slug: tag.fields.slug,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				iconUrl: tag.fields.icon.fields.file.url,
+				color: tag.fields.color
+			} satisfies Tag;
+		});
+
+		return tags;
 	}
 
 	async getArticleBySlug(slug: string): Promise<Article> {
@@ -35,24 +58,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 			imageUrl: entry.fields.thumbnail.fields.file.url,
 			createdAt: new Date(entry.sys.createdAt),
 			updatedAt: new Date(entry.sys.updatedAt),
-			// 型エラーを一旦無視
-			tag: {
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				id: entry.fields.tag.sys.id as string,
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				name: entry.fields.tag.fields.name as string,
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				slug: entry.fields.tag.fields.slug,
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				iconUrl: entry.fields.tag.fields.icon.fields.file.url,
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				color: entry.fields.tag.fields.color
-			}
+			tags: ContentfulArticlesRepository.getTagsFromEntry(entry)
 		} as Article;
 
 		return article;
@@ -62,8 +68,8 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 		if (excludedArticle) {
 			const entries = await this._client.getEntries({
 				content_type: 'article',
-				'fields.tag.sys.id': tag.id,
-				'fields.slug[ne]': excludedArticle.slug
+				'fields.tags.sys.id[in]': tag.id,
+				'sys.id[nin]': [excludedArticle.id]
 			});
 
 			const articles = entries.items.map((item) => {
@@ -79,15 +85,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 					imageUrl: item.fields.thumbnail.fields.file.url,
 					createdAt: new Date(item.sys.createdAt),
 					updatedAt: new Date(item.sys.updatedAt),
-					tag: {
-						id: tag.id,
-						name: tag.name,
-						slug: tag.slug,
-						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-						// @ts-ignore
-						iconUrl: tag.iconUrl,
-						color: tag.color
-					}
+					tags: ContentfulArticlesRepository.getTagsFromEntry(item)
 				} satisfies Article;
 			});
 
@@ -96,7 +94,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 
 		const entries = await this._client.getEntries({
 			content_type: 'article',
-			'fields.tag.sys.id': tag.id
+			'fields.tags.sys.id[in]': tag.id,
 		});
 
 		const articles = entries.items.map((item) => {
@@ -112,13 +110,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				imageUrl: item.fields.thumbnail.fields.file.url,
 				createdAt: new Date(item.sys.createdAt),
 				updatedAt: new Date(item.sys.updatedAt),
-				tag: {
-					id: tag.id,
-					name: tag.name,
-					slug: tag.slug,
-					iconUrl: tag.iconUrl,
-					color: tag.color
-				}
+				tags: ContentfulArticlesRepository.getTagsFromEntry(item)
 			} satisfies Article;
 		});
 
@@ -145,24 +137,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				imageUrl: item.fields.thumbnail.fields.file.url as string,
 				createdAt: new Date(item.sys.createdAt),
 				updatedAt: new Date(item.sys.updatedAt),
-				// 型エラーを一旦無視
-				tag: {
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					id: item.fields.tag.sys.id as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					name: item.fields.tag.fields.name as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					slug: item.fields.tag.fields.slug,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					iconUrl: item.fields.tag.fields.icon.fields.file.url as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					color: item.fields.tag.fields.color as string
-				}
+				tags: ContentfulArticlesRepository.getTagsFromEntry(item)
 			} satisfies Article;
 		});
 
@@ -188,24 +163,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				imageUrl: item.fields.thumbnail.fields.file.url as string,
 				createdAt: new Date(item.sys.createdAt),
 				updatedAt: new Date(item.sys.updatedAt),
-				// 型エラーを一旦無視
-				tag: {
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					id: item.fields.tag.sys.id as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					name: item.fields.tag.fields.name as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					slug: item.fields.tag.fields.slug,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					iconUrl: item.fields.tag.fields.icon.fields.file.url as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					color: item.fields.tag.fields.color as string
-				}
+				tags: ContentfulArticlesRepository.getTagsFromEntry(item)
 			} satisfies Article;
 		});
 
@@ -231,24 +189,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				imageUrl: item.fields.thumbnail.fields.file.url as string,
 				createdAt: new Date(item.sys.createdAt),
 				updatedAt: new Date(item.sys.updatedAt),
-				// 型エラーを一旦無視
-				tag: {
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					id: item.fields.tag.sys.id as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					name: item.fields.tag.fields.name as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					slug: item.fields.tag.fields.slug,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					iconUrl: item.fields.tag.fields.icon.fields.file.url as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					color: item.fields.tag.fields.color as string
-				}
+				tags: ContentfulArticlesRepository.getTagsFromEntry(item)
 			} satisfies Article;
 		});
 
@@ -275,24 +216,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				imageUrl: item.fields.thumbnail.fields.file.url as string,
 				createdAt: new Date(item.sys.createdAt),
 				updatedAt: new Date(item.sys.updatedAt),
-				// 型エラーを一旦無視
-				tag: {
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					id: item.fields.tag.sys.id as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					name: item.fields.tag.fields.name as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					slug: item.fields.tag.fields.slug,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					iconUrl: item.fields.tag.fields.icon.fields.file.url as string,
-					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-					// @ts-ignore
-					color: item.fields.tag.fields.color as string
-				}
+				tags: ContentfulArticlesRepository.getTagsFromEntry(item)
 			} satisfies Article;
 		});
 

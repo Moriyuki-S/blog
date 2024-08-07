@@ -7,6 +7,7 @@
 	import { BookmarkedArticlesIdStore } from '../../stores/bookmarked-articlesID';
 	import { BookmarkArticles } from '../../application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
+	import TagChipList from '$lib/features/tag/components/TagChip/List/TagChipList.svelte';
 
 	export let article: Readonly<Article>; //読みこみのみ可能
 
@@ -49,7 +50,7 @@
 	</div>
 	<div class="p-5 h-72">
 		<div class="mb-4 w-full flex justify-between items-center">
-			<TagChip tag={article.tag} />
+			<TagChipList tags={article.tags} />
 			{#if isBookmarked}
 				<button
 					on:click|preventDefault={() => removeBookmarkedArticle(article.id)}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import TagChipList from '$lib/features/tag/components/TagChip/List/TagChipList.svelte';
 	import TagChip from '$lib/features/tag/components/TagChip/TagChip.svelte';
 	import { formatTimetoJapanese } from '$lib/utils/time-format';
 	import type { Article } from '../../types/type';
@@ -13,12 +14,12 @@
 <article class="w-full max-w-[40rem]">
 	<Breadcrumb>
 		<BreadcrumbItem href="/" home>ホーム</BreadcrumbItem>
-		<BreadcrumbItem href={`/tags/${article.tag.id}`}>
-			{article.tag.name}
+		<BreadcrumbItem href={`/tags/${article.tags[0].id}`}>
+			{article.tags[0].name}
 		</BreadcrumbItem>
 	</Breadcrumb>
 	<div class="mt-8">
-		<TagChip tag={article.tag} />
+		<TagChipList tags={article.tags} />
 	</div>
 	<h1 class="text-3xl mt-5 pb-2 border-b-2 border-b-sky-500 font-bold">{article.title}</h1>
 	<ul class="w-fit ml-auto mt-4 flex gap-x-4">
