@@ -10,12 +10,15 @@ describe('ArticleHorizontalCardのUIテスト', () => {
 		title: 'サンプル記事',
 		imageUrl: 'https://placehold.jp/300x300.png',
 		body: 'これはサンプルの記事です。dfadfasdfasdfadf',
-		tag: {
-			id: '1',
-			name: 'サンプルタグ',
-			iconUrl: 'https://placehold.jp/30x30.png',
-			color: '#ff0000'
-		},
+		tags: [
+			{
+				id: '1',
+				name: 'サンプルタグ',
+				slug: 'sample-tag',
+				iconUrl: 'https://placehold.jp/30x30.png',
+				color: '#ff0000'
+			}
+		],
 		createdAt: new Date(),
 		updatedAt: new Date()
 	};
