@@ -39,19 +39,19 @@
 					<span>関連記事</span>
 				</div>
 				<ColumnList>
-				{#await data.relatedArticles}
-					{#each Array(3) as _}
-						<li>
-							<ArticleHorizontalCardSkeleton />
-						</li>
-					{/each}
-				{:then relatedArticles} 
-					{#each relatedArticles as relatedArticle}
-						<li>
-							<ArticleHorizontalCard article={relatedArticle} />
-						</li>
-					{/each}
-				{/await}
+					{#await data.relatedArticles}
+						{#each Array(3) as _}
+							<li>
+								<ArticleHorizontalCardSkeleton />
+							</li>
+						{/each}
+					{:then relatedArticles}
+						{#each relatedArticles as relatedArticle}
+							<li>
+								<ArticleHorizontalCard article={relatedArticle} />
+							</li>
+						{/each}
+					{/await}
 				</ColumnList>
 			</TabItem>
 		</Tabs>
