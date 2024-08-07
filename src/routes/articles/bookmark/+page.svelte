@@ -8,11 +8,9 @@
 		TagOutline
 	} from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
-	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
 	import { Button, Dropdown, DropdownItem, Modal, Spinner, Tooltip } from 'flowbite-svelte';
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
-	import { invalidate } from '$app/navigation';
 	import type { Article, ArticleId, Criteria } from '$lib/features/article/types/type';
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 	import TagFilterButton from '$lib/features/tag/components/TagFilterButton/TagFilterButton.svelte';

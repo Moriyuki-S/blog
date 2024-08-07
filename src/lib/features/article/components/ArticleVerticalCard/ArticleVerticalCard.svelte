@@ -2,7 +2,6 @@
 	import { calculateTimeDifference } from '$lib/utils/time-format';
 	import { Card, Tooltip } from 'flowbite-svelte';
 	import type { Article, ArticleId } from '../../types/type';
-	import TagChip from '$lib/features/tag/components/TagChip/TagChip.svelte';
 	import { BookmarkOutline, BookmarkSolid } from 'flowbite-svelte-icons';
 	import { BookmarkedArticlesIdStore } from '../../stores/bookmarked-articlesID';
 	import { BookmarkArticles } from '../../application/usecases/bookmark-articles';

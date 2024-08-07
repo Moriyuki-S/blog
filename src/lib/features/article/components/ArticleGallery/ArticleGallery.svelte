@@ -2,7 +2,6 @@
 	import type { Article, ArticleId, Criteria } from '../../types/type';
 	import ArticleVerticalCard from '../ArticleVerticalCard/ArticleVerticalCard.svelte';
 	import SortUtils from '../../utils/sort';
-	import type { Tag } from '$lib/features/tag/types/type';
 	import { flip } from 'svelte/animate';
 
 	export let articles: Article[];
