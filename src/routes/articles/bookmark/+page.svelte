@@ -5,10 +5,11 @@
 		ExclamationCircleOutline,
 		InfoCircleOutline,
 		OrderedListOutline,
+		SearchOutline,
 		TagOutline
 	} from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
-	import { Button, Dropdown, DropdownItem, Modal, Spinner, Tooltip } from 'flowbite-svelte';
+	import { Alert, Button, Dropdown, DropdownItem, Modal, Spinner, Tooltip } from 'flowbite-svelte';
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
 	import type { Article, ArticleId, Criteria } from '$lib/features/article/types/type';
@@ -24,6 +25,7 @@
 	let selectDropdownOpen: boolean = false;
 	let currentBookmarkedArticles: Article[] = [...data.articles];
 	let articlesByFilteredTag: Article[] = [...currentBookmarkedArticles];
+	let hasBookmarkedArticles: boolean = currentBookmarkedArticles.length > 0;
 
 	const criterias: Criteria[] = [
 		{
@@ -79,7 +81,9 @@
 	};
 
 	const functionOnRemoveBookmark = (articleId: ArticleId) => {
-		currentBookmarkedArticles = currentBookmarkedArticles.filter((article) => article.id !== articleId);
+		currentBookmarkedArticles = currentBookmarkedArticles.filter(
+			(article) => article.id !== articleId
+		);
 		articlesByFilteredTag = articlesByFilteredTag.filter((article) => article.id !== articleId);
 	};
 </script>
@@ -101,60 +105,75 @@
 			ブックマーク機能について
 		</Tooltip>
 	</div>
+	{#if hasBookmarkedArticles}
 	<div class="w-full flex justify-between mt-10">
-		<menu class="flex gap-x-5">
-			<li>
-				<Button color="alternative" id="bookmark-sort-button">
-					<OrderedListOutline class="me-2" />
-					{currentCriteria.label}
-				</Button>
-				<Dropdown bind:open={selectDropdownOpen}>
-					{#each criterias as criteira}
-						<DropdownItem
-							class={currentCriteria.value === criteira.value
-								? 'text-primary-500 dark:text-primary-300 hover:text-primary-700'
-								: 'text-black'}
-							on:click={() => handleSelectCriteria(criteira)}
-						>
-							{criteira.label}
-						</DropdownItem>
-					{/each}
-				</Dropdown>
-				<Tooltip triggeredBy="#bookmark-sort-button">並べ替える</Tooltip>
-			</li>
-			<li>
-				{#await data.tags}
-					<SecondoryColorButton disabled>
-						<Spinner size="4" class="me-2" />
-						タグを読み込み中
-					</SecondoryColorButton>
-				{:then tags}
-					<TagFilterButton {tags} resetTag={resetSelectTag} selectTag={handleSelectTag}>
-						<TagOutline class="me-2" />
-						{currentFilterTag ? currentFilterTag.name : 'すべてのタグ'}
-						<ChevronDownOutline class="ms-2" />
-					</TagFilterButton>
-				{:catch}
-					<Button color="red" disabled>
-						<ExclamationCircleOutline size="xs" color="red" class="me-2" />
-						タグの読み込みに失敗しました
+			<menu class="flex gap-x-5">
+				<li>
+					<Button color="alternative" id="bookmark-sort-button">
+						<OrderedListOutline class="me-2" />
+						{currentCriteria.label}
 					</Button>
-				{/await}
-			</li>
-		</menu>
-		<Button color="red" on:click={openDeleteModal}>すべて解除する</Button>
-	</div>
-	{#if currentBookmarkedArticles.length === 0}
-		<h1>ブックマークした記事はありません</h1>
-		<Button href="/search">記事を探す</Button>
-	{:else}
-		<ArticleGallery
-			ulStyleClass="mt-10 gap-5"
-			articles={articlesByFilteredTag}
-			sortCriteria={currentCriteria}
-			{functionOnRemoveBookmark}
-		/>
-	{/if}
+					<Dropdown bind:open={selectDropdownOpen}>
+						{#each criterias as criteira}
+							<DropdownItem
+								class={currentCriteria.value === criteira.value
+									? 'text-primary-500 dark:text-primary-300 hover:text-primary-700'
+									: 'text-black'}
+								on:click={() => handleSelectCriteria(criteira)}
+							>
+								{criteira.label}
+							</DropdownItem>
+						{/each}
+					</Dropdown>
+					<Tooltip triggeredBy="#bookmark-sort-button">並べ替える</Tooltip>
+				</li>
+				<li>
+					{#await data.tags}
+						<SecondoryColorButton disabled>
+							<Spinner size="4" class="me-2" />
+							タグを読み込み中
+						</SecondoryColorButton>
+					{:then tags}
+						<TagFilterButton {tags} resetTag={resetSelectTag} selectTag={handleSelectTag}>
+							<TagOutline class="me-2" />
+							{currentFilterTag ? currentFilterTag.name : 'すべてのタグ'}
+							<ChevronDownOutline class="ms-2" />
+						</TagFilterButton>
+					{:catch}
+						<Button color="red" disabled>
+							<ExclamationCircleOutline size="xs" color="red" class="me-2" />
+							タグの読み込みに失敗しました
+						</Button>
+					{/await}
+				</li>
+			</menu>
+			<Button color="red" on:click={openDeleteModal}>すべて解除する</Button>
+			<ArticleGallery
+				ulStyleClass="mt-10 gap-5"
+				articles={articlesByFilteredTag}
+				sortCriteria={currentCriteria}
+				{functionOnRemoveBookmark}
+			/>
+		</div>
+		{:else}
+		<div class="flex items-center gap-x-5 md:w-[45rem] md:pt-5 md:mx-auto">
+			<div>
+				<img src="https://placehold.jp/300x300.png" alt="ブックマークした記事はありません">
+			</div>
+			<div class="flex flex-col gap-y-5 items-center">
+				<h2>
+					<Alert color="red" class="text-2xl flex gap-x-3">
+						<InfoCircleOutline class="me-2" size="xl" />
+						ブックマークした記事はありません
+					</Alert>
+				</h2>
+				<Button href="/search" class="w-40">
+					<SearchOutline class="me-2" />
+					記事を探す</Button>
+			</div>
+		</div>
+		{/if}
+
 </main>
 
 <Modal bind:open={isOpenedDeleteModal} autoclose>
