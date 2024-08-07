@@ -10,6 +10,8 @@
 	import TagChipList from '$lib/features/tag/components/TagChip/List/TagChipList.svelte';
 
 	export let article: Readonly<Article>; //読みこみのみ可能
+	export let functionOnBookmark:( (articleId: ArticleId) => void ) | undefined = undefined;
+	export let functionOnRemoveBookmark: ( (articleId: ArticleId) => void ) | undefined= undefined;
 
 	// 更新したかを判定
 	$: wasUpdated = article.updatedAt.toString() !== article.createdAt.toString();
@@ -20,6 +22,9 @@
 	// ブックマーク処理
 	const bookmarkArticle = (articleId: ArticleId) => {
 		BookmarkArticles.bookmarkArticle(articleId);
+		if (functionOnBookmark) {
+			functionOnBookmark(articleId);
+		}
 		isBookmarked = true;
 		SnackbarUtils.update('ブックマークしました');
 	};
@@ -27,6 +32,9 @@
 	// ブックマーク解除処理
 	const removeBookmarkedArticle = (articleId: ArticleId) => {
 		BookmarkArticles.removeBookmarkedArticle(articleId);
+		if (functionOnRemoveBookmark) {
+			functionOnRemoveBookmark(articleId);
+		}
 		isBookmarked = false;
 		SnackbarUtils.update('ブックマークを解除しました');
 	};

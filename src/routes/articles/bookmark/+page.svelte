@@ -13,7 +13,7 @@
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
 	import { invalidate } from '$app/navigation';
-	import type { Criteria } from '$lib/features/article/types/type';
+	import type { Article, ArticleId, Criteria } from '$lib/features/article/types/type';
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 	import TagFilterButton from '$lib/features/tag/components/TagFilterButton/TagFilterButton.svelte';
 	import type { Tag } from '$lib/features/tag/types/type';
@@ -24,6 +24,7 @@
 	let isOpenedDeleteModal: boolean = false;
 	let isOpenedInfoModal: boolean = false;
 	let selectDropdownOpen: boolean = false;
+	let currentBookmarkedArticles: Article[] = [...data.articles];
 
 	const criterias: Criteria[] = [
 		{
@@ -70,9 +71,14 @@
 
 	const resetBookmarkArticles = async () => {
 		BookmarkArticles.resetBookmarkedArticles();
-		await invalidate('articles:bookmark');
+		currentBookmarkedArticles = [];
 		SnackbarUtils.update('ブックマークした記事を解除しました');
 	};
+
+	const functionOnRemoveBookmark = (articleId: ArticleId) => {
+		currentBookmarkedArticles = currentBookmarkedArticles.filter((article) => article.id !== articleId);
+	};
+
 </script>
 
 <main class="pt-16 px-4">
@@ -142,7 +148,7 @@
 			{/each}
 		</ul>
 	{:then articles}
-		<ArticleGallery ulStyleClass="mt-10 gap-5" {articles} sortCriteria={currentCriteria} />
+		<ArticleGallery ulStyleClass="mt-10 gap-5" articles={currentBookmarkedArticles} sortCriteria={currentCriteria} {functionOnRemoveBookmark} />
 	{/await}
 </main>
 
