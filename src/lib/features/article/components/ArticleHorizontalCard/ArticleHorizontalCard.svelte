@@ -21,7 +21,7 @@
 		>
 			<h4
 				id="short-article"
-				class="w-44 h-12 group-hover:underline group-hover:text-primary-500 whitespace-normal font-bold pl-4 flex self-center justify-self-center text-gray-500"
+				class="w-44 h-fit max-h-12 group-hover:underline group-hover:text-primary-500 whitespace-normal font-bold pl-4 flex self-center justify-self-center text-gray-500"
 			>
 				{article.title}
 			</h4>
