@@ -10,8 +10,8 @@
 	import TagChipList from '$lib/features/tag/components/TagChip/List/TagChipList.svelte';
 
 	export let article: Readonly<Article>; //読みこみのみ可能
-	export let functionOnBookmark:( (articleId: ArticleId) => void ) | undefined = undefined;
-	export let functionOnRemoveBookmark: ( (articleId: ArticleId) => void ) | undefined= undefined;
+	export let functionOnBookmark: ((articleId: ArticleId) => void) | undefined = undefined;
+	export let functionOnRemoveBookmark: ((articleId: ArticleId) => void) | undefined = undefined;
 
 	// 更新したかを判定
 	$: wasUpdated = article.updatedAt.toString() !== article.createdAt.toString();

@@ -25,6 +25,7 @@
 	let isOpenedInfoModal: boolean = false;
 	let selectDropdownOpen: boolean = false;
 	let currentBookmarkedArticles: Article[] = [...data.articles];
+	let articlesByFilteredTag: Article[] = [...currentBookmarkedArticles];
 
 	const criterias: Criteria[] = [
 		{
@@ -51,10 +52,14 @@
 
 	const handleSelectTag = (tag: Tag) => {
 		currentFilterTag = tag;
+		articlesByFilteredTag = currentBookmarkedArticles.filter((article) =>
+			article.tags.some((articleTag) => articleTag.id === tag.id)
+		);
 	};
 
 	const resetSelectTag = () => {
 		currentFilterTag = null;
+		articlesByFilteredTag = [...currentBookmarkedArticles];
 	};
 
 	const openInfoModal = () => {
@@ -76,9 +81,10 @@
 	};
 
 	const functionOnRemoveBookmark = (articleId: ArticleId) => {
-		currentBookmarkedArticles = currentBookmarkedArticles.filter((article) => article.id !== articleId);
+		currentBookmarkedArticles = currentBookmarkedArticles.filter(
+			(article) => article.id !== articleId
+		);
 	};
-
 </script>
 
 <main class="pt-16 px-4">
@@ -141,15 +147,17 @@
 		</menu>
 		<Button color="red" on:click={openDeleteModal}>すべて解除する</Button>
 	</div>
-	{#await data.articles}
-		<ul class="grid grid-cols-3 gap-5 mt-10" data-testid="tagged-articles">
-			{#each Array(8) as _}
-				<ArticleVerticalCardSkeleton />
-			{/each}
-		</ul>
-	{:then articles}
-		<ArticleGallery ulStyleClass="mt-10 gap-5" articles={currentBookmarkedArticles} sortCriteria={currentCriteria} {functionOnRemoveBookmark} />
-	{/await}
+	{#if currentBookmarkedArticles.length === 0}
+		<h1>ブックマークした記事はありません</h1>
+		<Button href="/search">記事を探す</Button>
+	{:else}
+		<ArticleGallery
+			ulStyleClass="mt-10 gap-5"
+			articles={articlesByFilteredTag}
+			sortCriteria={currentCriteria}
+			{functionOnRemoveBookmark}
+		/>
+	{/if}
 </main>
 
 <Modal bind:open={isOpenedDeleteModal} autoclose>

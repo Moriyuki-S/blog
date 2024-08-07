@@ -7,11 +7,10 @@
 
 	export let articles: Article[];
 	export let sortCriteria: Criteria | null;
-	export let sortTag: Tag | null = null;
 	export let ulStyleClass: string = '';
 	export let liStyleClass: string = '';
-	export let functionOnBookmark: ( (articleId: ArticleId) => void )| undefined = undefined;
-	export let functionOnRemoveBookmark: ( (articleId: ArticleId) => void ) | undefined = undefined;
+	export let functionOnBookmark: ((articleId: ArticleId) => void) | undefined = undefined;
+	export let functionOnRemoveBookmark: ((articleId: ArticleId) => void) | undefined = undefined;
 
 	let sortedArticles: Article[] = articles;
 
@@ -23,12 +22,6 @@
 		} else {
 			// 人気順はいったん後まわし
 			sortedArticles = articles;
-		}
-	}
-
-	$: {
-		if (sortTag) {
-			sortedArticles = SortUtils.sortArticlesByTag(articles, sortTag);
 		}
 	}
 </script>
