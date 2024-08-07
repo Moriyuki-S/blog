@@ -79,9 +79,8 @@
 	};
 
 	const functionOnRemoveBookmark = (articleId: ArticleId) => {
-		currentBookmarkedArticles = currentBookmarkedArticles.filter(
-			(article) => article.id !== articleId
-		);
+		currentBookmarkedArticles = currentBookmarkedArticles.filter((article) => article.id !== articleId);
+		articlesByFilteredTag = articlesByFilteredTag.filter((article) => article.id !== articleId);
 	};
 </script>
 
