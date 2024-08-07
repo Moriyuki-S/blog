@@ -81,13 +81,13 @@
 	}
 
 	:global(#article-body .hyperlink) {
-		color : #0891b2;
+		color: #0891b2;
 		border-bottom: 1px solid #0891b2;
 		padding: 0 0.2rem;
 	}
 
 	:global(#article-body .hyperlink:hover) {
-		color : #155e75;
+		color: #155e75;
 		background-color: #f0f4f8;
 	}
 

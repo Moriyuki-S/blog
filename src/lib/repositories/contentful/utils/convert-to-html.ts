@@ -44,13 +44,13 @@ export const convertRichTextToHtml = (richText: Document): string => {
 				const text = node.content[0].value;
 				return `<a href="${uri}" class="hyperlink" target="_blank" rel="noopener noreferrer">
 				${text}<svg class="inline-block w-4 h-4 -translate-y-[1.8px] text-primary-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/></svg>
-				</a>`
+				</a>`;
 			},
 			[INLINES.EMBEDDED_ENTRY]: (node) => {
 				const { title, slug } = node.data.target.fields;
 				return `<a href="/articles/${slug}" class="hyperlink" target="_blank" rel="noopener noreferrer">
 				${title}<svg class="inline-block w-4 h-4 -translate-y-[1.8px] text-primary-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/></svg>
-				</a>`
+				</a>`;
 			},
 			[BLOCKS.EMBEDDED_ENTRY]: (node) => {
 				const { title, slug, thumbnail } = node.data.target.fields;
@@ -63,7 +63,7 @@ export const convertRichTextToHtml = (richText: Document): string => {
 					<h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">${title}</h5>
 					<time class="ml-auto">投稿: ${formatUpdatedAt}</time>
 				</div>
-			</a>`
+			</a>`;
 			}
 		}
 	});
