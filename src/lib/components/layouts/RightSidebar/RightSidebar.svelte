@@ -2,6 +2,6 @@
 	export let styleClass: string = '';
 </script>
 
-<aside class={`hidden md:block max-w-72 ${styleClass}`}>
+<aside class={`hidden md:block ${styleClass}`}>
 	<slot />
 </aside>
