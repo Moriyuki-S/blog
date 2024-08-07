@@ -106,7 +106,7 @@
 		</Tooltip>
 	</div>
 	{#if hasBookmarkedArticles}
-	<div class="w-full flex justify-between mt-10">
+		<div class="w-full flex justify-between mt-10">
 			<menu class="flex gap-x-5">
 				<li>
 					<Button color="alternative" id="bookmark-sort-button">
@@ -155,10 +155,10 @@
 				{functionOnRemoveBookmark}
 			/>
 		</div>
-		{:else}
+	{:else}
 		<div class="flex items-center gap-x-5 md:w-[45rem] md:pt-5 md:mx-auto">
 			<div>
-				<img src="https://placehold.jp/300x300.png" alt="ブックマークした記事はありません">
+				<img src="https://placehold.jp/300x300.png" alt="ブックマークした記事はありません" />
 			</div>
 			<div class="flex flex-col gap-y-5 items-center">
 				<h2>
@@ -169,11 +169,11 @@
 				</h2>
 				<Button href="/search" class="w-40">
 					<SearchOutline class="me-2" />
-					記事を探す</Button>
+					記事を探す</Button
+				>
 			</div>
 		</div>
-		{/if}
-
+	{/if}
 </main>
 
 <Modal bind:open={isOpenedDeleteModal} autoclose>
