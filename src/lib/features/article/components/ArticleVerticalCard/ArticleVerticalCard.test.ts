@@ -20,13 +20,15 @@ describe('記事のカードコンポーネントのUIテスト', () => {
 			slug: '/',
 			createdAt: new Date(),
 			updatedAt: new Date(),
-			tag: {
-				id: '1',
-				name: 'サンプルタグ',
-				slug: 'sample-tag',
-				iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
-				color: '#ff0000'
-			}
+			tags: [
+				{
+					id: '1',
+					name: 'サンプルタグ',
+					slug: 'sample-tag',
+					iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
+					color: '#ff0000'
+				}
+			]
 		};
 		render(ArticleVerticalCard, { article: SAMPLE_ARTICLE });
 		const title = screen.queryByText(SAMPLE_ARTICLE.title);
@@ -42,13 +44,15 @@ describe('記事のカードコンポーネントのUIテスト', () => {
 			slug: '/',
 			createdAt: dayjs().subtract(1, 'day').toDate(),
 			updatedAt: dayjs().subtract(1, 'day').toDate(),
-			tag: {
-				id: '1',
-				name: 'サンプルタグ',
-				slug: 'sample-tag',
-				iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
-				color: '#ff0000'
-			}
+			tags: [
+				{
+					id: '1',
+					name: 'サンプルタグ',
+					slug: 'sample-tag',
+					iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
+					color: '#ff0000'
+				}
+			]
 		};
 
 		render(ArticleVerticalCard, { article: SAMPLE_ARTICLE });
@@ -65,13 +69,15 @@ describe('記事のカードコンポーネントのUIテスト', () => {
 			slug: '/',
 			createdAt: dayjs().subtract(2, 'day').toDate(),
 			updatedAt: dayjs().subtract(1, 'day').toDate(),
-			tag: {
-				id: '1',
-				name: 'サンプルタグ',
-				slug: 'samle-tag',
-				iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
-				color: '#ff0000'
-			}
+			tags: [
+				{
+					id: '1',
+					name: 'サンプルタグ',
+					slug: 'samle-tag',
+					iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
+					color: '#ff0000'
+				}
+			]
 		};
 		render(ArticleVerticalCard, { article: SAMPLE_ARTICLE });
 		const date = screen.getByTestId(`article-card-time-${SAMPLE_ARTICLE.id}`);
@@ -88,13 +94,15 @@ describe('ブックマーク関連のテスト', () => {
 		slug: '/',
 		createdAt: dayjs().subtract(1, 'day').toDate(),
 		updatedAt: dayjs().subtract(1, 'day').toDate(),
-		tag: {
-			id: '1',
-			name: 'サンプルタグ',
-			slug: 'sample-tag',
-			iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
-			color: '#ff0000'
-		}
+		tags: [
+			{
+				id: '1',
+				name: 'サンプルタグ',
+				slug: 'sample-tag',
+				iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
+				color: '#ff0000'
+			}
+		]
 	};
 
 	beforeEach(() => {

@@ -13,12 +13,15 @@ describe('記事詳細ページのUIテスト', () => {
 		slug: '/sample',
 		createdAt: new Date('2021-01-01T00:00:00'),
 		updatedAt: new Date('2021-01-01T00:00:00'),
-		tag: {
-			id: '1',
-			name: 'サンプルタグ',
-			iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
-			color: '#ff0000'
-		}
+		tags: [
+			{
+				id: '1',
+				name: 'サンプルタグ',
+				slug: 'sample-tag',
+				iconUrl: 'https://icon-pit.com/wp-content/uploads/2018/10/note-pc_icon_79.png',
+				color: '#ff0000'
+			}
+		]
 	};
 
 	const SAMPLE_UPDATED_ARTICLE: Article = {

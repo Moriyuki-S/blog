@@ -7,6 +7,7 @@
 	import { BookmarkedArticlesIdStore } from '../../stores/bookmarked-articlesID';
 	import { BookmarkArticles } from '../../application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
+	import TagChipList from '$lib/features/tag/components/TagChip/List/TagChipList.svelte';
 
 	export let article: Readonly<Article>; //読みこみのみ可能
 
@@ -31,25 +32,21 @@
 	};
 </script>
 
-<Card
-	data-article-id={article.id}
-	href={`/articles/${article.slug}`}
-	class="cursor-pointer h-[30rem]"
-	size="sm"
-	padding="none"
->
+<Card data-article-id={article.id} class="h-[30rem]" size="sm" padding="none">
 	<div>
-		<img
-			src={article.imageUrl}
-			alt={article.title}
-			width="400"
-			height="240"
-			class="h-64 rounded-t-lg"
-		/>
+		<a href={`/articles/${article.slug}`} class="hover:opacity-75">
+			<img
+				src={article.imageUrl}
+				alt={article.title}
+				width="400"
+				height="240"
+				class="h-64 rounded-t-lg"
+			/>
+		</a>
 	</div>
 	<div class="p-5 h-72">
 		<div class="mb-4 w-full flex justify-between items-center">
-			<TagChip tag={article.tag} />
+			<TagChipList shouldfilter tags={article.tags} />
 			{#if isBookmarked}
 				<button
 					on:click|preventDefault={() => removeBookmarkedArticle(article.id)}
@@ -80,7 +77,9 @@
 			id="title"
 			class="mb-10 text-2xl h-16 font-bold tracking-tight text-gray-900 dark:text-white"
 		>
-			{article.title}
+			<a href={`/articles/${article.slug}`} class="hover:underline">
+				{article.title}
+			</a>
 		</h5>
 		<time
 			datetime={wasUpdated ? String(article.updatedAt) : String(article.createdAt)}
