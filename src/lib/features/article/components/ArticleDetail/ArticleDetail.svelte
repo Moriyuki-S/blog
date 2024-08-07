@@ -39,3 +39,73 @@
 		{@html article.body}
 	</div>
 </article>
+
+<style>
+	:global(#article-body img) {
+		max-width: 100%;
+		margin: 3rem auto;
+	}
+
+	:global(#article-body h2) {
+		margin-top: 3rem;
+		font-weight: bold;
+		font-size: 2rem;
+		border-bottom: 1px solid #e2e8f0;
+	}
+
+	:global(#article-body h3) {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		font-weight: bold;
+		font-size: 1.6rem;
+	}
+
+	:global(#article-body h3:hover) {
+		color: #40a9c6;
+	}
+
+	:global(#article-body h3:hover::after) {
+		content: ' #';
+		color: #40a9c6;
+	}
+
+	:global(#article-body h4) {
+		margin-top: 1rem;
+		margin-bottom: 0.5rem;
+		font-weight: bold;
+		font-size: 1.4rem;
+	}
+
+	:global(#article-body p) {
+		line-height: 2;
+	}
+
+	:global(#article-body .hyperlink) {
+		color: #0891b2;
+		border-bottom: 1px solid #0891b2;
+		padding: 0 0.2rem;
+	}
+
+	:global(#article-body .hyperlink:hover) {
+		color: #155e75;
+		background-color: #f0f4f8;
+	}
+
+	:global(#article-body hr) {
+		margin: 3rem 0;
+		border: none;
+		border-top: 1px solid #e2e8f0;
+	}
+
+	:global(#article-body .article-link) {
+		margin: 2rem auto;
+	}
+
+	:global(#article-body .article-link:hover h5) {
+		text-decoration: underline;
+	}
+
+	:global(#article-body .thumbnail) {
+		margin: 0;
+	}
+</style>

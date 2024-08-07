@@ -2,7 +2,7 @@ import type { IArticlesRepository } from '$lib/features/article/repositories/api
 import type { Article, ArticleId } from '$lib/features/article/types/type';
 import type { Tag } from '$lib/features/tag/types/type';
 import client from '../client';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { convertRichTextToHtml } from '../utils/convert-to-html';
 
 export class ContentfulArticlesRepository implements IArticlesRepository {
 	private readonly _client;
@@ -28,7 +28,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 			slug: entry.fields.slug,
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
-			body: entry.fields.body ? documentToHtmlString(entry.fields.body) : '',
+			body: entry.fields.body ? convertRichTextToHtml(entry.fields.body) : '',
 			title: entry.fields.title,
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
@@ -73,7 +73,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 					title: item.fields.title as string,
 					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 					// @ts-ignore
-					body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
+					body: item.fields.body ? convertRichTextToHtml(item.fields.body) : '',
 					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 					// @ts-ignore
 					imageUrl: item.fields.thumbnail.fields.file.url,
@@ -106,7 +106,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				title: item.fields.title as string,
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
+				body: item.fields.body ? convertRichTextToHtml(item.fields.body) : '',
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
 				imageUrl: item.fields.thumbnail.fields.file.url,
@@ -138,7 +138,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				slug: item.fields.slug as string,
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
+				body: item.fields.body ? convertRichTextToHtml(item.fields.body) : '',
 				title: item.fields.title as string,
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
@@ -181,7 +181,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				slug: item.fields.slug as string,
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
+				body: item.fields.body ? convertRichTextToHtml(item.fields.body) : '',
 				title: item.fields.title as string,
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
@@ -224,7 +224,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				slug: item.fields.slug as string,
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
+				body: item.fields.body ? convertRichTextToHtml(item.fields.body) : '',
 				title: item.fields.title as string,
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
@@ -268,7 +268,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 				slug: item.fields.slug as string,
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				body: item.fields.body ? documentToHtmlString(item.fields.body) : '',
+				body: item.fields.body ? convertRichTextToHtml(item.fields.body) : '',
 				title: item.fields.title as string,
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
