@@ -117,7 +117,13 @@
 	</button>
 </Modal>
 
-<Modal title="関連記事" bind:open={relatedArticlesModalOpen} class="md:hidden" autoclose outsideclose>
+<Modal
+	title="関連記事"
+	bind:open={relatedArticlesModalOpen}
+	class="md:hidden"
+	autoclose
+	outsideclose
+>
 	<div>
 		<ColumnList>
 			{#await data.relatedArticles}

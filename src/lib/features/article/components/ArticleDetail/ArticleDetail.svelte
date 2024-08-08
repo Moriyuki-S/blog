@@ -20,7 +20,9 @@
 	<div class="mt-8">
 		<TagChipList tags={article.tags} />
 	</div>
-	<h1 class="text-xl w-full md:text-3xl mt-5 pb-2 border-b-2 border-b-sky-500 font-bold">{article.title}</h1>
+	<h1 class="text-xl w-full md:text-3xl mt-5 pb-2 border-b-2 border-b-sky-500 font-bold">
+		{article.title}
+	</h1>
 	<ul class="w-fit text-xs ml-auto mt-4 flex gap-x-4 md:text-base">
 		<li>
 			投稿 : <time datetime="">{formatedCreatedAt}</time>
@@ -32,7 +34,11 @@
 		{/if}
 	</ul>
 	<div class="mt-5">
-		<img src={article.imageUrl} class="w-full md:w-3/4 md:mx-auto h-auto" alt={`「${article.title}」のイメージ画像`} />
+		<img
+			src={article.imageUrl}
+			class="w-full md:w-3/4 md:mx-auto h-auto"
+			alt={`「${article.title}」のイメージ画像`}
+		/>
 	</div>
 	<div id="article-body" class="w-full mt-8">
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
