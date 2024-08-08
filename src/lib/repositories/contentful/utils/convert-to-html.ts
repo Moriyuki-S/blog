@@ -1,4 +1,3 @@
-import { formatTimetoJapanese } from '$lib/utils/time-format';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import type { Document } from '@contentful/rich-text-types';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
