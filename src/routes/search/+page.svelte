@@ -64,9 +64,9 @@
 							placeholder="キーワードでタグを絞り込む"
 						/>
 					</div>
-					<ul id="tag-list" class="flex flex-col md:flex-row gap-5">
+					<ul id="tag-list" class="pb-20 md:pb-10 grid grid-cols-2 justify-items-center sm:grid-cols-4 md:grid-cols-5 gap-3">
 						{#each filteredTags as tag}
-							<li>
+							<li class="w-fit">
 								<TagCard {tag} />
 							</li>
 						{/each}
@@ -79,7 +79,7 @@
 						<SearchOutline />
 						<span>検索結果</span>
 					</div>
-					<ul id="article-list" class="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+					<ul id="article-list" class="pb-20 md:pb-10 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
 						{#await data.articles}
 							<li>
 								<ArticleVerticalCardSkeleton />

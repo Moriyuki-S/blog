@@ -29,7 +29,9 @@
 	>
 		{#await data.articles}
 			{#each Array(8) as _}
+			<li class="w-full flex justify-center">
 				<ArticleVerticalCardSkeleton />
+			</li>
 			{/each}
 		{:then articles}
 			{#each articles as article}
