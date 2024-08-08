@@ -14,7 +14,7 @@
 		<Tabs
 			tabStyle="pill"
 			contentClass="pt-5"
-			defaultClass="w-full border-t bg-white flex justify-center gap-x-5 items-center fixed bottom-0 right-0 md:static md:border-none md:justify-start"
+			defaultClass="hidden md:block md:flex md:gap-x-8 md:border-none md:justify-start"
 		>
 			<TabItem open>
 				<div slot="title" class="flex items-center gap-x-2 md:text-xl">

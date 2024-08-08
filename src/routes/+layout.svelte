@@ -15,4 +15,4 @@
 
 <SnackbarList {snackbars} />
 
-<BottomNavigation />
+<BottomNavigation showHeaderButton />
