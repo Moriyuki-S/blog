@@ -40,7 +40,7 @@
 	};
 </script>
 
-<div out:fade>
+<div out:fade class="w-fit">
 	<Card data-article-id={article.id} class="h-[30rem]" size="sm" padding="none">
 		<div>
 			<a href={`/articles/${article.slug}`} class="hover:opacity-75">
