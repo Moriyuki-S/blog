@@ -8,7 +8,7 @@
 </script>
 
 <Header />
-<div class="pt-20">
+<div class="md:pt-20 pb-20">
 	<slot />
 </div>
 

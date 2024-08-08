@@ -54,14 +54,11 @@ export const convertRichTextToHtml = (richText: Document): string => {
 			},
 			[BLOCKS.EMBEDDED_ENTRY]: (node) => {
 				const { title, slug, thumbnail } = node.data.target.fields;
-				const { updatedAt } = node.data.target.sys;
-				const formatUpdatedAt = formatTimetoJapanese(new Date(updatedAt));
 				const thumbnailUrl = thumbnail.fields.file.url;
-				return `<a href="/articles/${slug}" target="_blank" class="article-link flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-				<img class="thumbnail w-full rounded-t-lg !max-h-32 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="${thumbnailUrl}" alt="${title}">
+				return `<a href="/articles/${slug}" target="_blank" class="article-link flex items-center bg-white border border-gray-200 rounded-lg shadow md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+				<img class="thumbnail !w-48 rounded-t-lg !max-h-32 md:h-auto md:rounded-none md:rounded-s-lg" src="${thumbnailUrl}" alt="${title}">
 				<div class="flex flex-col justify-between px-4 leading-normal">
-					<h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">${title}</h5>
-					<time class="ml-auto">投稿: ${formatUpdatedAt}</time>
+					<h5 class="mb-2 text-base md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">${title}</h5>
 				</div>
 			</a>`;
 			}

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import RightSidebar from '$lib/components/layouts/RightSidebar/RightSidebar.svelte';
 	import ArticleDetail from '$lib/features/article/components/ArticleDetail/ArticleDetail.svelte';
-	import { TabItem, Tabs } from 'flowbite-svelte';
+	import { Modal, SpeedDial, SpeedDialButton, TabItem, Tabs } from 'flowbite-svelte';
 	import type { PageData } from './$types';
 	import { BookOutline, ListOutline } from 'flowbite-svelte-icons';
 	import ArticleContents from '$lib/features/article/components/ArticleContents/ArticleContents.svelte';
@@ -11,6 +11,19 @@
 
 	export let data: PageData;
 	$: article = data.article;
+
+	let speedDialOpen: boolean = false;
+	let tocModalOpen: boolean = false;
+	let relatedArticlesModalOpen: boolean = false;
+
+	const openTocModal = () => {
+		tocModalOpen = true;
+	};
+
+	const openRelatedArticlesModal = () => {
+		relatedArticlesModalOpen = true;
+	};
+
 </script>
 
 <svelte:head>
@@ -18,12 +31,12 @@
 	<meta name="description" content={article.body} />
 </svelte:head>
 
-<div class="pt-10 px-5 pb-10 md:flex md:justify-center md:items-start md:gap-x-1">
-	<main class="md:grow min-w-96">
+<div class="pt-10 px-5 pb-10 md:flex md:justify-center md:items-start md:gap-x-5">
+	<main class="w-full md:grow md:min-w-96">
 		<ArticleDetail {article} />
 	</main>
-	<RightSidebar styleClass="md:min-w-1/3 md:w-96 md:sticky md:top-28">
-		<Tabs tabStyle="underline">
+	<RightSidebar styleClass="md:w-72 md:sticky md:top-20 lg:top-28">
+		<Tabs tabStyle="underline" class="w-full">
 			<TabItem open>
 				<div slot="title" class="flex">
 					<ListOutline class="me-2" />
@@ -58,8 +71,56 @@
 	</RightSidebar>
 </div>
 
+<SpeedDial color="cyanToBlue" gradient  bind:open={speedDialOpen} defaultClass="md:hidden fixed end-6 bottom-6" tooltip="none">
+	<SpeedDialButton name="目次" class="w-20 h-20" on:click={openTocModal}>
+		<ListOutline />
+	</SpeedDialButton>
+	<SpeedDialButton name="関連記事" class="w-20 h-20" on:click={openRelatedArticlesModal}>
+		<BookOutline />
+	</SpeedDialButton>
+</SpeedDial>
+
+<Modal bind:open={tocModalOpen}>
+	<div slot="header">
+		<h5 class="text-xl font-bold pl-5">目次</h5>
+	</div>
+	<button type="button" on:click={() => tocModalOpen = false} on:keydown={(event) => {
+		if (event.key === 'Enter' || event.key === ' ') {
+			tocModalOpen = false;
+		}
+	}}>
+		<ArticleContents />
+	</button>
+</Modal>
+
+<Modal title="関連記事" bind:open={relatedArticlesModalOpen}>
+	<div>
+		<ColumnList>
+			{#await data.relatedArticles}
+				{#each Array(3) as _}
+					<li>
+						<ArticleHorizontalCardSkeleton />
+					</li>
+				{/each}
+			{:then relatedArticles}
+				{#each relatedArticles as relatedArticle}
+					<li>
+						<ArticleHorizontalCard article={relatedArticle} />
+					</li>
+				{/each}
+			{/await}
+		</ColumnList>
+	</div>
+</Modal>
+
 <style>
 	:global(:where(h1, h2, h3, h4)) {
 		scroll-margin-top: 98px;
+	}
+
+	@media (max-widt: 768px) {
+		:global(:where(h1, h2, h3, h4)) {
+			scroll-margin-top: 64px;
+		}
 	}
 </style>
