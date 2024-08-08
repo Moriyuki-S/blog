@@ -32,7 +32,7 @@
 		{/if}
 	</ul>
 	<div class="mt-5">
-		<img src={article.imageUrl} alt={`「${article.title}」のイメージ画像`} />
+		<img src={article.imageUrl} class="w-full md:w-3/4 md:mx-auto h-auto" alt={`「${article.title}」のイメージ画像`} />
 	</div>
 	<div id="article-body" class="w-full mt-8">
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
