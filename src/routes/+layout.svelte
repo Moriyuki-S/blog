@@ -3,6 +3,7 @@
 	import '../app.css';
 	import { SnackbarStore } from '$lib/global-stores/snackbar-store';
 	import SnackbarList from '$lib/components/ui/Snackbar/SnackbarList/SnackbarList.svelte';
+	import BottomNavigation from '$lib/components/layouts/BottomNavigation/BottomNavigation.svelte';
 
 	$: snackbars = $SnackbarStore;
 </script>
@@ -13,3 +14,5 @@
 </div>
 
 <SnackbarList {snackbars} />
+
+<BottomNavigation />

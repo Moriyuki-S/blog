@@ -86,7 +86,7 @@
 	color="cyanToBlue"
 	gradient
 	bind:open={speedDialOpen}
-	defaultClass="md:hidden fixed end-6 bottom-6"
+	defaultClass="md:hidden fixed end-6 bottom-20"
 	tooltip="none"
 >
 	<SpeedDialButton name="関連記事" class="w-20 h-20" on:click={openRelatedArticlesModal}>
