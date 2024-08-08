@@ -8,7 +8,7 @@
 	import ColumnList from '$lib/components/layouts/List/ColumnList/ColumnList.svelte';
 	import ArticleHorizontalCardSkeleton from '$lib/features/article/components/ArticleHorizontalCard/Skeleton/ArticleHorizontalCardSkeleton.svelte';
 	import ArticleHorizontalCard from '$lib/features/article/components/ArticleHorizontalCard/ArticleHorizontalCard.svelte';
-	import { blur, fade } from 'svelte/transition';
+	import { blur } from 'svelte/transition';
 
 	export let data: PageData;
 	$: article = data.article;
@@ -100,7 +100,7 @@
 	</SpeedDialButton>
 </SpeedDial>
 
-<Modal bind:open={tocModalOpen} class="md:hidden">
+<Modal bind:open={tocModalOpen} class="md:hidden" outsideclose autoclose>
 	<div slot="header">
 		<h5 class="text-xl font-bold pl-5">目次</h5>
 	</div>
@@ -117,7 +117,7 @@
 	</button>
 </Modal>
 
-<Modal title="関連記事" bind:open={relatedArticlesModalOpen} class="md:hidden">
+<Modal title="関連記事" bind:open={relatedArticlesModalOpen} class="md:hidden" autoclose outsideclose>
 	<div>
 		<ColumnList>
 			{#await data.relatedArticles}
