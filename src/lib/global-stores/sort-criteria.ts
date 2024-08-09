@@ -1,4 +1,4 @@
-import { get, writable } from "svelte/store";
+import { writable } from "svelte/store";
 
 export interface SortCriteria {
     label: string;
@@ -24,29 +24,29 @@ const ALL_SORT_CRITERIA: SortCriteria[] = [
     }
 ];
 
-const store = writable<SortCriteria[]>(ALL_SORT_CRITERIA);
-
-const getAllCriteria = () => {
-    return get(store);
-};
+export const SortCriteriaStore = writable<SortCriteria[]>(ALL_SORT_CRITERIA);
 
 const setCriteria = (criteria: SortCriteria) => {
-    store.update((criteriaList) => {
-        return criteriaList.map((c) => {
-            return {
-                ...c,
-                active: c.value === criteria.value
-            }
+    SortCriteriaStore.update((store) => {
+        store.map((item) => {
+            item.active = item.value === criteria.value;
+            return item;
         });
+        return store;
     });
 };
 
 const resetCriteria = () => {
-     store.set(ALL_SORT_CRITERIA);
+    SortCriteriaStore.update((store) => {
+        store.map((item) => {
+            item.active = item.value === 'latest';
+            return item;
+        });
+        return store;
+    });
 };
 
 export const SortCriteriaUtils = {
-    getAllCriteria,
     setCriteria,
     resetCriteria
 };

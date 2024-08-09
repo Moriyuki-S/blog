@@ -2,9 +2,42 @@
 	import { page } from '$app/stores';
 	import { BottomNav, BottomNavHeader, BottomNavHeaderItem, BottomNavItem } from 'flowbite-svelte';
 	import { BookmarkOutline, HomeOutline, SearchOutline } from 'flowbite-svelte-icons';
+	import { SortCriteriaStore, SortCriteriaUtils, type SortCriteria } from '$lib/global-stores/sort-criteria';
+	import { get } from 'svelte/store';
+	import { afterNavigate } from '$app/navigation';
+
 
 	$: activeUrl = $page.url.pathname;
-	export let showHeaderButton: boolean = false;
+	$: showHeaderButton = activeUrl === '/' || activeUrl.startsWith('/tags/') || activeUrl === ('/articles/bookmark');
+	$: showOldCriteriaButton = activeUrl.startsWith('/tags/') || activeUrl === ('/articles/bookmark');
+
+    $: allCriteria = get(SortCriteriaStore);
+	$: displayCriteria = showOldCriteriaButton ? [...allCriteria] : allCriteria.filter((criteria) => criteria.value !== 'oldest');
+
+
+	const changeCurrentCriteria = (criteria: SortCriteria) => {
+		SortCriteriaUtils.setCriteria(criteria);
+		displayCriteria = displayCriteria.map((c) => ({ ...c, active: c.value === criteria.value }));
+	};
+
+	$: gridColsClass = showOldCriteriaButton ? 'grid-cols-3' : 'grid-cols-2';
+
+	afterNavigate(() => {
+		const oldestCriteria = allCriteria.find((criteria) => criteria.value === 'oldest');
+		// ページ遷移後に「古い順」ボタンが表示されず、かつ遷移前に「古い順」ボタンが選択されていた場合はリセットする
+		if (!showOldCriteriaButton && oldestCriteria?.active) {
+			SortCriteriaUtils.resetCriteria();
+			displayCriteria = displayCriteria.map((criteria) => {
+				if (criteria.value === 'latest') {
+					return { ...criteria, active: true };
+				} else {
+					return { ...criteria, active: false };
+				}
+			});
+		}
+	});
+
+
 </script>
 
 <BottomNav
@@ -16,10 +49,14 @@
 	<BottomNavHeader
 		slot="header"
 		outerClass={`w-full ${showHeaderButton ? '' : 'hidden'}`}
-		innerClass="grid max-w-xs grid-cols-2 gap-1 p-1 mx-auto my-2 bg-gray-100 rounded-lg dark:bg-gray-600"
+		innerClass={`grid max-w-xs ${gridColsClass} gap-1 p-1 mx-auto my-2 bg-gray-100 rounded-lg dark:bg-gray-600`}
 	>
-		<BottomNavHeaderItem itemName="新着記事" />
-		<BottomNavHeaderItem itemName="最新記事" />
+		{#each displayCriteria as criteria}
+			<BottomNavHeaderItem 
+			itemName={criteria.label} 
+			active={criteria.active}
+			on:click={() => changeCurrentCriteria(criteria)} />
+		{/each}
 	</BottomNavHeader>
 	<BottomNavItem href="/" btnName="ホーム">
 		<HomeOutline
