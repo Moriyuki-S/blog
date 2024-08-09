@@ -2,10 +2,11 @@
 	import type { Article } from '../../types/type';
 
 	export let article: Article;
+	export let onClick: (() => void) | undefined = undefined;
 </script>
 
-<a href={`/articles/${article.slug}`} class="group inline-block w-full">
-	<article class="min-w-80 w-full h-fit flex border rounded-lg">
+<a href={`/articles/${article.slug}`} class="group inline-block w-full" on:click={onClick}>
+	<article class="lg:min-w-80 w-full h-fit flex border rounded-lg">
 		<div class="w-36 h-20">
 			<img
 				src={article.imageUrl}

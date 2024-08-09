@@ -9,12 +9,12 @@
 	export let data: PageData;
 </script>
 
-<div class="w-full pt-5 px-5 md:flex md:justify-between md:gap-x-6">
+<div class="w-full pt-5 md:px-5 md:flex md:justify-between md:gap-x-6">
 	<main class="w-full md:w-2/3">
 		<Tabs
 			tabStyle="pill"
 			contentClass="pt-5"
-			defaultClass="w-full border-t bg-white flex justify-center gap-x-5 items-center fixed bottom-0 right-0 md:static md:border-none md:justify-start"
+			defaultClass="hidden md:block md:flex md:gap-x-8 md:border-none md:justify-start"
 		>
 			<TabItem open>
 				<div slot="title" class="flex items-center gap-x-2 md:text-xl">
@@ -22,7 +22,7 @@
 					人気記事
 				</div>
 
-				<ul data-testid="popular-articles-list" class="grid grid-cols-2 gap-5">
+				<ul data-testid="popular-articles-list" class="grid grid-cols-1 gap-5">
 					{#await data.popularArticles}
 						{#each Array(8) as _}
 							<li class="w-auto">
@@ -43,7 +43,7 @@
 					<ClockOutline size="md" />
 					新着記事
 				</div>
-				<ul data-testid="latest-articles-list" class="grid grid-cols-2 gap-5">
+				<ul data-testid="latest-articles-list" class="grid grid-cols-1 gap-5">
 					{#await data.newArticles}
 						{#each Array(8) as _}
 							<li>
