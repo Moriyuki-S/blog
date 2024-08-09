@@ -15,8 +15,6 @@
 		Dropdown,
 		DropdownItem,
 		Modal,
-		Radio,
-		Search,
 		SpeedDial,
 		SpeedDialButton,
 		Spinner,
@@ -24,20 +22,21 @@
 	} from 'flowbite-svelte';
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
-	import type { Article, ArticleId, Criteria } from '$lib/features/article/types/type';
+	import type { Article, ArticleId } from '$lib/features/article/types/type';
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 	import TagFilterButton from '$lib/features/tag/components/TagFilterButton/TagFilterButton.svelte';
 	import type { Tag } from '$lib/features/tag/types/type';
 	import SecondoryColorButton from '$lib/components/ui/Button/SecondoryColorButton/SecondoryColorButton.svelte';
-	import TagCard from '$lib/features/tag/components/TagCard/TagCard.svelte';
-	import { get } from 'svelte/store';
-	import { SortCriteriaStore, SortCriteriaUtils, type SortCriteria } from '$lib/global-stores/sort-criteria';
+	import {
+		SortCriteriaStore,
+		SortCriteriaUtils,
+		type SortCriteria
+	} from '$lib/global-stores/sort-criteria';
 
 	export let data: PageData;
 
 	let isOpenedDeleteModal: boolean = false;
 	let isOpenedInfoModal: boolean = false;
-	let isOpendedSortModal: boolean = false;
 	let isOpendedTagModal: boolean = false;
 	let selectDropdownOpen: boolean = false;
 	let currentBookmarkedArticles: Article[] = [...data.articles];
@@ -79,10 +78,6 @@
 
 	const openTagModal = () => {
 		isOpendedTagModal = true;
-	};
-
-	const closeTagModal = () => {
-		isOpendedTagModal = false;
 	};
 
 	const resetBookmarkArticles = async () => {

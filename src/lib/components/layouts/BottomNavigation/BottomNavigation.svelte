@@ -2,17 +2,21 @@
 	import { page } from '$app/stores';
 	import { BottomNav, BottomNavHeader, BottomNavHeaderItem, BottomNavItem } from 'flowbite-svelte';
 	import { BookmarkOutline, HomeOutline, SearchOutline } from 'flowbite-svelte-icons';
-	import { SortCriteriaStore, SortCriteriaUtils, type SortCriteria } from '$lib/global-stores/sort-criteria';
-	import { get } from 'svelte/store';
+	import {
+		SortCriteriaStore,
+		SortCriteriaUtils,
+		type SortCriteria
+	} from '$lib/global-stores/sort-criteria';
 	import { afterNavigate } from '$app/navigation';
 
-
 	$: activeUrl = $page.url.pathname;
-	$: showHeaderButton = activeUrl === '/' || activeUrl.startsWith('/tags/') || activeUrl === ('/articles/bookmark');
-	$: showOldCriteriaButton = activeUrl.startsWith('/tags/') || activeUrl === ('/articles/bookmark');
+	$: showHeaderButton =
+		activeUrl === '/' || activeUrl.startsWith('/tags/') || activeUrl === '/articles/bookmark';
+	$: showOldCriteriaButton = activeUrl.startsWith('/tags/') || activeUrl === '/articles/bookmark';
 
-	$: displayCriteria = showOldCriteriaButton ? [...$SortCriteriaStore] : $SortCriteriaStore.filter((criteria) => criteria.value !== 'oldest');
-
+	$: displayCriteria = showOldCriteriaButton
+		? [...$SortCriteriaStore]
+		: $SortCriteriaStore.filter((criteria) => criteria.value !== 'oldest');
 
 	const changeCurrentCriteria = (criteria: SortCriteria) => {
 		SortCriteriaUtils.setCriteria(criteria);
@@ -35,8 +39,6 @@
 			});
 		}
 	});
-
-
 </script>
 
 <BottomNav
@@ -51,10 +53,11 @@
 		innerClass={`grid max-w-xs ${gridColsClass} gap-1 p-1 mx-auto my-2 bg-gray-100 rounded-lg dark:bg-gray-600`}
 	>
 		{#each displayCriteria as criteria}
-			<BottomNavHeaderItem 
-			itemName={criteria.label} 
-			active={criteria.active}
-			on:click={() => changeCurrentCriteria(criteria)} />
+			<BottomNavHeaderItem
+				itemName={criteria.label}
+				active={criteria.active}
+				on:click={() => changeCurrentCriteria(criteria)}
+			/>
 		{/each}
 	</BottomNavHeader>
 	<BottomNavItem href="/" btnName="ホーム">
