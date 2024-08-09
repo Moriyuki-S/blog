@@ -64,7 +64,10 @@
 							placeholder="キーワードでタグを絞り込む"
 						/>
 					</div>
-					<ul id="tag-list" class="pb-20 md:pb-10 grid grid-cols-2 justify-items-center sm:grid-cols-4 md:grid-cols-5 gap-3">
+					<ul
+						id="tag-list"
+						class="pb-20 md:pb-10 grid grid-cols-2 justify-items-center sm:grid-cols-4 md:grid-cols-5 gap-3"
+					>
 						{#each filteredTags as tag}
 							<li class="w-fit">
 								<TagCard {tag} />
