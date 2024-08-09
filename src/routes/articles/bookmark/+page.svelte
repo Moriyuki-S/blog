@@ -243,12 +243,7 @@
 			</div>
 		</Modal>
 
-		<Modal
-			bind:open={isOpendedTagModal}
-			autoclose
-			outsideclose
-			title="タグで絞る"
-			class="md:hidden"
+		<Modal bind:open={isOpendedTagModal} autoclose outsideclose title="タグで絞る" class="md:hidden"
 		></Modal>
 	{:else}
 		<div class="flex items-center gap-x-5 md:w-[45rem] md:pt-5 md:mx-auto">
