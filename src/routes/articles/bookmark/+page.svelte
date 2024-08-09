@@ -30,6 +30,8 @@
 	import type { Tag } from '$lib/features/tag/types/type';
 	import SecondoryColorButton from '$lib/components/ui/Button/SecondoryColorButton/SecondoryColorButton.svelte';
 	import TagCard from '$lib/features/tag/components/TagCard/TagCard.svelte';
+	import { get } from 'svelte/store';
+	import { SortCriteriaStore, SortCriteriaUtils, type SortCriteria } from '$lib/global-stores/sort-criteria';
 
 	export let data: PageData;
 
@@ -42,28 +44,13 @@
 	let articlesByFilteredTag: Article[] = [...currentBookmarkedArticles];
 	let hasBookmarkedArticles: boolean = currentBookmarkedArticles.length > 0;
 
-	const criterias: Criteria[] = [
-		{
-			label: '新着順',
-			value: 'latest'
-		},
-		{
-			label: '古い順',
-			value: 'oldest'
-		},
-		{
-			label: '人気順',
-			value: 'popular'
-		}
-	];
-
-	let currentCriteria: Criteria = criterias[0];
-	let currentCriteriaValue: Criteria['value'] = currentCriteria.value;
+	$: currentCriteria = $SortCriteriaStore.find((criteria) => criteria.active) as SortCriteria;
 	let currentFilterTag: Tag | null;
 
-	const handleSelectCriteria = (criteria: Criteria) => {
-		currentCriteria = criteria;
+	const handleSelectCriteria = (criteria: SortCriteria) => {
 		selectDropdownOpen = false;
+		SortCriteriaUtils.setCriteria(criteria);
+		currentCriteria = criteria;
 	};
 
 	const handleSelectTag = (tag: Tag) => {
@@ -88,14 +75,6 @@
 
 	const closeDeleteModal = () => {
 		isOpenedDeleteModal = false;
-	};
-
-	const openSortModal = () => {
-		isOpendedSortModal = true;
-	};
-
-	const closeSortModal = () => {
-		isOpendedSortModal = false;
 	};
 
 	const openTagModal = () => {
@@ -147,9 +126,9 @@
 							{currentCriteria.label}
 						</Button>
 						<Dropdown bind:open={selectDropdownOpen}>
-							{#each criterias as criteira}
+							{#each $SortCriteriaStore as criteira}
 								<DropdownItem
-									class={currentCriteria.value === criteira.value
+									class={criteira.active
 										? 'text-primary-500 dark:text-primary-300 hover:text-primary-700'
 										: 'text-black'}
 									on:click={() => handleSelectCriteria(criteira)}
@@ -206,42 +185,7 @@
 			>
 				<TagOutline />
 			</SpeedDialButton>
-			<SpeedDialButton
-				name="並べ替え"
-				textOutsideClass="block absolute -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2"
-				on:click={openSortModal}
-			>
-				<OrderedListOutline />
-			</SpeedDialButton>
 		</SpeedDial>
-
-		<Modal
-			bind:open={isOpendedSortModal}
-			autoclose
-			outsideclose
-			title="並べ替える"
-			class="md:hidden"
-		>
-			<div class="grid grid-cols-2 gap-6">
-				{#each criterias as criteria}
-					<div class="rounded border border-gray-200 dark:border-gray-700">
-						<Radio
-							name="bordered"
-							value={criteria.value}
-							bind:group={currentCriteriaValue}
-							class="w-full p-4"
-							on:change={() => {
-								handleSelectCriteria(criteria);
-								closeSortModal();
-							}}>{criteria.label}</Radio
-						>
-					</div>
-				{/each}
-			</div>
-			<div slot="footer">
-				<Button color="red" on:click={closeSortModal}>キャンセル</Button>
-			</div>
-		</Modal>
 
 		<Modal bind:open={isOpendedTagModal} autoclose outsideclose title="タグで絞る" class="md:hidden"
 		></Modal>

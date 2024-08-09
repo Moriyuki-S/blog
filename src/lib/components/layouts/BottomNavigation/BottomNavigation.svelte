@@ -11,8 +11,7 @@
 	$: showHeaderButton = activeUrl === '/' || activeUrl.startsWith('/tags/') || activeUrl === ('/articles/bookmark');
 	$: showOldCriteriaButton = activeUrl.startsWith('/tags/') || activeUrl === ('/articles/bookmark');
 
-    $: allCriteria = get(SortCriteriaStore);
-	$: displayCriteria = showOldCriteriaButton ? [...allCriteria] : allCriteria.filter((criteria) => criteria.value !== 'oldest');
+	$: displayCriteria = showOldCriteriaButton ? [...$SortCriteriaStore] : $SortCriteriaStore.filter((criteria) => criteria.value !== 'oldest');
 
 
 	const changeCurrentCriteria = (criteria: SortCriteria) => {
@@ -23,7 +22,7 @@
 	$: gridColsClass = showOldCriteriaButton ? 'grid-cols-3' : 'grid-cols-2';
 
 	afterNavigate(() => {
-		const oldestCriteria = allCriteria.find((criteria) => criteria.value === 'oldest');
+		const oldestCriteria = $SortCriteriaStore.find((criteria) => criteria.value === 'oldest');
 		// ページ遷移後に「古い順」ボタンが表示されず、かつ遷移前に「古い順」ボタンが選択されていた場合はリセットする
 		if (!showOldCriteriaButton && oldestCriteria?.active) {
 			SortCriteriaUtils.resetCriteria();
