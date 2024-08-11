@@ -30,9 +30,9 @@
 		action="/search"
 		method="GET"
 		role="search"
-		class="w-full flex gap-x-5 justify-center max-w-[64rem] lg:mx-auto"
+		class="w-full flex flex-col md:flex-row px-5 md:p-0 gap-y-4 md:gap-x-5 justify-center max-w-[60rem] lg:mx-auto"
 	>
-		<div class="w-2/3 relative">
+		<div class="w-full md:w-2/3 relative">
 			<input
 				type="search"
 				required
@@ -44,7 +44,7 @@
 			/>
 			<span class="absolute top-1/2 left-5 -translate-y-1/2"><SearchOutline /></span>
 		</div>
-		<Button id="submit-button" type="submit" disabled={inputEmpty}>検索する</Button>
+		<Button id="submit-button" class="w-2/3 min-w-32 md:w-auto mx-auto" type="submit" disabled={inputEmpty}>検索する</Button>
 	</form>
 	<section class="w-full max-w-[60rem] mx-auto px-3 pt-5 md:pt-10">
 		<Tabs tabStyle="underline">

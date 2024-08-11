@@ -8,7 +8,7 @@
 	export let data: PageData;
 </script>
 
-<main class="pt-16 md:px-4">
+<main class="py-16 md:px-4">
 	<div class="flex justify-center items-center gap-x-5">
 		<h1 class="text-3xl text-center">
 			<span class="text-secondory-500 me-2">#</span>

@@ -32,6 +32,7 @@
 		SortCriteriaUtils,
 		type SortCriteria
 	} from '$lib/global-stores/sort-criteria';
+	import { fade } from 'svelte/transition';
 
 	export let data: PageData;
 
@@ -39,6 +40,7 @@
 	let isOpenedInfoModal: boolean = false;
 	let isOpendedTagModal: boolean = false;
 	let selectDropdownOpen: boolean = false;
+	let speedDialOpen: boolean = false;
 	let currentBookmarkedArticles: Article[] = [...data.articles];
 	let articlesByFilteredTag: Article[] = [...currentBookmarkedArticles];
 	let hasBookmarkedArticles: boolean = currentBookmarkedArticles.length > 0;
@@ -165,22 +167,37 @@
 				/>
 			</div>
 		</div>
-		<SpeedDial class="fixed end-6 bottom-20 md:hidden" tooltip="none" textOutside>
+		<SpeedDial
+			bind:open={speedDialOpen}
+			color="cyanToBlue"
+			gradient
+			class="fixed end-6 bottom-32 z-30 md:hidden"
+			tooltip="none"
+			textOutside
+		>
 			<SpeedDialButton
 				name="全て解除"
-				textOutsideClass="block absolute -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2"
+				textOutsideClass="block absolute -start-16 top-1/2 mb-px text-sm text-white font-medium -translate-y-1/2"
 				on:click={openDeleteModal}
 			>
 				<ExclamationCircleOutline />
 			</SpeedDialButton>
 			<SpeedDialButton
 				name="タグで絞る"
-				textOutsideClass="block absolute -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2"
+				textOutsideClass="block absolute -start-16 top-1/2 mb-px text-white text-sm font-medium -translate-y-1/2"
 				on:click={openTagModal}
 			>
 				<TagOutline />
 			</SpeedDialButton>
 		</SpeedDial>
+
+		{#if speedDialOpen}
+			<div
+				in:fade
+				out:fade
+				class={`w-full h-full bg-gray-900 bg-opacity-50 fixed top-0 left-0 z-10`}
+			></div>
+		{/if}
 
 		<Modal bind:open={isOpendedTagModal} autoclose outsideclose title="タグで絞る" class="md:hidden"
 		></Modal>
