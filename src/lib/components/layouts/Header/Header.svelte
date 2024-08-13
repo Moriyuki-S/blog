@@ -60,7 +60,7 @@
 	</Navbar>
 </header>
 
-<LeftSidebar {showSidebar} />
+<LeftSidebar {showSidebar} {toggleSidebar} />
 
 {#if showSidebar}
 	<button in:fade out:fade={{ duration: 150 }} class="w-full h-full bg-gray-900 bg-opacity-50 fixed top-0 left-0 z-40" on:click|preventDefault={toggleSidebar}></button>
