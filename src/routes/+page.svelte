@@ -1,16 +1,15 @@
 <script lang="ts">
-	import RightSidebar from '$lib/components/layouts/RightSidebar/RightSidebar.svelte';
 	import { TabItem, Tabs } from 'flowbite-svelte';
 	import { ClockOutline, FireOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
-	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
+	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 
 	export let data: PageData;
 </script>
 
 <div class="w-full pt-5 md:px-5 md:flex md:justify-between md:gap-x-6">
-	<main class="w-full md:w-2/3">
+	<main class="w-full">
 		<Tabs
 			tabStyle="pill"
 			contentClass="pt-5"
@@ -21,45 +20,47 @@
 					<FireOutline size="md" />
 					人気記事
 				</div>
-
-				<ul data-testid="popular-articles-list" class="grid grid-cols-1 gap-5">
+				<div>
 					{#await data.popularArticles}
-						{#each Array(8) as _}
-							<li class="w-auto">
-								<ArticleVerticalCardSkeleton />
-							</li>
-						{/each}
+						<ul class="grid grid-cols-1 gap-5">
+							{#each Array(8) as _}
+								<li class="w-auto">
+									<ArticleVerticalCardSkeleton />
+								</li>
+							{/each}
+						</ul>
 					{:then popularArticles}
-						{#each popularArticles as article}
-							<li data-article-id={article.id} class="w-auto">
-								<ArticleVerticalCard {article} />
-							</li>
-						{/each}
+						<ArticleGallery
+							ulStyleClass="justify-items-center"
+							articles={popularArticles}
+							sortCriteria={null}
+						/>
 					{/await}
-				</ul>
+				</div>
 			</TabItem>
 			<TabItem>
 				<div slot="title" class="flex items-center gap-x-2 md:text-xl">
 					<ClockOutline size="md" />
 					新着記事
 				</div>
-				<ul data-testid="latest-articles-list" class="grid grid-cols-1 gap-5">
+				<div>
 					{#await data.newArticles}
-						{#each Array(8) as _}
-							<li>
-								<ArticleVerticalCardSkeleton />
-							</li>
-						{/each}
+						<ul class="grid grid-cols-1 gap-5">
+							{#each Array(8) as _}
+								<li>
+									<ArticleVerticalCardSkeleton />
+								</li>
+							{/each}
+						</ul>
 					{:then newArticles}
-						{#each newArticles as article}
-							<li data-article-id={article.id}>
-								<ArticleVerticalCard {article} />
-							</li>
-						{/each}
+						<ArticleGallery
+							ulStyleClass="justify-items-center"
+							articles={newArticles}
+							sortCriteria={null}
+						/>
 					{/await}
-				</ul>
+				</div>
 			</TabItem>
 		</Tabs>
 	</main>
-	<RightSidebar styleClass="w-1/3 pt-6"></RightSidebar>
 </div>

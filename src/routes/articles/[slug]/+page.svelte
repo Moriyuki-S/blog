@@ -8,7 +8,7 @@
 	import ColumnList from '$lib/components/layouts/List/ColumnList/ColumnList.svelte';
 	import ArticleHorizontalCardSkeleton from '$lib/features/article/components/ArticleHorizontalCard/Skeleton/ArticleHorizontalCardSkeleton.svelte';
 	import ArticleHorizontalCard from '$lib/features/article/components/ArticleHorizontalCard/ArticleHorizontalCard.svelte';
-	import { blur } from 'svelte/transition';
+	import { blur, fade } from 'svelte/transition';
 
 	export let data: PageData;
 	$: article = data.article;
@@ -82,20 +82,41 @@
 	</RightSidebar>
 </div>
 
+{#if speedDialOpen}
+	<div
+		in:fade
+		out:fade
+		class={`w-full h-full md:hidden bg-gray-900 bg-opacity-50 fixed top-0 left-0 z-10`}
+	></div>
+{/if}
+
 <SpeedDial
 	color="cyanToBlue"
 	gradient
 	bind:open={speedDialOpen}
-	defaultClass="md:hidden fixed end-6 bottom-20"
+	defaultClass="md:hidden fixed end-6 bottom-20 z-30"
 	tooltip="none"
+	textOutside
 >
-	<SpeedDialButton name="関連記事" class="w-20 h-20" on:click={openRelatedArticlesModal}>
+	<SpeedDialButton
+		name="関連記事"
+		textOutsideClass="block absolute text-white -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2"
+		on:click={openRelatedArticlesModal}
+	>
 		<BookOutline />
 	</SpeedDialButton>
-	<SpeedDialButton name="目次" class="w-20 h-20" on:click={openTocModal}>
+	<SpeedDialButton
+		name="目次"
+		textOutsideClass="block absolute text-white -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2"
+		on:click={openTocModal}
+	>
 		<ListOutline />
 	</SpeedDialButton>
-	<SpeedDialButton name="先頭へ" class="w-20 h-20" on:click={scrollToTop}>
+	<SpeedDialButton
+		name="先頭へ"
+		textOutsideClass="block absolute text-white -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2"
+		on:click={scrollToTop}
+	>
 		<ArrowUpOutline />
 	</SpeedDialButton>
 </SpeedDial>
@@ -106,6 +127,7 @@
 	</div>
 	<button
 		type="button"
+		class="mx-auto block"
 		on:click={() => (tocModalOpen = false)}
 		on:keydown={(event) => {
 			if (event.key === 'Enter' || event.key === ' ') {
