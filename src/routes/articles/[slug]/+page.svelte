@@ -86,7 +86,7 @@
 	<div
 		in:fade
 		out:fade
-		class={`w-full h-full bg-gray-900 bg-opacity-50 fixed top-0 left-0 z-10`}
+		class={`w-full h-full md:hidden bg-gray-900 bg-opacity-50 fixed top-0 left-0 z-10`}
 	></div>
 {/if}
 
@@ -115,6 +115,7 @@
 	</div>
 	<button
 		type="button"
+		class="mx-auto block"
 		on:click={() => (tocModalOpen = false)}
 		on:keydown={(event) => {
 			if (event.key === 'Enter' || event.key === ' ') {

@@ -43,7 +43,7 @@
 	let speedDialOpen: boolean = false;
 	let currentBookmarkedArticles: Article[] = [...data.articles];
 	let articlesByFilteredTag: Article[] = [...currentBookmarkedArticles];
-	let hasBookmarkedArticles: boolean = currentBookmarkedArticles.length > 0;
+	$: hasBookmarkedArticles = currentBookmarkedArticles.length > 0;
 
 	$: currentCriteria = $SortCriteriaStore.find((criteria) => criteria.active) as SortCriteria;
 	let currentFilterTag: Tag | null;
@@ -97,7 +97,7 @@
 	};
 </script>
 
-<main class="pt-16 px-4">
+<main class="pt-16 md:px-4">
 	<div class="w-fit flex gap-x-5 mx-auto">
 		<h1 class="text-xl md:text-2xl lg:text-3xl w-fit flex items-center text-center">
 			<BookmarkOutline color="#FFD700" size="xl" class="me-2 " />
@@ -115,8 +115,8 @@
 		</Tooltip>
 	</div>
 	{#if hasBookmarkedArticles}
-		<div class="w-full md:flex md:justify-between mt-10">
-			<div class="hidden md:block">
+		<div class="w-full md:flex md:flex-col md:justify-between mt-10">
+			<div class="hidden md:flex justify-between">
 				<menu class="flex gap-x-5">
 					<li>
 						<Button color="alternative" id="bookmark-sort-button">
@@ -161,7 +161,7 @@
 			</div>
 			<div class="w-full">
 				<ArticleGallery
-					ulStyleClass="mt-10 gap-5"
+					ulStyleClass="mt-10 gap-5 justify-items-center"
 					articles={articlesByFilteredTag}
 					sortCriteria={currentCriteria}
 					{functionOnRemoveBookmark}
