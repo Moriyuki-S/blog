@@ -85,6 +85,7 @@
 	const resetBookmarkArticles = async () => {
 		BookmarkArticles.resetBookmarkedArticles();
 		currentBookmarkedArticles = [];
+		articlesByFilteredTag = [];
 		SnackbarUtils.update('ブックマークした記事を解除しました');
 	};
 
