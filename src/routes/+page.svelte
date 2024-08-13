@@ -1,5 +1,4 @@
 <script lang="ts">
-	import RightSidebar from '$lib/components/layouts/RightSidebar/RightSidebar.svelte';
 	import { TabItem, Tabs } from 'flowbite-svelte';
 	import { ClockOutline, FireOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
