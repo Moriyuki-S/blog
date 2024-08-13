@@ -47,7 +47,10 @@
 </div>
 
 {#if speedDialOpen}
-	<div transition:fade class="md:hidden w-full h-full fixed top-0 left-0 z-20  bg-gray-900 bg-opacity-50"></div>
+	<div
+		transition:fade
+		class="md:hidden w-full h-full fixed top-0 left-0 z-20 bg-gray-900 bg-opacity-50"
+	></div>
 {/if}
 
 <SpeedDial

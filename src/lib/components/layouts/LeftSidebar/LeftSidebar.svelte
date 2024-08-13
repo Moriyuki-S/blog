@@ -16,7 +16,7 @@
 	import { fly } from 'svelte/transition';
 
 	export let showSidebar: boolean = false;
-    export let toggleSidebar: () => void;
+	export let toggleSidebar: () => void;
 </script>
 
 {#if showSidebar}

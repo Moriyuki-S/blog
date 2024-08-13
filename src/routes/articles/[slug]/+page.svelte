@@ -98,13 +98,25 @@
 	tooltip="none"
 	textOutside
 >
-	<SpeedDialButton name="関連記事" textOutsideClass="block absolute text-white -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2" on:click={openRelatedArticlesModal}>
+	<SpeedDialButton
+		name="関連記事"
+		textOutsideClass="block absolute text-white -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2"
+		on:click={openRelatedArticlesModal}
+	>
 		<BookOutline />
 	</SpeedDialButton>
-	<SpeedDialButton name="目次" textOutsideClass="block absolute text-white -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2"  on:click={openTocModal}>
+	<SpeedDialButton
+		name="目次"
+		textOutsideClass="block absolute text-white -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2"
+		on:click={openTocModal}
+	>
 		<ListOutline />
 	</SpeedDialButton>
-	<SpeedDialButton name="先頭へ" textOutsideClass="block absolute text-white -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2" on:click={scrollToTop}>
+	<SpeedDialButton
+		name="先頭へ"
+		textOutsideClass="block absolute text-white -start-16 top-1/2 mb-px text-sm font-medium -translate-y-1/2"
+		on:click={scrollToTop}
+	>
 		<ArrowUpOutline />
 	</SpeedDialButton>
 </SpeedDial>

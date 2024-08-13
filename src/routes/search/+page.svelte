@@ -44,7 +44,12 @@
 			/>
 			<span class="absolute top-1/2 left-5 -translate-y-1/2"><SearchOutline /></span>
 		</div>
-		<Button id="submit-button" class="w-2/3 min-w-32 md:w-auto mx-auto" type="submit" disabled={inputEmpty}>検索する</Button>
+		<Button
+			id="submit-button"
+			class="w-2/3 min-w-32 md:w-auto mx-auto"
+			type="submit"
+			disabled={inputEmpty}>検索する</Button
+		>
 	</form>
 	<section class="w-full max-w-[60rem] mx-auto px-3 pt-5 md:pt-10">
 		<Tabs tabStyle="underline">

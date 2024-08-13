@@ -31,7 +31,11 @@
 							{/each}
 						</ul>
 					{:then popularArticles}
-						<ArticleGallery ulStyleClass="justify-items-center" articles={popularArticles} sortCriteria={null} />
+						<ArticleGallery
+							ulStyleClass="justify-items-center"
+							articles={popularArticles}
+							sortCriteria={null}
+						/>
 					{/await}
 				</div>
 			</TabItem>
@@ -50,7 +54,11 @@
 							{/each}
 						</ul>
 					{:then newArticles}
-						<ArticleGallery ulStyleClass="justify-items-center" articles={newArticles} sortCriteria={null} />
+						<ArticleGallery
+							ulStyleClass="justify-items-center"
+							articles={newArticles}
+							sortCriteria={null}
+						/>
 					{/await}
 				</div>
 			</TabItem>
