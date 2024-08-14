@@ -32,6 +32,7 @@
 		"@storybook/sveltekit": "^8.1.6",
 		"@storybook/test": "^8.1.6",
 		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-cloudflare": "^4.7.2",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.1.0",
 		"@testing-library/jest-dom": "^6.4.5",
@@ -67,7 +68,7 @@
 	"type": "module",
 	"dependencies": {
 		"@contentful/rich-text-html-renderer": "^16.6.8",
-		"contentful": "^10.12.15",
+		"contentful": "^10.11.12",
 		"contentful-management": "^11.30.2",
 		"contentful-typescript-codegen": "^3.4.0",
 		"dayjs": "^1.11.11",
