@@ -69,8 +69,6 @@
 	"dependencies": {
 		"@contentful/rich-text-html-renderer": "^16.6.8",
 		"contentful": "^10.11.12",
-		"contentful-management": "^11.30.2",
-		"contentful-typescript-codegen": "^3.4.0",
 		"dayjs": "^1.11.11",
 		"svelte-toc": "^0.5.9",
 		"tocbot": "^4.28.2",
