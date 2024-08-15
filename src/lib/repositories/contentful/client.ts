@@ -1,5 +1,5 @@
 import contentful from 'contentful';
-import { env } from "$env/dynamic/private";
+import { env } from '$env/dynamic/private';
 
 const client = contentful.createClient({
 	space: env.CONTENTFUL_SPACE_ID,
