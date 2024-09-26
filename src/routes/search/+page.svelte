@@ -2,7 +2,6 @@
 	import { Button, Search, TabItem, Tabs } from 'flowbite-svelte';
 	import { SearchOutline, TagOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
-	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
 	import TagCard from '$lib/features/tag/components/TagCard/TagCard.svelte';
 	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
