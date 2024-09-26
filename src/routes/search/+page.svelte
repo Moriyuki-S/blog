@@ -2,9 +2,10 @@
 	import { Button, Search, TabItem, Tabs } from 'flowbite-svelte';
 	import { SearchOutline, TagOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
-	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
 	import TagCard from '$lib/features/tag/components/TagCard/TagCard.svelte';
+	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
+	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 
 	let query: string = '';
 	let tagSearchQuery: string = '';
@@ -25,7 +26,7 @@
 	}
 </script>
 
-<main class="pt-10">
+<main class="pt-10 md:px-5 2xl:max-w-[80rem] 2xl:mx-auto">
 	<form
 		action="/search"
 		method="GET"
@@ -51,7 +52,7 @@
 			disabled={inputEmpty}>検索する</Button
 		>
 	</form>
-	<section class="w-full max-w-[60rem] mx-auto px-3 pt-5 md:pt-10">
+	<section class="w-full mx-auto px-3 pt-5 md:pt-10">
 		<Tabs tabStyle="underline">
 			<TabItem
 				open={!areArticlesPresent}
@@ -87,19 +88,15 @@
 						<SearchOutline />
 						<span>検索結果</span>
 					</div>
-					<ul id="article-list" class="pb-20 md:pb-10 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
-						{#await data.articles}
+					{#await data.articles}
+						<GridList>
 							<li>
 								<ArticleVerticalCardSkeleton />
 							</li>
-						{:then articles}
-							{#each articles as article}
-								<li>
-									<ArticleVerticalCard {article} />
-								</li>
-							{/each}
-						{/await}
-					</ul>
+						</GridList>
+					{:then articles}
+						<ArticleGallery {articles} sortCriteria={null} />
+					{/await}
 				</TabItem>
 			{/if}
 		</Tabs>
