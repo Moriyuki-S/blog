@@ -27,7 +27,7 @@
 	}
 </script>
 
-<main class="pt-10">
+<main class="pt-10 md:px-5 2xl:max-w-[80rem] 2xl:mx-auto">
 	<form
 		action="/search"
 		method="GET"
@@ -53,7 +53,7 @@
 			disabled={inputEmpty}>検索する</Button
 		>
 	</form>
-	<section class="w-full max-w-[60rem] mx-auto px-3 pt-5 md:pt-10">
+	<section class="w-full mx-auto px-3 pt-5 md:pt-10">
 		<Tabs tabStyle="underline">
 			<TabItem
 				open={!areArticlesPresent}

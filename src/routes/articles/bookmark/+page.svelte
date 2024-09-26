@@ -97,7 +97,7 @@
 	};
 </script>
 
-<main class="pt-16 md:px-4">
+<main class="pt-16 md:px-4 2xl:max-w-[80rem] 2xl:mx-auto">
 	<div class="w-fit flex gap-x-5 mx-auto">
 		<h1 class="text-xl md:text-2xl lg:text-3xl w-fit flex items-center text-center">
 			<BookmarkOutline color="#FFD700" size="xl" class="me-2 " />
