@@ -5,6 +5,8 @@
 	import ArticleVerticalCard from '$lib/features/article/components/ArticleVerticalCard/ArticleVerticalCard.svelte';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
 	import TagCard from '$lib/features/tag/components/TagCard/TagCard.svelte';
+	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
+	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 
 	let query: string = '';
 	let tagSearchQuery: string = '';
@@ -87,19 +89,15 @@
 						<SearchOutline />
 						<span>検索結果</span>
 					</div>
-					<ul id="article-list" class="pb-20 md:pb-10 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
-						{#await data.articles}
+					{#await data.articles}
+						<GridList>
 							<li>
 								<ArticleVerticalCardSkeleton />
 							</li>
-						{:then articles}
-							{#each articles as article}
-								<li>
-									<ArticleVerticalCard {article} />
-								</li>
-							{/each}
-						{/await}
-					</ul>
+						</GridList>
+					{:then articles}
+						<ArticleGallery {articles} sortCriteria={null} />
+					{/await}
 				</TabItem>
 			{/if}
 		</Tabs>

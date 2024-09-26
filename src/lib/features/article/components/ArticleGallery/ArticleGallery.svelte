@@ -3,6 +3,7 @@
 	import ArticleVerticalCard from '../ArticleVerticalCard/ArticleVerticalCard.svelte';
 	import SortUtils from '../../utils/sort';
 	import { flip } from 'svelte/animate';
+	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
 
 	export let articles: Article[];
 	export let sortCriteria: Criteria | null;
@@ -25,10 +26,10 @@
 	}
 </script>
 
-<ul class={`grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3  ${ulStyleClass}`}>
+<GridList {ulStyleClass}>
 	{#each sortedArticles as article (article.id)}
 		<li animate:flip class={`w-fit ${liStyleClass}`} data-articleID={article.id}>
 			<ArticleVerticalCard {article} {functionOnBookmark} {functionOnRemoveBookmark} />
 		</li>
 	{/each}
-</ul>
+</GridList>

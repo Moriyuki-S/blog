@@ -4,6 +4,7 @@
 	import type { PageData } from './$types';
 	import { Tooltip } from 'flowbite-svelte';
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
+	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
 
 	export let data: PageData;
 </script>
@@ -25,13 +26,13 @@
 	</div>
 	<div class="mt-10">
 		{#await data.articles}
-			<ul class="grid grid-cols-1 gap-5">
+			<GridList>
 				{#each Array(8) as _}
-					<li class="w-autor">
+					<li class="w-full">
 						<ArticleVerticalCardSkeleton />
 					</li>
 				{/each}
-			</ul>
+			</GridList>
 		{:then articles}
 			<ArticleGallery ulStyleClass="justify-items-center" {articles} sortCriteria={null} />
 		{/await}
