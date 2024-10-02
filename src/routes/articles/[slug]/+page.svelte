@@ -45,7 +45,7 @@
 		<ArticleDetail {article} />
 	</main>
 	<RightSidebar styleClass="md:w-72 md:*:w-72 lg:w-96 lg:*:w-96 md:sticky md:top-20 lg:top-28">
-		<Tabs tabStyle="underline" class="w-full">
+		<Tabs tabStyle="underline">
 			<TabItem open>
 				<div slot="title" class="flex">
 					<ListOutline class="me-2" />
