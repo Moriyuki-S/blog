@@ -1,4 +1,4 @@
-import contentful from 'contentful';
+import * as contentful from 'contentful';
 import { env } from '$env/dynamic/private';
 
 const client = contentful.createClient({
