@@ -14,6 +14,7 @@ export class FetchArticlesUseCase {
 			const article = await this.articlesRepository.getArticleBySlug(slug);
 			return article;
 		} catch (error) {
+			console.error(error);
 			throw new Error('記事の取得に失敗しました');
 		}
 	}
@@ -23,6 +24,7 @@ export class FetchArticlesUseCase {
 			const articles = await this.articlesRepository.getArticlesByTag(tag, excludedArticle);
 			return articles;
 		} catch (error) {
+			console.error(error);
 			throw new Error('記事の取得に失敗しました');
 		}
 	}
@@ -32,6 +34,7 @@ export class FetchArticlesUseCase {
 			const articles = await this.articlesRepository.getArticlesByKeyword(keyword);
 			return articles;
 		} catch (error) {
+			console.error(error);
 			throw new Error('記事の取得に失敗しました');
 		}
 	}
@@ -41,6 +44,7 @@ export class FetchArticlesUseCase {
 			const articles = await this.articlesRepository.getArticlesByIds(ids);
 			return articles;
 		} catch (error) {
+			console.error(error);
 			throw new Error('記事の取得に失敗しました');
 		}
 	}
@@ -50,6 +54,7 @@ export class FetchArticlesUseCase {
 			const articles = await this.articlesRepository.getLatestArticles();
 			return articles;
 		} catch (error) {
+			console.error(error);
 			throw new Error('記事の取得に失敗しました');
 		}
 	}
@@ -60,6 +65,7 @@ export class FetchArticlesUseCase {
 			const articles = await this.articlesRepository.getPopularArticles();
 			return articles;
 		} catch (error) {
+			console.error(error);
 			throw new Error('記事の取得に失敗しました');
 		}
 	}

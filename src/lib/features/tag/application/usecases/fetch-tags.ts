@@ -13,6 +13,7 @@ export class FetchTagsUseCase {
 			const tags = await this.tagsRepository.fetchTags();
 			return tags;
 		} catch (error) {
+			console.error(error);
 			throw new Error('タグの取得に失敗しました');
 		}
 	}
@@ -22,6 +23,7 @@ export class FetchTagsUseCase {
 			const tag = await this.tagsRepository.fetchTagBySlug(slug);
 			return tag;
 		} catch (error) {
+			console.error(error);
 			throw new Error('タグの取得に失敗しました');
 		}
 	}
