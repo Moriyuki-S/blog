@@ -6,6 +6,7 @@
 	import TagCard from '$lib/features/tag/components/TagCard/TagCard.svelte';
 	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
+	import NotFoundAlert from '$lib/components/ui/Alert/NotFoundAlert/NotFoundAlert.svelte';
 
 	let query: string = '';
 	let tagSearchQuery: string = '';
@@ -95,7 +96,13 @@
 							</li>
 						</GridList>
 					{:then articles}
-						<ArticleGallery {articles} sortCriteria={null} />
+						{#if articles.length === 0}
+							<div class="w-full sm:w-4/5 mx-auto md:max-w-96">
+								<NotFoundAlert notFoundMessage="記事が見つかりませんでした" />
+							</div>
+						{:else}
+							<ArticleGallery {articles} sortCriteria={null} />
+						{/if}
 					{/await}
 				</TabItem>
 			{/if}
