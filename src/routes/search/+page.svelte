@@ -97,9 +97,9 @@
 						</GridList>
 					{:then articles}
 						{#if articles.length === 0}
-						<div class="w-full sm:w-4/5 mx-auto md:max-w-96">
-							<NotFoundAlert notFoundMessage="記事が見つかりませんでした" />
-						</div>
+							<div class="w-full sm:w-4/5 mx-auto md:max-w-96">
+								<NotFoundAlert notFoundMessage="記事が見つかりませんでした" />
+							</div>
 						{:else}
 							<ArticleGallery {articles} sortCriteria={null} />
 						{/if}
