@@ -9,6 +9,7 @@
 	import ArticleHorizontalCardSkeleton from '$lib/features/article/components/ArticleHorizontalCard/Skeleton/ArticleHorizontalCardSkeleton.svelte';
 	import ArticleHorizontalCard from '$lib/features/article/components/ArticleHorizontalCard/ArticleHorizontalCard.svelte';
 	import { blur, fade } from 'svelte/transition';
+	import NotFoundAlert from '$lib/components/ui/Alert/NotFoundAlert/NotFoundAlert.svelte';
 
 	export let data: PageData;
 	$: article = data.article;
@@ -69,11 +70,15 @@
 								</li>
 							{/each}
 						{:then relatedArticles}
-							{#each relatedArticles as relatedArticle}
-								<li>
-									<ArticleHorizontalCard article={relatedArticle} />
-								</li>
-							{/each}
+							{#if relatedArticles.length === 0}
+								<NotFoundAlert notFoundMessage="関連する記事がありません" />
+							{:else}
+								{#each relatedArticles as relatedArticle}
+									<li>
+										<ArticleHorizontalCard article={relatedArticle} />
+									</li>
+								{/each}
+							{/if}
 						{/await}
 					</ColumnList>
 				</div>
