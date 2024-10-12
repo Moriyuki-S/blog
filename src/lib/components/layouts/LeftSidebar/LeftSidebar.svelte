@@ -13,6 +13,7 @@
 		SearchOutline,
 		UserOutline
 	} from 'flowbite-svelte-icons';
+	import { quintInOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 
 	export let showSidebar: boolean = false;
@@ -20,9 +21,9 @@
 </script>
 
 {#if showSidebar}
-	<div transition:fly={{ x: -1000, opacity: 1, duration: 300 }}>
+	<div transition:fly={{ x: 0, opacity: 1, duration: 100, easing: quintInOut }}>
 		<Sidebar class="md:hidden h-full fixed z-50 top-0">
-			<SidebarWrapper class="h-full">
+			<SidebarWrapper class="h-full pt-16 list-none *:mb-8">
 				<SidebarItem label="プロフィール" href="/profile" on:click={toggleSidebar}>
 					<svelte:fragment slot="icon">
 						<UserOutline
