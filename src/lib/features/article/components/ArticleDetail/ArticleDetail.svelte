@@ -10,7 +10,7 @@
 	const wasUpdated = article.createdAt.toString() !== article.updatedAt.toString();
 </script>
 
-<article class="w-full max-w-[40rem]">
+<article class="w-full max-w-[40rem] bg-white rounded-lg px-2 md:px-10 py-10">
 	<Breadcrumb>
 		<BreadcrumbItem href="/" home>ホーム</BreadcrumbItem>
 		<BreadcrumbItem href={`/tags/${article.tags[0].id}`}>
