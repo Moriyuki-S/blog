@@ -27,6 +27,12 @@
 	}
 </script>
 
+<svelte:head>
+	<title>検索</title>
+	<meta name="description" content="記事を検索するページです。" />
+	<meta name="robots" content="noindex" />
+</svelte:head>
+
 <main class="pt-10 md:px-5 2xl:max-w-[80rem] 2xl:mx-auto">
 	<form
 		action="/search"

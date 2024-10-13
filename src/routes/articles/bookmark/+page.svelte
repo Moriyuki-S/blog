@@ -102,6 +102,11 @@
 	};
 </script>
 
+<svelte:head>
+	<title>ブックマークした記事</title>
+	<meta name="description" content="ブックマークした記事の一覧です。" />
+</svelte:head>
+
 <main class="pt-16 md:px-4 2xl:max-w-[80rem] 2xl:mx-auto">
 
 	<BreadcrumbWrapper>

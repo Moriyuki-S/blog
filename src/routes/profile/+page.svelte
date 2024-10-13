@@ -18,6 +18,11 @@
 	};
 </script>
 
+<svelte:head>
+	<title>プロフィール</title>
+	<meta name="description" content="プロフィールページです。" />
+</svelte:head>
+
 <div class="w-full py-10 px-4 flex flex-col items-center md:flex-row md:justify-around">
 	<main class="w-full flex flex-col gap-y-3 items-center md:max-w-[50rem]">
 		<Avatar size="xl" src={'/OIG1.jpg'} alt="アイコン画像" />
