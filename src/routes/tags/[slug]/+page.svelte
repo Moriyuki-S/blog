@@ -8,6 +8,7 @@
 	import { Breadcrumb, BreadcrumbItem } from 'flowbite-svelte';
 	import PageTitleWrapper from '$lib/components/layouts/PageTitle/Wrapper/PageTitleWrapper.svelte';
 	import PageTitle from '$lib/components/layouts/PageTitle/PageTitle.svelte';
+	import BreadcrumbWrapper from '$lib/components/layouts/Breadcrumb/BreadcrumbWrapper.svelte';
 
 	export let data: PageData;
 </script>
@@ -18,12 +19,12 @@
 </svelte:head>
 
 <main class="py-16 md:px-4">
-	<div class="ml-5 mb-2 md:ml-8">
+	<BreadcrumbWrapper>
 		<Breadcrumb>
 			<BreadcrumbItem href="/" home>ホーム</BreadcrumbItem>
 			<BreadcrumbItem href="/search">検索</BreadcrumbItem>
 		</Breadcrumb>
-	</div>
+	</BreadcrumbWrapper>
 
 	<PageTitleWrapper center>
 		<PageTitle>

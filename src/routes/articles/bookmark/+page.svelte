@@ -18,7 +18,9 @@
 		SpeedDial,
 		SpeedDialButton,
 		Spinner,
-		Tooltip
+		Tooltip,
+		Breadcrumb,
+		BreadcrumbItem
 	} from 'flowbite-svelte';
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
@@ -35,6 +37,7 @@
 	import { fade } from 'svelte/transition';
 	import PageTitleWrapper from '$lib/components/layouts/PageTitle/Wrapper/PageTitleWrapper.svelte';
 	import PageTitle from '$lib/components/layouts/PageTitle/PageTitle.svelte';
+	import BreadcrumbWrapper from '$lib/components/layouts/Breadcrumb/BreadcrumbWrapper.svelte';
 
 	export let data: PageData;
 
@@ -100,7 +103,14 @@
 </script>
 
 <main class="pt-16 md:px-4 2xl:max-w-[80rem] 2xl:mx-auto">
-	<PageTitleWrapper center>
+
+	<BreadcrumbWrapper>
+		<Breadcrumb>
+			<BreadcrumbItem href="/" home>ホーム</BreadcrumbItem>
+		</Breadcrumb>
+	</BreadcrumbWrapper>
+
+	<PageTitleWrapper center styleClass="mt-10 md:mt-0">
 		<PageTitle styleClass="flex flex-col gap-y-2 items-center whitespace-nowrap md:flex-row">
 			<BookmarkSolid color="#FFD700" size="xl" class="mr-auto md:mr-8" />
 			ブックマーク
