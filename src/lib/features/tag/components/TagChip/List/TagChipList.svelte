@@ -30,7 +30,7 @@
 				</button>
 				<Dropdown>
 					{#each notDisplayTags as tag}
-						<DropdownItem class="hover:bg-secondory-600 hover:text-white transition-colors">
+						<DropdownItem class="hover:bg-secondory-400 hover:bg-opacity-70 transition-colors">
 							<a href={`/tags/${tag.slug}`}># {tag.name}</a>
 						</DropdownItem>
 					{/each}

@@ -27,6 +27,12 @@
 	}
 </script>
 
+<svelte:head>
+	<title>検索</title>
+	<meta name="description" content="記事を検索するページです。" />
+	<meta name="robots" content="noindex" />
+</svelte:head>
+
 <main class="pt-10 md:px-5 2xl:max-w-[80rem] 2xl:mx-auto">
 	<form
 		action="/search"
@@ -97,7 +103,9 @@
 						</GridList>
 					{:then articles}
 						{#if articles.length === 0}
-							<div class="w-full sm:w-4/5 mx-auto md:max-w-96">
+							<div
+								class="w-full h-32 flex justify-center items-center sm:w-4/5 mx-auto md:max-w-96"
+							>
 								<NotFoundAlert notFoundMessage="記事が見つかりませんでした" />
 							</div>
 						{:else}

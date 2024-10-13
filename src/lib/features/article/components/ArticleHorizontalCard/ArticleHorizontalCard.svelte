@@ -13,16 +13,16 @@
 				alt={`${article.title}の画像`}
 				width="144"
 				height="20"
-				class="w-36 h-20 rounded-l-lg object-cover"
+				class="w-36 h-20 rounded-l-lg object-cover group-hover:opacity-70"
 			/>
 		</div>
 		<div
 			class="grow h-20 flex items-center
-		group-hover:border-t group-hover:border-r group-hover:border-b group-hover:rounded-r-lg group-hover:border-t-primary-300 group-hover:border-r-primary-300 group-hover:border-b-primary-300 pr-2"
+		group-hover:border-t group-hover:border-r group-hover:border-b group-hover:rounded-r-lg group-hover:border-t-primary-300 group-hover:border-r-primary-300 group-hover:border-b-primary-300 group-hover:bg-primary-100 group-hover:bg-opacity-50 pr-2"
 		>
 			<h4
 				id="short-article"
-				class="w-44 h-fit max-h-12 group-hover:underline group-hover:text-primary-500 whitespace-normal font-bold pl-4 flex self-center justify-self-center text-gray-500"
+				class="w-44 h-fit max-h-12 group-hover:underline whitespace-normal font-bold pl-4 flex self-center justify-self-center text-gray-500"
 			>
 				{article.title}
 			</h4>

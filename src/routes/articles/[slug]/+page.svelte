@@ -41,7 +41,7 @@
 	<meta name="description" content={article.body} />
 </svelte:head>
 
-<div class="pt-10 px-5 pb-10 md:flex md:justify-center md:items-start md:gap-x-10">
+<div class="pt-10 px-2 md:px-5 pb-10 md:flex md:justify-center md:items-start md:gap-x-10">
 	<main class="w-full md:w-fit md:min-w-96">
 		<ArticleDetail {article} />
 	</main>
@@ -160,11 +160,15 @@
 					</li>
 				{/each}
 			{:then relatedArticles}
-				{#each relatedArticles as relatedArticle}
-					<li>
-						<ArticleHorizontalCard onClick={closeRelatedArticlesModal} article={relatedArticle} />
-					</li>
-				{/each}
+				{#if relatedArticles.length === 0}
+					<NotFoundAlert notFoundMessage="関連する記事がありません" />
+				{:else}
+					{#each relatedArticles as relatedArticle}
+						<li>
+							<ArticleHorizontalCard onClick={closeRelatedArticlesModal} article={relatedArticle} />
+						</li>
+					{/each}
+				{/if}
 			{/await}
 		</ColumnList>
 	</div>
