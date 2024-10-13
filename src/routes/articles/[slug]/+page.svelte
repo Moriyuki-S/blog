@@ -160,11 +160,15 @@
 					</li>
 				{/each}
 			{:then relatedArticles}
-				{#each relatedArticles as relatedArticle}
-					<li>
-						<ArticleHorizontalCard onClick={closeRelatedArticlesModal} article={relatedArticle} />
-					</li>
-				{/each}
+				{#if relatedArticles.length === 0}
+					<NotFoundAlert notFoundMessage="関連する記事がありません" />
+				{:else}
+					{#each relatedArticles as relatedArticle}
+						<li>
+							<ArticleHorizontalCard onClick={closeRelatedArticlesModal} article={relatedArticle} />
+						</li>
+					{/each}
+				{/if}
 			{/await}
 		</ColumnList>
 	</div>
