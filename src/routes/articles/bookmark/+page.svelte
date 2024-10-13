@@ -108,7 +108,6 @@
 </svelte:head>
 
 <main class="pt-16 md:px-4 2xl:max-w-[80rem] 2xl:mx-auto">
-
 	<BreadcrumbWrapper>
 		<Breadcrumb>
 			<BreadcrumbItem href="/" home>ホーム</BreadcrumbItem>

@@ -103,7 +103,9 @@
 						</GridList>
 					{:then articles}
 						{#if articles.length === 0}
-							<div class="w-full h-32 flex justify-center items-center sm:w-4/5 mx-auto md:max-w-96">
+							<div
+								class="w-full h-32 flex justify-center items-center sm:w-4/5 mx-auto md:max-w-96"
+							>
 								<NotFoundAlert notFoundMessage="記事が見つかりませんでした" />
 							</div>
 						{:else}

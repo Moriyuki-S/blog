@@ -1,8 +1,6 @@
 <script lang="ts">
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
-	import { RefreshOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
-	import { Tooltip } from 'flowbite-svelte';
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
 	import { Breadcrumb, BreadcrumbItem } from 'flowbite-svelte';
