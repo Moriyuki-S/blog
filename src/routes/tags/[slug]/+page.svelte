@@ -6,6 +6,8 @@
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
 	import { Breadcrumb, BreadcrumbItem } from 'flowbite-svelte';
+	import PageTitleWrapper from '$lib/components/layouts/PageTitle/Wrapper/PageTitleWrapper.svelte';
+	import PageTitle from '$lib/components/layouts/PageTitle/PageTitle.svelte';
 
 	export let data: PageData;
 </script>
@@ -18,18 +20,18 @@
 <main class="py-16 md:px-4">
 	<div class="ml-5 mb-2 md:ml-8">
 		<Breadcrumb>
-		    <BreadcrumbItem href="/" home>ホーム</BreadcrumbItem>
+			<BreadcrumbItem href="/" home>ホーム</BreadcrumbItem>
 			<BreadcrumbItem href="/search">検索</BreadcrumbItem>
 		</Breadcrumb>
 	</div>
 
-	<div class="w-full h-24 flex justify-center items-center gap-x-5 px-2 md:h-48">
-		<h1 class="text-4xl md:text-6xl text-center font-bold md:pl-5">
+	<PageTitleWrapper center>
+		<PageTitle>
 			<span class="text-secondory-500 me-4">#</span>
 			{data.currentTag.name}
 			<span class="ms-8 text-xl md:text-2xl font-medium whitespace-nowrap">を含む記事</span>
-		</h1>
-	</div>
+		</PageTitle>
+	</PageTitleWrapper>
 
 	<div class="mt-5 md:mt-10">
 		{#await data.articles}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {
-		BookmarkOutline,
+		BookmarkSolid,
 		ChevronDownOutline,
 		ExclamationCircleOutline,
 		InfoCircleOutline,
@@ -33,6 +33,8 @@
 		type SortCriteria
 	} from '$lib/global-stores/sort-criteria';
 	import { fade } from 'svelte/transition';
+	import PageTitleWrapper from '$lib/components/layouts/PageTitle/Wrapper/PageTitleWrapper.svelte';
+	import PageTitle from '$lib/components/layouts/PageTitle/PageTitle.svelte';
 
 	export let data: PageData;
 
@@ -98,22 +100,23 @@
 </script>
 
 <main class="pt-16 md:px-4 2xl:max-w-[80rem] 2xl:mx-auto">
-	<div class="w-fit flex gap-x-5 mx-auto">
-		<h1 class="text-xl md:text-2xl lg:text-3xl w-fit flex items-center text-center">
-			<BookmarkOutline color="#FFD700" size="xl" class="me-2 " />
-			ブックマークした記事
-		</h1>
+	<PageTitleWrapper center>
+		<PageTitle styleClass="flex flex-col gap-y-2 items-center whitespace-nowrap md:flex-row">
+			<BookmarkSolid color="#FFD700" size="xl" class="mr-auto md:mr-8" />
+			ブックマーク
+			<span class="text-xl md:text-2xl ms-8 mt-auto font-medium">した記事</span>
+		</PageTitle>
 		<button
 			id="about-bookmark-button"
 			on:click={openInfoModal}
-			class="bg-gray-100 w-10 h-10 rounded-full hover:bg-gray-200 transition-colors"
+			class="bg-gray-100 w-10 h-10 rounded-full ml-5 md:ml-10 hover:bg-gray-200 transition-colors"
 		>
 			<InfoCircleOutline size="lg" class="mx-auto" />
 		</button>
 		<Tooltip triggeredBy="#about-bookmark-button" placement="right">
 			ブックマーク機能について
 		</Tooltip>
-	</div>
+	</PageTitleWrapper>
 	{#if hasBookmarkedArticles}
 		<div class="w-full md:flex md:flex-col md:justify-between mt-10">
 			<div class="hidden md:flex justify-between">
