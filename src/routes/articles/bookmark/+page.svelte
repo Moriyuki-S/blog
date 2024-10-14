@@ -220,9 +220,15 @@
 		<Modal bind:open={isOpendedTagModal} autoclose outsideclose title="タグで絞る" class="md:hidden"
 		></Modal>
 	{:else}
-		<div class="flex flex-col mt-10 items-center gap-x-5 gap-y-5 md:w-[45rem] md:flex-row md:pt-5 md:mx-auto">
+		<div
+			class="flex flex-col mt-10 items-center gap-x-5 gap-y-5 md:w-[45rem] md:flex-row md:pt-5 md:mx-auto"
+		>
 			<div>
-				<enhanced:img src="$lib/assets/images/not-found.png?w=300;200" alt="ブックマークした記事はありません" sizes="(min-width:768px) 300px, (min-width:200px) 200px" />
+				<enhanced:img
+					src="$lib/assets/images/not-found.png?w=300;200"
+					alt="ブックマークした記事はありません"
+					sizes="(min-width:768px) 300px, (min-width:200px) 200px"
+				/>
 			</div>
 			<div class="flex flex-col gap-y-5 items-center">
 				<h2>
