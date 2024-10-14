@@ -3,7 +3,6 @@ import type { Article } from '$lib/features/article/types/type';
 import type { PageLoad } from './$types';
 
 export const ssr = false;
-export const prerender = false;
 
 export const load: PageLoad = async ({ fetch }) => {
 	const bookmarkedArticlesId = BookmarkRepository.getBookmarkedArticlesId();
