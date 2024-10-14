@@ -4,6 +4,7 @@
 	import { Avatar, Modal, SpeedDial, SpeedDialButton } from 'flowbite-svelte';
 	import { ArrowUpOutline, ListOutline } from 'flowbite-svelte-icons';
 	import { fade } from 'svelte/transition';
+	import profileIcon from '$lib/assets/images/OIG1.jpg';
 
 	let speedDialOpen: boolean = false;
 	let tocModalOpen: boolean = false;
@@ -25,7 +26,7 @@
 
 <div class="w-full py-10 px-4 flex flex-col items-center md:flex-row md:justify-around">
 	<main class="w-full flex flex-col gap-y-3 items-center md:max-w-[50rem]">
-		<Avatar size="xl" src={'/OIG1.jpg'} alt="アイコン画像" />
+		<Avatar size="xl" src={profileIcon} alt="アイコン画像" />
 		<h1 class="text-3xl text-center">名前</h1>
 		<div id="bio-body" class="pt-3">
 			<h2>自己紹介</h2>
