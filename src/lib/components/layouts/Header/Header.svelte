@@ -36,7 +36,7 @@
 					<UserOutline />
 					プロフィール
 				</NavLi>
-				<NavLi href="/articles/bookmark" class="inline-flex gap-x-1 items-center">
+				<NavLi href="/bookmark" class="inline-flex gap-x-1 items-center">
 					<BookmarkOutline />
 					ブックマーク
 				</NavLi>
