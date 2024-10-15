@@ -175,12 +175,12 @@
 </Modal>
 
 <style>
-	:global(:where(h1, h2, h3, h4)) {
+	:global(:where(h2, h3, h4)) {
 		scroll-margin-top: 98px;
 	}
 
 	@media (max-widt: 768px) {
-		:global(:where(h1, h2, h3, h4)) {
+		:global(:where(h2, h3, h4)) {
 			scroll-margin-top: 64px;
 		}
 	}

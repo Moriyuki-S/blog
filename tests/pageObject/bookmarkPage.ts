@@ -10,7 +10,7 @@ export class BookmarkPage {
 	}
 
 	async goto() {
-		await this.page.goto('/articles/bookmark');
+		await this.page.goto('/bookmark');
 	}
 
 	async resetBookmark() {

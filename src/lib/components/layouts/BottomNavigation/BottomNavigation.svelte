@@ -11,8 +11,8 @@
 
 	$: activeUrl = $page.url.pathname;
 	$: showHeaderButton =
-		activeUrl === '/' || activeUrl.startsWith('/tags/') || activeUrl === '/articles/bookmark';
-	$: showOldCriteriaButton = activeUrl.startsWith('/tags/') || activeUrl === '/articles/bookmark';
+		activeUrl === '/' || activeUrl.startsWith('/tags/') || activeUrl === '/bookmark';
+	$: showOldCriteriaButton = activeUrl.startsWith('/tags/') || activeUrl === '/bookmark';
 
 	$: displayCriteria = showOldCriteriaButton
 		? [...$SortCriteriaStore]
@@ -70,7 +70,7 @@
 			class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
 		/>
 	</BottomNavItem>
-	<BottomNavItem href="/articles/bookmark" btnName="ブックマーク">
+	<BottomNavItem href="/bookmark" btnName="ブックマーク">
 		<BookmarkOutline
 			class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500"
 		/>

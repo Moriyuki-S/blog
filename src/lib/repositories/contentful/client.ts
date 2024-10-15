@@ -1,9 +1,9 @@
 import * as contentful from 'contentful';
-import { env } from '$env/dynamic/private';
+import { CONTENTFUL_SPACE_ID, CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN } from '$env/static/private';
 
 const client = contentful.createClient({
-	space: env.CONTENTFUL_SPACE_ID,
-	accessToken: env.CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN
+	space: CONTENTFUL_SPACE_ID,
+	accessToken: CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN
 });
 
 export default client;
