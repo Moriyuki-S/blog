@@ -38,6 +38,7 @@
 	import PageTitleWrapper from '$lib/components/layouts/PageTitle/Wrapper/PageTitleWrapper.svelte';
 	import PageTitle from '$lib/components/layouts/PageTitle/PageTitle.svelte';
 	import BreadcrumbWrapper from '$lib/components/layouts/Breadcrumb/BreadcrumbWrapper.svelte';
+	import TagFilterDialog from '$lib/features/tag/components/TagFilterDialog/TagFilterDialog.svelte';
 
 	export let data: PageData;
 
@@ -85,6 +86,7 @@
 
 	const openTagModal = () => {
 		isOpendedTagModal = true;
+		speedDialOpen = false;
 	};
 
 	const resetBookmarkArticles = async () => {
@@ -209,6 +211,15 @@
 			</SpeedDialButton>
 		</SpeedDial>
 
+		<TagFilterDialog
+			open={isOpendedTagModal}
+			tags={data.tags}
+			{currentFilterTag}
+			selectTag={handleSelectTag}
+			resetTag={resetSelectTag}
+			closeDialog={() => (isOpendedTagModal = false)}
+		/>
+
 		{#if speedDialOpen}
 			<div
 				in:fade
@@ -216,9 +227,6 @@
 				class={`w-full h-full bg-gray-900 bg-opacity-50 fixed top-0 left-0 z-10`}
 			></div>
 		{/if}
-
-		<Modal bind:open={isOpendedTagModal} autoclose outsideclose title="タグで絞る" class="md:hidden"
-		></Modal>
 	{:else}
 		<div
 			class="flex flex-col mt-10 items-center gap-x-5 gap-y-5 md:w-[45rem] md:flex-row md:pt-5 md:mx-auto"

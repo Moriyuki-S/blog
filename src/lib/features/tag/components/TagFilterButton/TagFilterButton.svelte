@@ -32,7 +32,7 @@
 <Dropdown bind:open={openDrawer} class="overflow-y-auto px-3 pb-3">
 	<div slot="header" class="p-3">
 		<Search
-			placeholder="タグを検索"
+			placeholder="タグを検索する"
 			bind:value={tagSearchKeyword}
 			class="focus:border-secondory-500 focus:ring-secondory-500 dark:border-secondory-500 dark:ring-secondory-500 dark:focus:ring-secondory-500"
 		/>
