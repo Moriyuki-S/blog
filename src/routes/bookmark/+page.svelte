@@ -211,7 +211,14 @@
 			</SpeedDialButton>
 		</SpeedDial>
 
-		<TagFilterDialog open={isOpendedTagModal} tags={data.tags} currentFilterTag={currentFilterTag} selectTag={handleSelectTag} resetTag={resetSelectTag} closeDialog={() => isOpendedTagModal = false} />
+		<TagFilterDialog
+			open={isOpendedTagModal}
+			tags={data.tags}
+			{currentFilterTag}
+			selectTag={handleSelectTag}
+			resetTag={resetSelectTag}
+			closeDialog={() => (isOpendedTagModal = false)}
+		/>
 
 		{#if speedDialOpen}
 			<div
@@ -220,7 +227,6 @@
 				class={`w-full h-full bg-gray-900 bg-opacity-50 fixed top-0 left-0 z-10`}
 			></div>
 		{/if}
-
 	{:else}
 		<div
 			class="flex flex-col mt-10 items-center gap-x-5 gap-y-5 md:w-[45rem] md:flex-row md:pt-5 md:mx-auto"
