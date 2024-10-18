@@ -28,7 +28,7 @@
 
 <GridList {ulStyleClass}>
 	{#each sortedArticles as article (article.id)}
-		<li animate:flip class={`w-fit ${liStyleClass}`} data-articleID={article.id}>
+		<li animate:flip class={`w-fit max-w-full ${liStyleClass}`} data-articleID={article.id}>
 			<ArticleVerticalCard {article} {functionOnBookmark} {functionOnRemoveBookmark} />
 		</li>
 	{/each}
