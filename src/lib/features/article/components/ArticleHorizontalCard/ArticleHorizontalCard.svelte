@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ImageWithLoading from '$lib/components/layouts/ImageWithLoading/ImageWithLoading.svelte';
 	import type { Article } from '../../types/type';
 
 	export let article: Article;
@@ -8,9 +9,11 @@
 <a href={`/articles/${article.slug}`} class="group inline-block w-full" on:click={onClick}>
 	<article class="lg:min-w-80 w-full h-fit flex border rounded-lg">
 		<div class="w-36 h-20">
-			<img
+			<ImageWithLoading
 				src={article.imageUrl}
 				alt={`${article.title}の画像`}
+				imageSkeletonClass="w-36 h-20"
+				imageSkeletonHeight="80"
 				width="144"
 				height="20"
 				class="w-36 h-20 rounded-l-lg object-cover group-hover:opacity-70"

@@ -8,6 +8,7 @@
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
 	import TagChipList from '$lib/features/tag/components/TagChip/List/TagChipList.svelte';
 	import { fade } from 'svelte/transition';
+	import ImageWithLoading from '$lib/components/layouts/ImageWithLoading/ImageWithLoading.svelte';
 
 	export let article: Readonly<Article>; //読みこみのみ可能
 	export let functionOnBookmark: ((articleId: ArticleId) => void) | undefined = undefined;
@@ -40,14 +41,16 @@
 	};
 </script>
 
-<div out:fade class="w-fit">
+<div out:fade class="w-fit max-w-full">
 	<Card data-article-id={article.id} class="h-[30rem]" size="sm" padding="none">
 		<div>
 			<a href={`/articles/${article.slug}`} class="hover:opacity-75">
-				<img
+				<ImageWithLoading
 					src={article.imageUrl}
 					alt={article.title}
-					width="400"
+					imageSkeletonClass="w-[365.84px] h-64"
+					imageSkeletonHeight="240"
+					width="365.84"
 					height="240"
 					class="h-64 rounded-t-lg"
 				/>
