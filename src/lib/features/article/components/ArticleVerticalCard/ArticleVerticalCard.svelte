@@ -56,7 +56,7 @@
 				/>
 			</a>
 		</div>
-		<div class="p-5 h-72">
+		<div class="p-5 h-72 max-w-[365.84px]">
 			<div class="mb-4 w-full flex justify-between items-center">
 				<TagChipList shouldfilter tags={article.tags} />
 				{#if isBookmarked}
