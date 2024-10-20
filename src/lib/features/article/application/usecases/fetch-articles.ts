@@ -29,9 +29,17 @@ export class FetchArticlesUseCase {
 		}
 	}
 
-	async getArticlesByTags(tags: Tag[], limit: number = 3, excludedArticle?: Article): Promise<Article[]> {
+	async getArticlesByTags(
+		tags: Tag[],
+		limit: number = 3,
+		excludedArticle?: Article
+	): Promise<Article[]> {
 		try {
-			const articles = await this.articlesRepository.getArticlesByTags(tags, limit, excludedArticle);
+			const articles = await this.articlesRepository.getArticlesByTags(
+				tags,
+				limit,
+				excludedArticle
+			);
 			return articles;
 		} catch (error) {
 			console.error(error);

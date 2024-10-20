@@ -65,10 +65,9 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 	}
 
 	async getArticlesByTag(tag: Tag): Promise<Article[]> {
-
 		const entries = await this._client.getEntries({
 			content_type: 'article',
-			'fields.tags.sys.id[in]': tag.id,
+			'fields.tags.sys.id[in]': tag.id
 		});
 
 		const articles = entries.items.map((item) => {
@@ -91,15 +90,19 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 		return articles;
 	}
 
-	async getArticlesByTags(tags: Tag[], limit: number = 3, excludedArticle?: Article): Promise<Article[]> {
-		const tagIds = tags.map(tag => tag.id);
+	async getArticlesByTags(
+		tags: Tag[],
+		limit: number = 3,
+		excludedArticle?: Article
+	): Promise<Article[]> {
+		const tagIds = tags.map((tag) => tag.id);
 
 		if (excludedArticle) {
 			const entries = await this._client.getEntries({
 				content_type: 'article',
 				'fields.tags.sys.id[in]': tagIds,
 				'sys.id[nin]': [excludedArticle.id],
-				limit,
+				limit
 			});
 
 			const articles = entries.items.map((item) => {
@@ -125,7 +128,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 		const entries = await this._client.getEntries({
 			content_type: 'article',
 			'fields.tags.sys.id[in]': tagIds,
-			limit,
+			limit
 		});
 
 		const articles = entries.items.map((item) => {
