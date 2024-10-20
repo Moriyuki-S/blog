@@ -64,12 +64,45 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 		return article;
 	}
 
-	async getArticlesByTag(tag: Tag, excludedArticle?: Article): Promise<Article[]> {
+	async getArticlesByTag(tag: Tag): Promise<Article[]> {
+		const entries = await this._client.getEntries({
+			content_type: 'article',
+			'fields.tags.sys.id[in]': tag.id
+		});
+
+		const articles = entries.items.map((item) => {
+			return {
+				id: item.sys.id,
+				slug: item.fields.slug as string,
+				title: item.fields.title as string,
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				body: item.fields.body ? convertRichTextToHtml(item.fields.body) : '',
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				imageUrl: item.fields.thumbnail.fields.file.url,
+				createdAt: new Date(item.sys.createdAt),
+				updatedAt: new Date(item.sys.updatedAt),
+				tags: ContentfulArticlesRepository.getTagsFromEntry(item)
+			} satisfies Article;
+		});
+
+		return articles;
+	}
+
+	async getArticlesByTags(
+		tags: Tag[],
+		limit: number = 3,
+		excludedArticle?: Article
+	): Promise<Article[]> {
+		const tagIds = tags.map((tag) => tag.id);
+
 		if (excludedArticle) {
 			const entries = await this._client.getEntries({
 				content_type: 'article',
-				'fields.tags.sys.id[in]': tag.id,
-				'sys.id[nin]': [excludedArticle.id]
+				'fields.tags.sys.id[in]': tagIds,
+				'sys.id[nin]': [excludedArticle.id],
+				limit
 			});
 
 			const articles = entries.items.map((item) => {
@@ -94,7 +127,8 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 
 		const entries = await this._client.getEntries({
 			content_type: 'article',
-			'fields.tags.sys.id[in]': tag.id
+			'fields.tags.sys.id[in]': tagIds,
+			limit
 		});
 
 		const articles = entries.items.map((item) => {
