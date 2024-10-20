@@ -19,9 +19,19 @@ export class FetchArticlesUseCase {
 		}
 	}
 
-	async getArticlesByTag(tag: Tag, excludedArticle?: Article): Promise<Article[]> {
+	async getArticlesByTag(tag: Tag): Promise<Article[]> {
 		try {
-			const articles = await this.articlesRepository.getArticlesByTag(tag, excludedArticle);
+			const articles = await this.articlesRepository.getArticlesByTag(tag);
+			return articles;
+		} catch (error) {
+			console.error(error);
+			throw new Error('記事の取得に失敗しました');
+		}
+	}
+
+	async getArticlesByTags(tags: Tag[], limit: number = 3, excludedArticle?: Article): Promise<Article[]> {
+		try {
+			const articles = await this.articlesRepository.getArticlesByTags(tags, limit, excludedArticle);
 			return articles;
 		} catch (error) {
 			console.error(error);
