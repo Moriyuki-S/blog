@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 
 export interface SortCriteria {
 	label: string;
-	value: 'latest' | 'oldest' | 'popular';
+	value: 'latest' | 'oldest';
 	active: boolean;
 }
 
@@ -17,11 +17,6 @@ const ALL_SORT_CRITERIA: SortCriteria[] = [
 		value: 'oldest',
 		active: false
 	},
-	{
-		label: '人気順',
-		value: 'popular',
-		active: false
-	}
 ];
 
 export const SortCriteriaStore = writable<SortCriteria[]>(ALL_SORT_CRITERIA);

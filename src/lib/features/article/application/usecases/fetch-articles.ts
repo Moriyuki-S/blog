@@ -67,9 +67,9 @@ export class FetchArticlesUseCase {
 		}
 	}
 
-	async getLatestArticles(): Promise<Article[]> {
+	async getLatestArticles(limit: number = 5): Promise<Article[]> {
 		try {
-			const articles = await this.articlesRepository.getLatestArticles();
+			const articles = await this.articlesRepository.getLatestArticles(limit);
 			return articles;
 		} catch (error) {
 			console.error(error);

@@ -204,10 +204,11 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 		return articles;
 	}
 
-	async getLatestArticles(): Promise<Article[]> {
+	async getLatestArticles(limit: number): Promise<Article[]> {
 		const entries = await this._client.getEntries({
 			content_type: 'article',
-			order: ['-sys.createdAt']
+			order: ['-sys.createdAt'],
+			limit,
 		});
 
 		const articles = entries.items.map((item) => {

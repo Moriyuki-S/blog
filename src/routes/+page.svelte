@@ -9,15 +9,15 @@
 	export let data: PageData;
 </script>
 
-<div class="w-full pt-5 md:px-5 md:flex md:justify-between md:gap-x-6">
+<div class="w-full pt-10 md:pt-5 md:px-5 md:flex md:justify-between md:gap-x-6">
 	<main class="w-full 2xl:max-w-[80rem] 2xl:mx-auto">
 		<Tabs
 			tabStyle="pill"
 			contentClass="pt-5"
-			defaultClass="hidden md:block md:flex md:gap-x-8 md:border-none md:justify-start"
+			defaultClass="flex gap-x-8 border-none justify-center md:justify-start"
 		>
 			<TabItem open>
-				<div slot="title" class="flex items-center gap-x-2 md:text-xl">
+				<div slot="title" class="flex items-center gap-x-2 text-lg md:text-xl">
 					<FireOutline size="md" />
 					人気記事
 				</div>
@@ -40,7 +40,7 @@
 				</div>
 			</TabItem>
 			<TabItem>
-				<div slot="title" class="flex items-center gap-x-2 md:text-xl">
+				<div slot="title" class="flex items-center gap-x-2 text-lg md:text-xl">
 					<ClockOutline size="md" />
 					新着記事
 				</div>

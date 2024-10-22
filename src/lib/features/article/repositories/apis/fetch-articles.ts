@@ -7,6 +7,6 @@ export interface IArticlesRepository {
 	getArticlesByTags: (tags: Tag[], limit: number, excludedArticle?: Article) => Promise<Article[]>;
 	getArticlesByIds: (ids: ArticleId[]) => Promise<Article[]>;
 	getArticlesByKeyword: (keyword: string) => Promise<Article[]>;
-	getLatestArticles: () => Promise<Article[]>;
+	getLatestArticles: (limit: number) => Promise<Article[]>;
 	getPopularArticles: () => Promise<Article[]>;
 }
