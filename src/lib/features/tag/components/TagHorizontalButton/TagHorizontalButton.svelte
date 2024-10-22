@@ -24,7 +24,13 @@
 	>
 		<div class="flex gap-x-5 items-center">
 			<dir class="h-full p-0 m-0">
-				<ImageWithLoading class="w-10 h-10 rounded-full" src={tag.iconUrl} alt={tag.name} imageSkeletonClass="w-10 h-10 rounded-full" imageSkeletonHeight="40" />
+				<ImageWithLoading
+					class="w-10 h-10 rounded-full"
+					src={tag.iconUrl}
+					alt={tag.name}
+					imageSkeletonClass="w-10 h-10 rounded-full"
+					imageSkeletonHeight="40"
+				/>
 			</dir>
 			<p class="font-bold text-sm">{tag.name}</p>
 		</div>
