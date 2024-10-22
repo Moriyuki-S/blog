@@ -65,11 +65,13 @@
 		articlesByFilteredTag = currentBookmarkedArticles.filter((article) =>
 			article.tags.some((articleTag) => articleTag.id === tag.id)
 		);
+		SnackbarUtils.update(`# ${tag.name}を選択しました`);
 	};
 
 	const resetSelectTag = () => {
 		currentFilterTag = null;
 		articlesByFilteredTag = [...currentBookmarkedArticles];
+		SnackbarUtils.update('タグの絞り込みを解除しました');
 	};
 
 	const openInfoModal = () => {

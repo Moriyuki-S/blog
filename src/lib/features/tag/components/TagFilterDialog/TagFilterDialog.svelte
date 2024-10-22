@@ -76,7 +76,7 @@
 					<p class="font-bold whitespace-nowrap">{currentFilterTag.name}</p>
 				</button>
 			{:else}
-				<p class="text-red-500 font-bold whitespace-nowrap">
+				<p class="text-red-500 flex items-center font-bold whitespace-nowrap">
 					<TagSolid class="w-6 h-6 me-2" />
 					すべてのタグ
 				</p>
