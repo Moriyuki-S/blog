@@ -16,7 +16,7 @@ const ALL_SORT_CRITERIA: SortCriteria[] = [
 		label: '古い順',
 		value: 'oldest',
 		active: false
-	},
+	}
 ];
 
 export const SortCriteriaStore = writable<SortCriteria[]>(ALL_SORT_CRITERIA);

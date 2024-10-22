@@ -208,7 +208,7 @@ export class ContentfulArticlesRepository implements IArticlesRepository {
 		const entries = await this._client.getEntries({
 			content_type: 'article',
 			order: ['-sys.createdAt'],
-			limit,
+			limit
 		});
 
 		const articles = entries.items.map((item) => {

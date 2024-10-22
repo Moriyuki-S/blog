@@ -4,7 +4,6 @@
 	import { BookmarkOutline, HomeOutline, SearchOutline } from 'flowbite-svelte-icons';
 
 	$: activeUrl = $page.url.pathname;
-
 </script>
 
 <BottomNav
