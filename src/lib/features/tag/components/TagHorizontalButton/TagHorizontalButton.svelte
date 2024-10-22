@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Avatar } from 'flowbite-svelte';
 	import type { Tag } from '../../types/type';
+	import ImageWithLoading from '$lib/components/layouts/ImageWithLoading/ImageWithLoading.svelte';
 
 	export let tag: Tag;
 	export let onClick: (() => void) | 'link' = 'link';
@@ -23,7 +24,7 @@
 	>
 		<div class="flex gap-x-5 items-center">
 			<dir class="h-full p-0 m-0">
-				<Avatar src={tag.iconUrl} alt={tag.name} />
+				<ImageWithLoading class="w-10 h-10 rounded-full" src={tag.iconUrl} alt={tag.name} imageSkeletonClass="w-10 h-10 rounded-full" imageSkeletonHeight="40" />
 			</dir>
 			<p class="font-bold text-sm">{tag.name}</p>
 		</div>
