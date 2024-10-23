@@ -17,7 +17,7 @@
 			{article.tags[0].name}
 		</BreadcrumbItem>
 	</Breadcrumb>
-	<div class="mt-8">
+	<div class="mt-8 overflow-x-scroll">
 		<TagChipList tags={article.tags} />
 	</div>
 	<h1 class="text-xl w-full md:text-3xl mt-5 pb-2 border-b-2 border-b-sky-500 font-bold">
