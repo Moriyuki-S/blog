@@ -193,7 +193,7 @@
 			bind:open={speedDialOpen}
 			color="cyanToBlue"
 			gradient
-			class="fixed end-6 bottom-32 z-30 md:hidden"
+			class="fixed end-6 bottom-20 z-30 md:hidden"
 			tooltip="none"
 			textOutside
 		>

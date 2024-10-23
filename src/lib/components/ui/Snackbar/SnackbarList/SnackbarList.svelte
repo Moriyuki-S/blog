@@ -6,7 +6,7 @@
 </script>
 
 <ul
-	class="fixed bottom-32 left-3 z-50 md:right-5 md:bottom-5 flex flex-col-reverse gap-y-4 items-start md:items-end"
+	class="fixed bottom-20 left-3 z-50 md:right-5 md:bottom-5 flex flex-col-reverse gap-y-4 items-start md:items-end"
 >
 	{#each snackbars as snackbar (snackbar.id)}
 		<li animate:flip>
