@@ -7,10 +7,8 @@ export const load: PageServerLoad = async () => {
 	const fetchArticlesUseCase = new FetchArticlesUseCase(contentfulArticlesRepository);
 
 	const newArticles = fetchArticlesUseCase.getLatestArticles();
-	const popularArticles = fetchArticlesUseCase.getPopularArticles();
 
 	return {
-		newArticles,
-		popularArticles
+		newArticles
 	};
 };
