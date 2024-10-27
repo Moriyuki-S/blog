@@ -35,10 +35,10 @@ export default {
 				}
 			},
 			backgroundImage: {
-				'ocean-wave': 'linear-gradient(90deg, #00c6ff, #0072ff, #00c6ff, #0072ff)',
+				'ocean-wave': 'linear-gradient(90deg, #00c6ff, #0072ff, #00c6ff, #0072ff)'
 			},
 			backgroundSize: {
-				'200%': '200% 200%',
+				'200%': '200% 200%'
 			},
 			animation: {
 				'gradient-x': 'gradient-x 5s ease infinite'

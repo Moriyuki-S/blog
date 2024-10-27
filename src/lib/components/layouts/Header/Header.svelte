@@ -27,10 +27,10 @@
 <header class="w-full border-b fixed top-0 left-0 z-10">
 	<Navbar aria-labelledby="desktop-navigation">
 		<NavBrand href="/">
-			<p
-				class="text-2xl md:text-3xl font-extrabold"
-			>
-				人生の<span class="bg-clip-text text-transparent bg-ocean-wave animate-gradient-x bg-200% ">夏休み</span>
+			<p class="text-2xl md:text-3xl font-extrabold">
+				人生の<span class="bg-clip-text text-transparent bg-ocean-wave animate-gradient-x bg-200%"
+					>夏休み</span
+				>
 			</p>
 		</NavBrand>
 		<NavHamburger class="md:hidden" onClick={toggleSidebar} />
