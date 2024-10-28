@@ -16,6 +16,7 @@
 	} from 'flowbite-svelte-icons';
 	import LeftSidebar from '../LeftSidebar/LeftSidebar.svelte';
 	import { fade } from 'svelte/transition';
+	import Watermelon from '$lib/assets/images/Watermelon.svelte';
 
 	let showSidebar: boolean = false;
 
@@ -27,6 +28,9 @@
 <header class="w-full border-b fixed top-0 left-0 z-10">
 	<Navbar aria-labelledby="desktop-navigation">
 		<NavBrand href="/">
+			<div class="pt-2 me-1">
+				<Watermelon />
+			</div>
 			<p class="text-2xl md:text-3xl font-extrabold">
 				人生の<span class="bg-clip-text text-transparent bg-ocean-wave animate-gradient-x bg-200%"
 					>夏休み</span
