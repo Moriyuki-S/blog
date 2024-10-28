@@ -28,7 +28,7 @@
 <header class="w-full border-b fixed top-0 left-0 z-10">
 	<Navbar aria-labelledby="desktop-navigation">
 		<NavBrand href="/">
-			<div class="pt-2 me-1">
+			<div class="pt-1 me-1">
 				<Watermelon />
 			</div>
 			<p class="text-2xl md:text-3xl font-extrabold">
