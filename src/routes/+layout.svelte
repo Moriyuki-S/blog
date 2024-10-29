@@ -9,7 +9,7 @@
 </script>
 
 <Header />
-<div class="min-h-screen md:pt-20 pt-10 pb-32 bg-gray-100">
+<div class="min-h-screen md:pt-[4.8rem] pt-10 pb-32 bg-gray-100">
 	<slot />
 </div>
 

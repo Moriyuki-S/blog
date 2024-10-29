@@ -10,7 +10,7 @@
 	{activeUrl}
 	position="fixed"
 	outerClass={`md:hidden w-full !h-16`}
-	innerClass={`max-w-96 mx-auto grid grid-cols-3 justify-center h-full *:h-full`}
+	innerClass={`max-w-96 mx-auto grid grid-cols-3 justify-center h-full *:h-full *:whitespace-nowrap`}
 >
 	<BottomNavItem href="/" btnName="ホーム">
 		<HomeOutline

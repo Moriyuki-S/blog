@@ -33,6 +33,25 @@ export default {
 					800: '#92400e',
 					900: '#78350f'
 				}
+			},
+			backgroundImage: {
+				'ocean-wave': 'linear-gradient(90deg, #00c6ff, #0072ff, #00c6ff, #0072ff)'
+			},
+			backgroundSize: {
+				'200%': '200% 200%'
+			},
+			animation: {
+				'gradient-x': 'gradient-x 5s ease infinite'
+			},
+			keyframes: {
+				'gradient-x': {
+					'0%, 100%': {
+						'background-position': '0% 50%'
+					},
+					'50%': {
+						'background-position': '100% 50%'
+					}
+				}
 			}
 		}
 	},
