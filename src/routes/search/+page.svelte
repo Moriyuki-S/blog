@@ -8,9 +8,9 @@
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 	import NotFoundAlert from '$lib/components/ui/Alert/NotFoundAlert/NotFoundAlert.svelte';
 
-	let query: string = '';
-	let tagSearchQuery: string = '';
 	export let data: PageData;
+	let query: string = data.searchQuery ?? '';
+	let tagSearchQuery: string = '';
 
 	const allTags = [...data.tags];
 	let filteredTags = allTags;
