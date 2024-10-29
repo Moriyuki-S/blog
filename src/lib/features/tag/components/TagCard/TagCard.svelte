@@ -14,12 +14,13 @@
 		<div class="flex flex-col items-center justify-center gap-y-5">
 			<div>
 				<ImageWithLoading
-					imageSkeletonClass="w-14"
+					imageSkeletonClass="w-[50px] h-[50px]"
 					imageSkeletonHeight="50"
 					src={tag.iconUrl}
 					alt={`${tag.name}のアイコン`}
 					width="50"
 					height="50"
+					class="w-[50px] h-[50px] rounded-full"
 				/>
 			</div>
 			<h3 class="px-2 w-fit">{tag.name}</h3>

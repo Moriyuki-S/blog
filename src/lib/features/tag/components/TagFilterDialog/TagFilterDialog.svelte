@@ -36,7 +36,12 @@
 	};
 </script>
 
-<Modal bind:open title="タグで絞る">
+<Modal
+	bind:open
+	class="overflow-y-hidden"
+	title="タグで絞る"
+	bodyClass="p-4 md:p-5 space-y-4 flex-1 overflow-y-hidden overscroll-contain"
+>
 	<div class="p-5">
 		<div>
 			<Search
@@ -45,7 +50,7 @@
 				class="focus:border-secondory-500 focus:ring-secondory-500 dark:border-secondory-500 dark:ring-secondory-500 dark:focus:ring-secondory-500"
 			/>
 		</div>
-		<div class="min-h-60 mt-8 flex flex-col gap-y-5 overflow-scroll">
+		<div class="min-h-60 mt-8 flex flex-col gap-y-5 overflow-hidden">
 			<div class="border-b pb-2">
 				<button
 					on:click|preventDefault={handleResetTag}
@@ -55,7 +60,7 @@
 					すべてのタグ
 				</button>
 			</div>
-			<ul class="grid gap-3 grid-cols-auto h-64 overflow-y-scroll">
+			<ul class="grid gap-3 grid-cols-auto h-64 pb-10 overflow-y-scroll">
 				{#each filteredTags as tag}
 					<li>
 						<TagHorizontalButton
@@ -68,13 +73,15 @@
 			</ul>
 		</div>
 	</div>
-	<div slot="footer" class="w-full flex items-center justify-between">
-		<div class="w-36 overflow-x-auto p-2 border-r pr-4">
+	<div slot="footer" class="w-full flex flex-col items-center justify-between sm:flex-row">
+		<div
+			class="w-full sm:w-36 overflow-x-auto p-2 pb-4 sm:pb-2 -mt-2 md:mt-0 border-b sm:border-b-none sm:border-r pr-4"
+		>
 			{#if currentFilterTag}
-				<button class="w-full rounded-lg flex items-center gap-x-3">
+				<div class="w-full rounded-lg flex items-center gap-x-3">
 					<Avatar src={currentFilterTag.iconUrl} alt={currentFilterTag.name} />
 					<p class="font-bold whitespace-nowrap">{currentFilterTag.name}</p>
-				</button>
+				</div>
 			{:else}
 				<p class="text-red-500 flex items-center font-bold whitespace-nowrap">
 					<TagSolid class="w-6 h-6 me-2" />
@@ -82,6 +89,8 @@
 				</p>
 			{/if}
 		</div>
-		<Button color="alternative" on:click={closeDialog}>キャンセル</Button>
+		<Button color="alternative" class="mt-5 ml-auto sm:mt-0" on:click={closeDialog}
+			>キャンセル</Button
+		>
 	</div>
 </Modal>
