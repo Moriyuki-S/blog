@@ -12,11 +12,11 @@ export const load: PageServerLoad = async ({ url }) => {
 		const articles = fetchArticlesUseCase.getArticlesByKeyword(searchQuery);
 		return {
 			articles,
-			searchQuery,
+			searchQuery
 		};
 	}
 
 	return {
-		searchQuery,
+		searchQuery
 	};
 };

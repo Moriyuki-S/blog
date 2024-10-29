@@ -36,7 +36,12 @@
 	};
 </script>
 
-<Modal bind:open class="overflow-y-hidden" title="タグで絞る" bodyClass="p-4 md:p-5 space-y-4 flex-1 overflow-y-hidden overscroll-contain">
+<Modal
+	bind:open
+	class="overflow-y-hidden"
+	title="タグで絞る"
+	bodyClass="p-4 md:p-5 space-y-4 flex-1 overflow-y-hidden overscroll-contain"
+>
 	<div class="p-5">
 		<div>
 			<Search
@@ -69,7 +74,9 @@
 		</div>
 	</div>
 	<div slot="footer" class="w-full flex flex-col items-center justify-between sm:flex-row">
-		<div class="w-full sm:w-36 overflow-x-auto p-2 pb-4 sm:pb-2 -mt-2 md:mt-0 border-b sm:border-b-none sm:border-r pr-4">
+		<div
+			class="w-full sm:w-36 overflow-x-auto p-2 pb-4 sm:pb-2 -mt-2 md:mt-0 border-b sm:border-b-none sm:border-r pr-4"
+		>
 			{#if currentFilterTag}
 				<div class="w-full rounded-lg flex items-center gap-x-3">
 					<Avatar src={currentFilterTag.iconUrl} alt={currentFilterTag.name} />
@@ -82,6 +89,8 @@
 				</p>
 			{/if}
 		</div>
-		<Button color="alternative" class="mt-5 ml-auto sm:mt-0" on:click={closeDialog}>キャンセル</Button>
+		<Button color="alternative" class="mt-5 ml-auto sm:mt-0" on:click={closeDialog}
+			>キャンセル</Button
+		>
 	</div>
 </Modal>
