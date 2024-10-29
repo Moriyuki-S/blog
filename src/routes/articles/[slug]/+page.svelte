@@ -52,7 +52,7 @@
 					<ListOutline class="me-2" />
 					<span>目次</span>
 				</div>
-				<div class="">
+				<div class="md:max-h-96 overflow-y-scroll">
 					<ArticleContents />
 				</div>
 			</TabItem>
