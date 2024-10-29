@@ -53,7 +53,7 @@
 </script>
 
 <div in:fade out:fly={{ y: 50, duration: 400 }}>
-	<Toast {color} class="bg-gray-800 text-white">
+	<Toast {color} class="bg-gray-800 rounded-lg text-white">
 		<svelte:component this={icon} slot="icon" class="w-5 h-5" />
 		{message}
 	</Toast>
