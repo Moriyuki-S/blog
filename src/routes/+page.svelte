@@ -5,15 +5,27 @@
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
-	import HomeImage from '$lib/assets/images/home-image.png?enhanced';
+	import HomeImage from '$lib/assets/images/home-image.webp?enhanced';
 
 	export let data: PageData;
 </script>
 
+<svelte:head>
+	<title>人生の夏休み-大学生活の記録</title>
+</svelte:head>
+
 <div class="w-full relative md:flex">
-	<h1 class="absolute top-1/2 left-1/2 md:static">大学生活について</h1>
-	<div class="w-full h-72 md:w-1/2">
-		<enhanced:img class="h-full" src={HomeImage} alt="海の風景" />
+	<hgroup class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">
+		<h1 id="home-title" class="text-4xl md:text-8xl font-extrabold whitespace-nowrap">
+			人生の<span class="bg-clip-text text-transparent animate-gradient-x bg-200% bg-ocean-wave">夏休み</span>
+		</h1>
+		<p class="text-xl font-semibold mt-5 md:text-2xl md:mt-10">
+			人生の夏休み（=
+			<span class="text-red-500 font-bold">大学</span><span class="text-green-500 font-bold">生活</span>）について書きます
+		</p>
+	</hgroup>
+	<div class="w-full overflow-x-hidden h-96 md:h-[30rem]">
+		<enhanced:img class="w-full h-full opacity-50" src={HomeImage} alt="海の風景" />
 	</div>
 </div>
 <div class="w-full pt-10 md:pt-5 md:px-5 md:flex md:justify-between md:gap-x-6">
@@ -49,3 +61,14 @@
 		</Tabs>
 	</main>
 </div>
+
+
+<style>
+	#home-title {
+		text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+	}
+
+	#home-title span {
+		text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.05);
+	}
+</style>
