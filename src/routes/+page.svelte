@@ -17,11 +17,15 @@
 <div class="w-full relative md:flex">
 	<hgroup class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">
 		<h1 id="home-title" class="text-4xl md:text-8xl font-extrabold whitespace-nowrap">
-			人生の<span class="bg-clip-text text-transparent animate-gradient-x bg-200% bg-ocean-wave">夏休み</span>
+			人生の<span class="bg-clip-text text-transparent animate-gradient-x bg-200% bg-ocean-wave"
+				>夏休み</span
+			>
 		</h1>
 		<p class="text-xl font-semibold mt-5 md:text-2xl md:mt-10">
 			人生の夏休み（=
-			<span class="text-red-500 font-bold">大学</span><span class="text-green-500 font-bold">生活</span>）について書きます
+			<span class="text-red-500 font-bold">大学</span><span class="text-green-500 font-bold"
+				>生活</span
+			>）について書きます
 		</p>
 	</hgroup>
 	<div class="w-full overflow-x-hidden h-96 md:h-[30rem]">
@@ -61,7 +65,6 @@
 		</Tabs>
 	</main>
 </div>
-
 
 <style>
 	#home-title {
