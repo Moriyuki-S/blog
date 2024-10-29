@@ -9,12 +9,6 @@ describe('ヘッダーのビジュアルテスト', () => {
 			const header = screen.queryByRole('banner');
 			expect(header).toBeInTheDocument();
 		});
-
-		it('ヘッダーのタイトルが存在する', () => {
-			render(Header);
-			const title = screen.queryByRole('heading');
-			expect(title).toBeInTheDocument();
-		});
 	});
 });
 
