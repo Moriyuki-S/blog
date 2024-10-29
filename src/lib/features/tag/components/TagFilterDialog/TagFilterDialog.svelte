@@ -36,7 +36,7 @@
 	};
 </script>
 
-<Modal bind:open title="タグで絞る">
+<Modal bind:open class="overflow-y-hidden" title="タグで絞る" bodyClass="p-4 md:p-5 space-y-4 flex-1 overflow-y-hidden overscroll-contain">
 	<div class="p-5">
 		<div>
 			<Search
@@ -55,7 +55,7 @@
 					すべてのタグ
 				</button>
 			</div>
-			<ul class="grid gap-3 grid-cols-auto h-64 overflow-y-scroll">
+			<ul class="grid gap-3 grid-cols-auto h-64 pb-10 overflow-y-scroll">
 				{#each filteredTags as tag}
 					<li>
 						<TagHorizontalButton
