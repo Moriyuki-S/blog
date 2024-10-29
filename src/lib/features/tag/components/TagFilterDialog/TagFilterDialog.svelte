@@ -50,7 +50,7 @@
 				class="focus:border-secondory-500 focus:ring-secondory-500 dark:border-secondory-500 dark:ring-secondory-500 dark:focus:ring-secondory-500"
 			/>
 		</div>
-		<div class="min-h-60 mt-8 flex flex-col gap-y-5 overflow-scroll">
+		<div class="min-h-60 mt-8 flex flex-col gap-y-5 overflow-hidden">
 			<div class="border-b pb-2">
 				<button
 					on:click|preventDefault={handleResetTag}
