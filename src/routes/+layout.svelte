@@ -4,8 +4,22 @@
 	import { SnackbarStore } from '$lib/global-stores/snackbar-store';
 	import SnackbarList from '$lib/components/ui/Snackbar/SnackbarList/SnackbarList.svelte';
 	import BottomNavigation from '$lib/components/layouts/BottomNavigation/BottomNavigation.svelte';
+	// @ts-expect-error nprogressは型定義がないため、このコメントを追加
+	import Nprogress from 'nprogress';
+	import 'nprogress/nprogress.css';
+	import { navigating } from '$app/stores';
+
+	$: Nprogress.configure({ showSpinner: false });
 
 	$: snackbars = $SnackbarStore;
+
+	$: {
+		if ($navigating) {
+			Nprogress.start();
+		} else {
+			Nprogress.done();
+		}
+	}
 </script>
 
 <Header />
