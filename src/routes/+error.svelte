@@ -1,21 +1,26 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { Alert, Button } from 'flowbite-svelte';
+	import ErrorImage from '$lib/assets/images/ErrorImage.svelte';
+	import { InfoCircleSolid } from 'flowbite-svelte-icons';
 	$: path = $page.url.pathname;
 </script>
 
-<main class="w-full h-96">
+<main class="w-full">
 	<div class="h-full flex flex-col items-center justify-center gap-y-8">
 		<div>
-			<img src="https://placehold.jp/300x300.png" alt="エラー画像" />
+			<ErrorImage />
 		</div>
-		<h1 class="text-3xl">{$page.status}</h1>
-		<Alert>{$page.error?.message}</Alert>
+		<h1 class="text-3xl font-bold">{$page.status}</h1>
+		<Alert color="red">
+			<InfoCircleSolid slot="icon" />
+			<span class="font-bold">{$page.error?.message}</span>
+		</Alert>
 		<menu class="flex gap-x-5">
 			{#if path !== '/'}
 				<li><Button href="/">ホーム画面へ</Button></li>
 			{/if}
-			<li><Button data-sveltekit-reload href={path}>リロードする</Button></li>
+			<li><Button color="alternative" data-sveltekit-reload href={path}>リロードする</Button></li>
 		</menu>
 	</div>
 </main>
