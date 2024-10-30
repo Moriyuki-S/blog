@@ -4,7 +4,7 @@
 	import { SnackbarStore } from '$lib/global-stores/snackbar-store';
 	import SnackbarList from '$lib/components/ui/Snackbar/SnackbarList/SnackbarList.svelte';
 	import BottomNavigation from '$lib/components/layouts/BottomNavigation/BottomNavigation.svelte';
-	// @ts-ignore
+	// @ts-expect-error
 	import Nprogress from 'nprogress';
 	import 'nprogress/nprogress.css';
 	import { navigating } from '$app/stores';
