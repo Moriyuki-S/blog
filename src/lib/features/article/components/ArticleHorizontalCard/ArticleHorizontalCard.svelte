@@ -8,15 +8,15 @@
 
 <a href={`/articles/${article.slug}`} class="group inline-block w-full" on:click={onClick}>
 	<article class="lg:min-w-80 w-full h-fit flex border rounded-lg">
-		<div class="w-36 h-20">
+		<div class="min-w-24 max-w-24 lg:min-w-36 lg:max-w-36 h-20">
 			<ImageWithLoading
 				src={article.imageUrl}
 				alt={`${article.title}の画像`}
-				imageSkeletonClass="w-36 h-20"
+				imageSkeletonClass="w-24 lg:w-36 h-20"
 				imageSkeletonHeight="80"
 				width="144"
-				height="20"
-				class="w-36 h-20 rounded-l-lg object-cover group-hover:opacity-70"
+				height="80"
+				class="w-24 lg:w-36 h-20 rounded-l-lg object-cover group-hover:opacity-70"
 			/>
 		</div>
 		<div
@@ -25,7 +25,7 @@
 		>
 			<h4
 				id="short-article"
-				class="w-44 h-fit max-h-12 group-hover:underline whitespace-normal font-bold pl-4 flex self-center justify-self-center text-gray-500"
+				class="w-full lg:w-44 h-fit max-h-12 group-hover:underline whitespace-normal font-bold pl-4 flex self-center justify-self-center text-gray-500"
 			>
 				{article.title}
 			</h4>

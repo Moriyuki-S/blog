@@ -207,7 +207,7 @@
 			</SpeedDialButton>
 			<SpeedDialButton
 				name="タグで絞る"
-				textOutsideClass="block absolute -start-16 top-1/2 mb-px text-white text-sm font-medium -translate-y-1/2"
+				textOutsideClass="block absolute -start-20 top-1/2 mb-px text-white text-sm font-medium -translate-y-1/2"
 				on:click={openTagModal}
 			>
 				<TagOutline />
