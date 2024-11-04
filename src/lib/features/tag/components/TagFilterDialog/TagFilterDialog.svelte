@@ -77,7 +77,7 @@
 		<div
 			class="w-full flex items-center sm:w-72 overflow-x-auto p-2 pb-4 sm:pb-2 -mt-2 md:mt-0 border-b sm:border-b-0 sm:border-r pr-4"
 		>
-		<span class="text-xs whitespace-nowrap me-4">選択中: </span>
+			<span class="text-xs whitespace-nowrap me-4">選択中: </span>
 			{#if currentFilterTag}
 				<div class="w-full rounded-lg flex items-center gap-x-3">
 					<Avatar src={currentFilterTag.iconUrl} alt={currentFilterTag.name} />
