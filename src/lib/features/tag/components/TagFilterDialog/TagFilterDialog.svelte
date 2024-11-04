@@ -50,11 +50,11 @@
 				class="focus:border-secondory-500 focus:ring-secondory-500 dark:border-secondory-500 dark:ring-secondory-500 dark:focus:ring-secondory-500"
 			/>
 		</div>
-		<div class="min-h-60 mt-8 flex flex-col gap-y-5 overflow-hidden">
+		<div class="h-56 mt-8 flex flex-col gap-y-5 overflow-hidden">
 			<div class="border-b pb-2">
 				<button
 					on:click|preventDefault={handleResetTag}
-					class={`flex items-center font-bold border-2 w-full px-4 py-2 rounded-full ${!currentFilterTag ? 'bg-red-500 text-white border-gray-200' : 'text-red-500 border-red-400'}`}
+					class={`flex items-center font-bold border-2 w-full px-4 py-2 rounded-full ${!currentFilterTag ? 'bg-red-500 text-white border-red-200' : 'text-red-500 border-red-400'}`}
 				>
 					<TagSolid class="w-6 h-6 me-2" />
 					すべてのタグ
@@ -75,8 +75,9 @@
 	</div>
 	<div slot="footer" class="w-full flex flex-col items-center justify-between sm:flex-row">
 		<div
-			class="w-full sm:w-36 overflow-x-auto p-2 pb-4 sm:pb-2 -mt-2 md:mt-0 border-b sm:border-b-none sm:border-r pr-4"
+			class="w-full flex items-center sm:w-72 overflow-x-auto p-2 pb-4 sm:pb-2 -mt-2 md:mt-0 border-b sm:border-b-0 sm:border-r pr-4"
 		>
+		<span class="text-xs whitespace-nowrap me-4">選択中: </span>
 			{#if currentFilterTag}
 				<div class="w-full rounded-lg flex items-center gap-x-3">
 					<Avatar src={currentFilterTag.iconUrl} alt={currentFilterTag.name} />
