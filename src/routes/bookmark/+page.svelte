@@ -40,6 +40,7 @@
 	import BreadcrumbWrapper from '$lib/components/layouts/Breadcrumb/BreadcrumbWrapper.svelte';
 	import TagFilterDialog from '$lib/features/tag/components/TagFilterDialog/TagFilterDialog.svelte';
 	import NotFoundImage from '$lib/assets/images/NotFoundImage.svelte';
+	import Citation from '$lib/components/ui/Citation/Citation.svelte';
 
 	export let data: PageData;
 
@@ -232,10 +233,11 @@
 		{/if}
 	{:else}
 		<div
-			class="flex flex-col mt-10 items-center gap-x-5 gap-y-5 md:w-[45rem] md:flex-row md:pt-5 md:mx-auto"
+			class="flex flex-col mt-10 items-center gap-x-5 gap-y-8 md:w-[45rem] md:flex-row md:pt-5 md:mx-auto"
 		>
-			<div class="w-fit">
+			<div class="w-fit relative">
 				<NotFoundImage />
+				<Citation citeClass="absolute bottom-0 md:-bottom-12 left-0" text="画像引用元: ソコスト" href="https://soco-st.com/" />
 			</div>
 			<div class="flex flex-col gap-y-5 items-center">
 				<h2>
