@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { TabItem, Tabs } from 'flowbite-svelte';
-	import { ArrowUpRightFromSquareOutline, ClockOutline } from 'flowbite-svelte-icons';
+	import { ClockOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';

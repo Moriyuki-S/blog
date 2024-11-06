@@ -1,6 +1,5 @@
 <script lang="ts">
 	import {
-		Button,
 		GradientButton,
 		Navbar,
 		NavBrand,
@@ -10,7 +9,6 @@
 	} from 'flowbite-svelte';
 	import {
 		BookmarkOutline,
-		MessageDotsOutline,
 		SearchOutline,
 		UserOutline
 	} from 'flowbite-svelte-icons';

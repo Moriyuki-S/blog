@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { GOOGLE_FORM_SRC } from '$lib/config';
+	
 </script>
 
 <svelte:head>
