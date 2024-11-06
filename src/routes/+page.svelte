@@ -6,6 +6,7 @@
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
 	import HomeImage from '$lib/assets/images/home-image.webp?enhanced';
+	import Citation from '$lib/components/ui/Citation/Citation.svelte';
 
 	export let data: PageData;
 </script>
@@ -28,8 +29,13 @@
 			>）について書きます
 		</p>
 	</hgroup>
-	<div class="w-full overflow-x-hidden h-96 md:h-[30rem]">
+	<div class="w-full relative overflow-x-hidden h-96 md:h-[30rem]">
 		<enhanced:img class="w-full h-full opacity-50" src={HomeImage} alt="海の風景" />
+		<Citation
+			citeClass="absolute bottom-1 right-2 text-gray-500"
+			text="画像引用元: みんちりえ"
+			href="https://min-chi.material.jp/"
+		/>
 	</div>
 </div>
 <div class="w-full pt-10 md:pt-5 md:px-5 md:flex md:justify-between md:gap-x-6">

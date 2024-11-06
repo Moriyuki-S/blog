@@ -1,19 +1,6 @@
 <script lang="ts">
-	import {
-		Button,
-		GradientButton,
-		Navbar,
-		NavBrand,
-		NavHamburger,
-		NavLi,
-		NavUl
-	} from 'flowbite-svelte';
-	import {
-		BookmarkOutline,
-		MessageDotsOutline,
-		SearchOutline,
-		UserOutline
-	} from 'flowbite-svelte-icons';
+	import { GradientButton, Navbar, NavBrand, NavHamburger, NavLi, NavUl } from 'flowbite-svelte';
+	import { BookmarkOutline, SearchOutline, UserOutline } from 'flowbite-svelte-icons';
 	import LeftSidebar from '../LeftSidebar/LeftSidebar.svelte';
 	import { fade } from 'svelte/transition';
 	import Watermelon from '$lib/assets/images/Watermelon.svelte';
@@ -55,12 +42,6 @@
 						<SearchOutline class="me-2" />
 						記事を探す
 					</GradientButton>
-				</li>
-				<li>
-					<Button href="/contact" color="alternative">
-						<MessageDotsOutline class="me-2" />
-						お問い合わせ
-					</Button>
 				</li>
 			</ul>
 		</div>

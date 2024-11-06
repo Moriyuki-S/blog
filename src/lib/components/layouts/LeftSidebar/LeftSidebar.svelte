@@ -1,18 +1,12 @@
 <script lang="ts">
 	import {
-		Button,
 		GradientButton,
 		Sidebar,
 		SidebarCta,
 		SidebarItem,
 		SidebarWrapper
 	} from 'flowbite-svelte';
-	import {
-		BookmarkOutline,
-		MessageDotsOutline,
-		SearchOutline,
-		UserOutline
-	} from 'flowbite-svelte-icons';
+	import { BookmarkOutline, SearchOutline, UserOutline } from 'flowbite-svelte-icons';
 	import { quintInOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 
@@ -43,12 +37,6 @@
 						<SearchOutline class="me-2" />
 						記事を探す
 					</GradientButton>
-				</SidebarCta>
-				<SidebarCta>
-					<Button color="alternative" href="/contact" on:click={toggleSidebar}>
-						<MessageDotsOutline class="me-2" />
-						お問い合わせ
-					</Button>
 				</SidebarCta>
 			</SidebarWrapper>
 		</Sidebar>
