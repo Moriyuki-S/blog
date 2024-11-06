@@ -237,7 +237,11 @@
 		>
 			<div class="w-fit relative">
 				<NotFoundImage />
-				<Citation citeClass="absolute bottom-0 md:-bottom-12 left-0" text="画像引用元: ソコスト" href="https://soco-st.com/" />
+				<Citation
+					citeClass="absolute bottom-0 md:-bottom-12 left-0"
+					text="画像引用元: ソコスト"
+					href="https://soco-st.com/"
+				/>
 			</div>
 			<div class="flex flex-col gap-y-5 items-center">
 				<h2>

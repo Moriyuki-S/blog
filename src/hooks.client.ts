@@ -15,7 +15,7 @@ export const handleError: HandleClientError = async ({ status, message }) => {
 			status,
 			source: 'client',
 			code: '503',
-			message: '現在メンテナンス中です',
+			message: '現在メンテナンス中です'
 		};
 	}
 

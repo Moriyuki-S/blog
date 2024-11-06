@@ -11,7 +11,11 @@
 	<div class="h-full flex flex-col items-center justify-center gap-y-8">
 		<div class="relative">
 			<ErrorImage />
-			<Citation citeClass="absolute bottom-0 md:-bottom-5 left-0" text="画像引用元: ソコスト" href="https://soco-st.com/" />
+			<Citation
+				citeClass="absolute bottom-0 md:-bottom-5 left-0"
+				text="画像引用元: ソコスト"
+				href="https://soco-st.com/"
+			/>
 		</div>
 		<h1 class="text-3xl font-bold">{$page.status}</h1>
 		<Alert color="red">
