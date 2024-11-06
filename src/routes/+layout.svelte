@@ -8,6 +8,7 @@
 	import Nprogress from 'nprogress';
 	import 'nprogress/nprogress.css';
 	import { navigating } from '$app/stores';
+	import Footer from '$lib/components/layouts/Footer/Footer.svelte';
 
 	$: Nprogress.configure({ showSpinner: false });
 
@@ -30,3 +31,5 @@
 <SnackbarList {snackbars} />
 
 <BottomNavigation />
+
+<Footer />
