@@ -44,12 +44,6 @@
 						記事を探す
 					</GradientButton>
 				</SidebarCta>
-				<SidebarCta>
-					<Button color="alternative" href="/contact" on:click={toggleSidebar}>
-						<MessageDotsOutline class="me-2" />
-						お問い合わせ
-					</Button>
-				</SidebarCta>
 			</SidebarWrapper>
 		</Sidebar>
 	</div>

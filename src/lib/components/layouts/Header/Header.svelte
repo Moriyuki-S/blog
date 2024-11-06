@@ -56,12 +56,6 @@
 						記事を探す
 					</GradientButton>
 				</li>
-				<li>
-					<Button href="/contact" color="alternative">
-						<MessageDotsOutline class="me-2" />
-						お問い合わせ
-					</Button>
-				</li>
 			</ul>
 		</div>
 	</Navbar>

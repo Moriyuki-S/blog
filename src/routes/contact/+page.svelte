@@ -14,14 +14,5 @@
 		<p class="text-xs mt-4 md:text-lg">以下のフォームにてお問い合わせください。</p>
 	</hgroup>
 	<div class="max-w-full pt-10 w-[95%] mx-auto">
-		<iframe
-			title="お問い合わせフォーム"
-			src={GOOGLE_FORM_SRC}
-			width="95%"
-			height="818"
-			frameborder="0"
-			marginheight="0"
-			marginwidth="0">読み込んでいます…</iframe
-		>
 	</div>
 </main>
