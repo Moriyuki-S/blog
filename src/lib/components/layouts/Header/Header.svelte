@@ -1,17 +1,6 @@
 <script lang="ts">
-	import {
-		GradientButton,
-		Navbar,
-		NavBrand,
-		NavHamburger,
-		NavLi,
-		NavUl
-	} from 'flowbite-svelte';
-	import {
-		BookmarkOutline,
-		SearchOutline,
-		UserOutline
-	} from 'flowbite-svelte-icons';
+	import { GradientButton, Navbar, NavBrand, NavHamburger, NavLi, NavUl } from 'flowbite-svelte';
+	import { BookmarkOutline, SearchOutline, UserOutline } from 'flowbite-svelte-icons';
 	import LeftSidebar from '../LeftSidebar/LeftSidebar.svelte';
 	import { fade } from 'svelte/transition';
 	import Watermelon from '$lib/assets/images/Watermelon.svelte';

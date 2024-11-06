@@ -6,11 +6,7 @@
 		SidebarItem,
 		SidebarWrapper
 	} from 'flowbite-svelte';
-	import {
-		BookmarkOutline,
-		SearchOutline,
-		UserOutline
-	} from 'flowbite-svelte-icons';
+	import { BookmarkOutline, SearchOutline, UserOutline } from 'flowbite-svelte-icons';
 	import { quintInOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 
