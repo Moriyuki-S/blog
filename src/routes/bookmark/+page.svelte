@@ -20,7 +20,8 @@
 		Spinner,
 		Tooltip,
 		Breadcrumb,
-		BreadcrumbItem
+		BreadcrumbItem,
+		GradientButton
 	} from 'flowbite-svelte';
 	import { BookmarkArticles } from '$lib/features/article/application/usecases/bookmark-articles';
 	import { SnackbarUtils } from '$lib/global-stores/snackbar-store';
@@ -245,15 +246,15 @@
 			</div>
 			<div class="flex flex-col gap-y-5 items-center">
 				<h2>
-					<Alert color="red" class="text-base md:text-2xl flex gap-x-3">
-						<InfoCircleOutline class="me-2" size="xl" />
+					<Alert color="red" class="text-base md:text-xl flex gap-x-3">
+						<InfoCircleOutline slot="icon" class="me-2" size="xl" />
 						ブックマークした記事はありません
 					</Alert>
 				</h2>
-				<Button href="/search" class="w-40">
+				<GradientButton color="cyan" href="/search" class="w-40">
 					<SearchOutline class="me-2" />
-					記事を探す</Button
-				>
+					記事を探す
+				</GradientButton>
 			</div>
 		</div>
 	{/if}
@@ -270,17 +271,26 @@
 </Modal>
 
 <Modal bind:open={isOpenedInfoModal} title="ブックマーク機能について" autoclose outsideclose>
-	<div>
+	<div class="*:mb-5">
 		<div>
-			<h4 class="text-xl font-bold">ブックマークの方法</h4>
-			<p>記事のタイトル横にあるボタンをクリックすると、ブックマークができます。</p>
+			<h4 class="text-xl font-bold mb-1">ブックマークの方法</h4>
+			<p>
+				記事のタイトル横にある<BookmarkSolid
+					class="inline pb-1 w-5 h-5"
+				/>をクリックすると、ブックマークができます。
+			</p>
 		</div>
 		<div>
-			<h4 class="text-xl font-bold">ブックマークの解除方法</h4>
+			<h4 class="text-xl font-bold my-1">ブックマークの解除方法</h4>
+			<p>
+				ブックマークした記事のタイトル横にある<BookmarkSolid
+					class="inline pb-1 w-5 h-5 text-yellow-300"
+				/>を再度クリックすると、ブックマークが解除されます。
+			</p>
 		</div>
 		<div>
-			<h4 class="text-xl font-bold">ブックマークをどのように保存しているか？</h4>
-			<p>ブックマークは記事のIDをブラウザのローカルストレージに保存しています。</p>
+			<h4 class="text-xl font-bold my-1">ブックマークの保存方法</h4>
+			<p>ブックマークは記事のIDをあなたのデバイスに保存しています。</p>
 		</div>
 	</div>
 </Modal>
