@@ -70,6 +70,7 @@
 		"@contentful/rich-text-html-renderer": "^16.6.10",
 		"contentful": "^11.0.3",
 		"dayjs": "^1.11.13",
+		"mode-watcher": "^0.4.1",
 		"nprogress": "^0.2.0",
 		"svelte-toc": "^0.5.9",
 		"tocbot": "^4.30.0",
