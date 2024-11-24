@@ -4,6 +4,7 @@
 	import LeftSidebar from '../LeftSidebar/LeftSidebar.svelte';
 	import { fade } from 'svelte/transition';
 	import Watermelon from '$lib/assets/images/Watermelon.svelte';
+	import DisplayThemeButton from '$lib/components/ui/DisplayThemeButton/DisplayThemeButton.svelte';
 
 	let showSidebar: boolean = false;
 
@@ -36,7 +37,10 @@
 					ブックマーク
 				</NavLi>
 			</NavUl>
-			<ul class="flex gap-x-4">
+			<ul class="flex gap-x-4 items-center">
+				<li>
+					<DisplayThemeButton />
+				</li>
 				<li>
 					<GradientButton href="/search" color="cyan">
 						<SearchOutline class="me-2" />
