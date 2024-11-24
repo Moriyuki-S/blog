@@ -62,7 +62,7 @@
 			{#await data.articles}
 				<Spinner size="6" class="me-2" />
 				検索中...
-			{:then articles} 
+			{:then articles}
 				検索する
 			{/await}
 		</Button>
