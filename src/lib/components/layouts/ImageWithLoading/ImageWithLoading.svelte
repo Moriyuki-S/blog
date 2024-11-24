@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { ImagePlaceholder } from 'flowbite-svelte';
+	import { fade } from 'svelte/transition';
 
 	export let src: string;
 	export let alt: string;
@@ -26,5 +27,5 @@
 		divClass={`space-y-8 *:mx-auto animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center !max-w-full *:!max-w-full !max-h-full *:!h-full ${imageSkeletonClass}`}
 	/>
 {:else}
-	<img {src} {alt} {...$$restProps} />
+	<img in:fade {src} {alt} {...$$restProps} />
 {/if}
