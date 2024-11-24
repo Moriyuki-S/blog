@@ -7,6 +7,8 @@
 	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
 	import HomeImage from '$lib/assets/images/home-image.webp?enhanced';
 	import Citation from '$lib/components/ui/Citation/Citation.svelte';
+	import FadeOutAnimationWrapper from '$lib/components/layouts/FadeAnimation/FadeOutAnimationWrapper.svelte';
+	import FadeInAnimationWrapper from '$lib/components/layouts/FadeAnimation/FadeInAnimationWrapper.svelte';
 
 	export let data: PageData;
 </script>
@@ -52,19 +54,23 @@
 				</div>
 				<div>
 					{#await data.newArticles}
-						<GridList>
-							{#each Array(8) as _}
-								<li>
-									<ArticleVerticalCardSkeleton />
-								</li>
-							{/each}
-						</GridList>
+						<FadeOutAnimationWrapper>
+							<GridList>
+								{#each Array(8) as _}
+									<li>
+										<ArticleVerticalCardSkeleton />
+									</li>
+								{/each}
+							</GridList>
+						</FadeOutAnimationWrapper>
 					{:then newArticles}
-						<ArticleGallery
-							ulStyleClass="justify-items-center"
-							articles={newArticles}
-							sortCriteria={null}
-						/>
+						<FadeInAnimationWrapper>
+							<ArticleGallery
+								ulStyleClass="justify-items-center"
+								articles={newArticles}
+								sortCriteria={null}
+							/>
+						</FadeInAnimationWrapper>
 					{/await}
 				</div>
 			</TabItem>
