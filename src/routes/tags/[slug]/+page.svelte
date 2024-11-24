@@ -7,7 +7,6 @@
 	import PageTitleWrapper from '$lib/components/layouts/PageTitle/Wrapper/PageTitleWrapper.svelte';
 	import PageTitle from '$lib/components/layouts/PageTitle/PageTitle.svelte';
 	import BreadcrumbWrapper from '$lib/components/layouts/Breadcrumb/BreadcrumbWrapper.svelte';
-	import { fade } from 'svelte/transition';
 	import FadeOutAnimationWrapper from '$lib/components/layouts/FadeAnimation/FadeOutAnimationWrapper.svelte';
 	import FadeInAnimationWrapper from '$lib/components/layouts/FadeAnimation/FadeInAnimationWrapper.svelte';
 
