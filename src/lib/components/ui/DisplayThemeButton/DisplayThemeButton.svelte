@@ -8,7 +8,7 @@
     };
 </script>
 
-<button class="border rounded-xl p-3 hover:bg-gray-200 transition-colors">
+<button class="border rounded-xl p-3 hover:bg-gray-200 transition-all tansform active:scale-90 dark:hover:bg-gray-300 dark:hover:text-black">
     {#if $mode === 'dark'}
         <SunOutline />
     {:else}
