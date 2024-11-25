@@ -27,7 +27,9 @@
 <ModeWatcher />
 
 <Header />
-<div class="min-h-screen md:pt-[4.8rem] pt-10 pb-32 text-gray-800 bg-gray-100 dark:text-white dark:bg-black">
+<div
+	class="min-h-screen md:pt-[4.8rem] pt-10 pb-32 text-gray-800 bg-gray-100 dark:text-white dark:bg-black"
+>
 	<slot />
 </div>
 
