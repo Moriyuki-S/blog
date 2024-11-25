@@ -35,7 +35,10 @@
 		<MoonOutline class="inline w-7 h-7 me-2 pt-1" />
 		Dark
 	</DropdownItem>
-	<DropdownItem class="text-xl font-bold flex items-center" on:click={() => handleChangeDisplayTheme('system')}>
+	<DropdownItem
+		class="text-xl font-bold flex items-center"
+		on:click={() => handleChangeDisplayTheme('system')}
+	>
 		<DesktopPcOutline class="inline w-7 h-7 me-2 pt-1" />
 		System
 	</DropdownItem>
