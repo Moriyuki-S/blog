@@ -25,7 +25,14 @@
 				>
 			</p>
 		</NavBrand>
-		<NavHamburger class="md:hidden" onClick={toggleSidebar} />
+		<ul class="md:hidden flex gap-x-[0.15rem] sm:gap-x-5">
+			<li>
+				<DisplayThemeButton />
+			</li>
+			<li>
+				<NavHamburger class="md:hidden" onClick={toggleSidebar} />
+			</li>
+		</ul>
 		<div class="hidden md:flex gap-x-5 items-center">
 			<NavUl>
 				<NavLi href="/profile" class="inline-flex gap-x-1 items-center">
