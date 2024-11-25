@@ -47,7 +47,7 @@
 				required
 				name="q"
 				bind:value={query}
-				class="w-full h-10 md:h-14 pl-14 rounded-lg focus:border-sky-300"
+				class="w-full h-10 md:h-14 pl-14 rounded-lg focus:border-sky-300 dark:bg-gray-800"
 				placeholder="検索したいキーワードを入力してください"
 				data-testid="search-articles-input"
 			/>

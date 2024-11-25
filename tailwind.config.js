@@ -55,7 +55,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require('flowbite/plugin'), require('tailwind-scrollbar')],
-
-	darkMode: ['selector', '[data-mode="dark"]']
+	plugins: [require('flowbite/plugin'), require('tailwind-scrollbar')]
 };

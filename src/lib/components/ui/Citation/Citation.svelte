@@ -11,9 +11,14 @@
 	export let aClass: string = '';
 </script>
 
-<cite class={`text-xs ${citeClass}`}>
+<cite class={`text-xs dark:text-white ${citeClass}`}>
 	{text}
-	<a {href} class={`underline text-blue-500 ${aClass}`} target="_blank" rel="noopener noreferrer">
+	<a
+		{href}
+		class={`underline text-blue-500 dark:text-blue-700 ${aClass}`}
+		target="_blank"
+		rel="noopener nofollow noreferrer"
+	>
 		(
 		{href}
 		{#if isIconSolid}

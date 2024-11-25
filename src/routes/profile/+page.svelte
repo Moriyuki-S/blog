@@ -58,7 +58,7 @@
 	class="w-full py-10 px-4 flex flex-col items-center md:items-start md:flex-row md:justify-around"
 >
 	<main
-		class="w-full flex flex-col gap-y-3 items-center px-5 py-20 bg-white rounded-lg md:max-w-[50rem]"
+		class="w-full flex flex-col gap-y-3 items-center px-5 py-20 bg-white rounded-lg md:max-w-[50rem] dark:bg-gray-800"
 	>
 		<enhanced:img
 			src={profileIcon}
@@ -125,7 +125,7 @@
 		</div>
 	</main>
 	<RightSidebar styleClass="hidden md:block md:w-72 md:h-[28rem] md:sticky md:top-28">
-		<div class="w-full h-full p-5 bg-gray-50 rounded-lg">
+		<div class="w-full h-full p-5 bg-gray-50 rounded-lg dark:bg-gray-800">
 			<p class="flex items-center text-2xl font-bold border-b pb-1">
 				<ListOutline class="me-2" />
 				目次

@@ -20,7 +20,7 @@
 {:else}
 	<button
 		on:click|preventDefault={onClick}
-		class={`w-full h-14 border rounded-full pl-3 ${active ? 'bg-secondory-100 border-secondory-300' : ''}`}
+		class={`w-full h-14 border rounded-full pl-3 ${active ? 'bg-secondory-100 border-secondory-300 dark:bg-secondory-600 dark:border-secondory-500' : ''}`}
 	>
 		<div class="flex gap-x-5 items-center">
 			<dir class="h-full p-0 m-0">
@@ -32,7 +32,7 @@
 					imageSkeletonHeight="40"
 				/>
 			</dir>
-			<p class="font-bold text-sm">{tag.name}</p>
+			<p class="font-bold text-sm dark:text-gray-300">{tag.name}</p>
 		</div>
 	</button>
 {/if}
