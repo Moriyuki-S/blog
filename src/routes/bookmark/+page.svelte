@@ -152,7 +152,7 @@
 								<DropdownItem
 									class={criteira.active
 										? 'text-primary-500 dark:text-primary-300 hover:text-primary-700'
-										: 'text-black'}
+										: 'text-black dark:text-white'}
 									on:click={() => handleSelectCriteria(criteira)}
 								>
 									{criteira.label}
