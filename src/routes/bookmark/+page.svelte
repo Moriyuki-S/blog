@@ -130,7 +130,7 @@
 		<button
 			id="about-bookmark-button"
 			on:click={openInfoModal}
-			class="bg-gray-100 w-10 h-10 rounded-full ml-5 md:ml-10 hover:bg-gray-200 transition-colors"
+			class="bg-gray-100 w-10 h-10 rounded-full ml-5 md:ml-10 hover:bg-gray-200 transition-colors dark:bg-gray-700 dark:hover:bg-gray-600"
 		>
 			<InfoCircleOutline size="lg" class="mx-auto" />
 		</button>
@@ -152,7 +152,7 @@
 								<DropdownItem
 									class={criteira.active
 										? 'text-primary-500 dark:text-primary-300 hover:text-primary-700'
-										: 'text-black'}
+										: 'text-black dark:text-white'}
 									on:click={() => handleSelectCriteria(criteira)}
 								>
 									{criteira.label}
