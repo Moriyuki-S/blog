@@ -54,9 +54,20 @@
 
 	:global(#article-body h2) {
 		margin-top: 3rem;
+		margin-bottom: 2rem;
 		font-weight: bold;
 		font-size: 2rem;
+		padding-bottom: .5rem;
 		border-bottom: 1px solid #e2e8f0;
+	}
+
+	:global(#article-body h2:hover) {
+		color: #40a9c6;
+	}
+
+	:global(#article-body h2:hover::after) {
+		content: ' #';
+		color: #40a9c6;
 	}
 
 	:global(#article-body h3) {
@@ -83,7 +94,7 @@
 	}
 
 	:global(#article-body p) {
-		line-height: 2;
+		line-height: 3.5rem;
 	}
 
 	:global(#article-body .hyperlink) {
@@ -115,6 +126,19 @@
 		margin: 0;
 	}
 
+	:global(#article-body blockquote) {
+		margin: 2rem 0;
+		padding: 1rem;
+		border-left: 5px solid #e2e8f0;
+		background-color: #f0f4f8;
+		line-height: 2;
+	}
+
+	:global(#article-body blockquote:is(.dark *)) {
+		border-left: 5px solid #4a5568;
+		background-color: #2d3748;
+	}
+
 	@media (max-width: 768px) {
 		:global(#article-body img) {
 			width: 80%;
@@ -122,15 +146,17 @@
 
 		:global(#article-body h2) {
 			font-size: 1.5rem;
+			margin-bottom: 1.5rem;
 		}
 
 		:global(#article-body h3) {
 			font-size: 1.2rem;
+			margin-bottom: .5rem;
 		}
 
 		:global(#article-body p) {
 			font-size: 1rem;
-			line-height: 2;
+			line-height: 2.5rem;
 		}
 
 		:global(#article-body .hyperlink) {
