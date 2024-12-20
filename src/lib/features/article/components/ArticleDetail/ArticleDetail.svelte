@@ -57,7 +57,7 @@
 		margin-bottom: 2rem;
 		font-weight: bold;
 		font-size: 2rem;
-		padding-bottom: .5rem;
+		padding-bottom: 0.5rem;
 		border-bottom: 1px solid #e2e8f0;
 	}
 
@@ -151,7 +151,7 @@
 
 		:global(#article-body h3) {
 			font-size: 1.2rem;
-			margin-bottom: .5rem;
+			margin-bottom: 0.5rem;
 		}
 
 		:global(#article-body p) {
