@@ -64,9 +64,9 @@
 						on:click|preventDefault={() => removeBookmarkedArticle(article.id)}
 						id={`bookmarked-button-${article.id}`}
 						data-testid={`bookmarked-button-${article.id}`}
-						class="w-12 flex justify-center items-center rounded-full aspect-square hover:bg-gray-200"
+						class="group w-12 flex justify-center items-center rounded-full aspect-square transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
 					>
-						<BookmarkSolid color="#FFD700" size="lg" />
+						<BookmarkSolid color="#FFD700" size="lg" class="group-active:scale-90 transition-all" />
 					</button>
 					<Tooltip placement="bottom" triggeredBy={`#bookmarked-button-${article.id}`}>
 						<span>ブックマークをはずす</span>
@@ -76,9 +76,9 @@
 						on:click|preventDefault={() => bookmarkArticle(article.id)}
 						id={`bookmark-button-${article.id}`}
 						data-testid={`bookmark-button-${article.id}`}
-						class="w-12 flex justify-center items-center rounded-full aspect-square hover:bg-[#fdec93]"
+						class="group w-12 flex justify-center items-center rounded-full aspect-square hover:bg-[#fdec93] transition-colors dark:hover:bg-[#2d3748]"
 					>
-						<BookmarkOutline size="lg" />
+						<BookmarkOutline size="lg" class="group-active:scale-90 transition-all" />
 					</button>
 					<Tooltip placement="bottom" triggeredBy={`#bookmark-button-${article.id}`}>
 						<span>ブックマークする</span>

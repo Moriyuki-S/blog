@@ -7,6 +7,8 @@
 	import PageTitleWrapper from '$lib/components/layouts/PageTitle/Wrapper/PageTitleWrapper.svelte';
 	import PageTitle from '$lib/components/layouts/PageTitle/PageTitle.svelte';
 	import BreadcrumbWrapper from '$lib/components/layouts/Breadcrumb/BreadcrumbWrapper.svelte';
+	import FadeOutAnimationWrapper from '$lib/components/layouts/FadeAnimation/FadeOutAnimationWrapper.svelte';
+	import FadeInAnimationWrapper from '$lib/components/layouts/FadeAnimation/FadeInAnimationWrapper.svelte';
 
 	export let data: PageData;
 </script>
@@ -34,15 +36,19 @@
 
 	<div class="mt-5 md:mt-10">
 		{#await data.articles}
-			<GridList>
-				{#each Array(8) as _}
-					<li class="w-full">
-						<ArticleVerticalCardSkeleton />
-					</li>
-				{/each}
-			</GridList>
+			<FadeOutAnimationWrapper>
+				<GridList>
+					{#each Array(8) as _}
+						<li class="w-full">
+							<ArticleVerticalCardSkeleton />
+						</li>
+					{/each}
+				</GridList>
+			</FadeOutAnimationWrapper>
 		{:then articles}
-			<ArticleGallery ulStyleClass="justify-items-center" {articles} sortCriteria={null} />
+			<FadeInAnimationWrapper>
+				<ArticleGallery ulStyleClass="justify-items-center" {articles} sortCriteria={null} />
+			</FadeInAnimationWrapper>
 		{/await}
 	</div>
 </main>

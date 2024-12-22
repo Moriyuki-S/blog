@@ -10,6 +10,8 @@
 	import ArticleHorizontalCard from '$lib/features/article/components/ArticleHorizontalCard/ArticleHorizontalCard.svelte';
 	import { blur, fade } from 'svelte/transition';
 	import NotFoundAlert from '$lib/components/ui/Alert/NotFoundAlert/NotFoundAlert.svelte';
+	import FadeOutAnimationWrapper from '$lib/components/layouts/FadeAnimation/FadeOutAnimationWrapper.svelte';
+	import FadeInAnimationWrapper from '$lib/components/layouts/FadeAnimation/FadeInAnimationWrapper.svelte';
 
 	export let data: PageData;
 	$: article = data.article;
@@ -62,25 +64,31 @@
 					<span>関連記事</span>
 				</div>
 				<div transition:blur>
-					<ColumnList>
-						{#await data.relatedArticles}
-							{#each Array(3) as _}
-								<li>
-									<ArticleHorizontalCardSkeleton />
-								</li>
-							{/each}
-						{:then relatedArticles}
+					{#await data.relatedArticles}
+						<FadeOutAnimationWrapper>
+							<ColumnList>
+								{#each Array(3) as _}
+									<li>
+										<ArticleHorizontalCardSkeleton />
+									</li>
+								{/each}
+							</ColumnList>
+						</FadeOutAnimationWrapper>
+					{:then relatedArticles}
+						<FadeInAnimationWrapper>
 							{#if relatedArticles.length === 0}
 								<NotFoundAlert notFoundMessage="関連する記事がありません" />
 							{:else}
-								{#each relatedArticles as relatedArticle}
-									<li>
-										<ArticleHorizontalCard article={relatedArticle} />
-									</li>
-								{/each}
+								<ColumnList>
+									{#each relatedArticles as relatedArticle}
+										<li>
+											<ArticleHorizontalCard article={relatedArticle} />
+										</li>
+									{/each}
+								</ColumnList>
 							{/if}
-						{/await}
-					</ColumnList>
+						</FadeInAnimationWrapper>
+					{/await}
 				</div>
 			</TabItem>
 		</Tabs>
@@ -152,25 +160,34 @@
 	outsideclose
 >
 	<div>
-		<ColumnList>
-			{#await data.relatedArticles}
-				{#each Array(3) as _}
-					<li>
-						<ArticleHorizontalCardSkeleton />
-					</li>
-				{/each}
-			{:then relatedArticles}
+		{#await data.relatedArticles}
+			<FadeOutAnimationWrapper>
+				<ColumnList>
+					{#each Array(3) as _}
+						<li>
+							<ArticleHorizontalCardSkeleton />
+						</li>
+					{/each}
+				</ColumnList>
+			</FadeOutAnimationWrapper>
+		{:then relatedArticles}
+			<FadeInAnimationWrapper>
 				{#if relatedArticles.length === 0}
 					<NotFoundAlert notFoundMessage="関連する記事がありません" />
 				{:else}
-					{#each relatedArticles as relatedArticle}
-						<li>
-							<ArticleHorizontalCard onClick={closeRelatedArticlesModal} article={relatedArticle} />
-						</li>
-					{/each}
+					<ColumnList>
+						{#each relatedArticles as relatedArticle}
+							<li>
+								<ArticleHorizontalCard
+									onClick={closeRelatedArticlesModal}
+									article={relatedArticle}
+								/>
+							</li>
+						{/each}
+					</ColumnList>
 				{/if}
-			{/await}
-		</ColumnList>
+			</FadeInAnimationWrapper>
+		{/await}
 	</div>
 </Modal>
 

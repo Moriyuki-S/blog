@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Search, TabItem, Tabs } from 'flowbite-svelte';
+	import { Button, Search, Spinner, TabItem, Tabs } from 'flowbite-svelte';
 	import { SearchOutline, TagOutline } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
 	import ArticleVerticalCardSkeleton from '$lib/features/article/components/ArticleVerticalCard/Skeleton/ArticleVerticalCardSkeleton.svelte';
@@ -7,6 +7,7 @@
 	import GridList from '$lib/components/layouts/List/GridList/GridList.svelte';
 	import ArticleGallery from '$lib/features/article/components/ArticleGallery/ArticleGallery.svelte';
 	import NotFoundAlert from '$lib/components/ui/Alert/NotFoundAlert/NotFoundAlert.svelte';
+	import FadeInAnimationWrapper from '$lib/components/layouts/FadeAnimation/FadeInAnimationWrapper.svelte';
 
 	export let data: PageData;
 	let query: string = data.searchQuery ?? '';
@@ -46,7 +47,7 @@
 				required
 				name="q"
 				bind:value={query}
-				class="w-full h-10 md:h-14 pl-14 rounded-lg focus:border-sky-300"
+				class="w-full h-10 md:h-14 pl-14 rounded-lg focus:border-sky-300 dark:bg-gray-800"
 				placeholder="検索したいキーワードを入力してください"
 				data-testid="search-articles-input"
 			/>
@@ -56,8 +57,15 @@
 			id="submit-button"
 			class="w-2/3 min-w-32 md:w-auto mx-auto"
 			type="submit"
-			disabled={inputEmpty}>検索する</Button
+			disabled={inputEmpty}
 		>
+			{#await data.articles}
+				<Spinner size="6" class="me-2" />
+				検索中...
+			{:then _}
+				検索する
+			{/await}
+		</Button>
 	</form>
 	<section class="w-full mx-auto px-3 pt-5 md:pt-10">
 		<Tabs tabStyle="underline">
@@ -103,13 +111,17 @@
 						</GridList>
 					{:then articles}
 						{#if articles.length === 0}
-							<div
-								class="w-full h-32 flex justify-center items-center sm:w-4/5 mx-auto md:max-w-96"
-							>
-								<NotFoundAlert notFoundMessage="記事が見つかりませんでした" />
-							</div>
+							<FadeInAnimationWrapper>
+								<div
+									class="w-full h-32 flex justify-center items-center sm:w-4/5 mx-auto md:max-w-96"
+								>
+									<NotFoundAlert notFoundMessage="記事が見つかりませんでした" />
+								</div>
+							</FadeInAnimationWrapper>
 						{:else}
-							<ArticleGallery {articles} sortCriteria={null} />
+							<FadeInAnimationWrapper>
+								<ArticleGallery {articles} sortCriteria={null} />
+							</FadeInAnimationWrapper>
 						{/if}
 					{/await}
 				</TabItem>
